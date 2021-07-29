@@ -13,12 +13,14 @@ body{
 }
 
 .section-container{
-    
-    //width: 100%;;
+    margin: 0 auto  ;
+    max-width: 1920px;
+    width: 100%;;
 }
 
 .full-width{
-    width: 1920px;
+    width: 100%;
+    margin: 0;
 }
 .dark{
     background-color: var(--dark-background);
