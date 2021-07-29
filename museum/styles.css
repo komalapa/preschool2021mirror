@@ -506,4 +506,39 @@ header, .section {
 .tickets-submit {
   margin-top: 50px;
 }
+
+.contacts-wrp {
+  width: 282px;
+}
+
+.contacts-name {
+  font-family: var(--font-roboto);
+  font-style: normal;
+  font-weight: 500;
+  font-size: 28px;
+  line-height: 33px;
+  margin: 85px 0 37px;
+}
+
+.contacts-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.contacts-list-item {
+  font-family: var(--font-roboto);
+  font-style: normal;
+  font-weight: 300;
+  font-size: 22px;
+  line-height: 26px;
+  margin-top: 20px;
+}
+
+.contacts-map {
+  margin-top: 75px;
+  width: 960px;
+  height: 620px;
+  background: url(/museum/assets/img/map.png) no-repeat;
+}
 /*# sourceMappingURL=styles.css.map */

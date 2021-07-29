@@ -431,3 +431,35 @@ header, .section{
         margin-top: 50px;
     }
 }
+.contacts{
+    &-wrp{
+        width:282px
+    }
+    &-name{
+        font-family: var(--font-roboto);
+        font-style: normal;
+        font-weight: 500;
+        font-size: 28px;
+        line-height: 33px;
+        margin: 85px 0 37px;
+    }
+    &-list{
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        &-item{
+            font-family: var(--font-roboto);
+            font-style: normal;
+            font-weight: 300;
+            font-size: 22px;
+            line-height: 26px;
+            margin-top: 20px;
+        }
+    }
+    &-map{
+        margin-top: 75px;
+        width: 960px;
+        height: 620px;
+        background: url(/museum/assets/img/map.png) no-repeat;
+    }
+}
