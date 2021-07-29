@@ -35,6 +35,10 @@ a {
   color: inherit;
 }
 
+a:active, button:active {
+  font-style: italic;
+}
+
 figure {
   margin: 0;
 }
@@ -437,6 +441,10 @@ header, .section {
   left: 5px;
 }
 
+.tickets-types .tickets-types-radio:hover + .tickets-types-radio-custom {
+  background-color: var(--golden-text);
+}
+
 .tickets-types-radio-custom:before {
   content: '';
   display: block;
@@ -612,6 +620,15 @@ header, .section {
   transition: -webkit-filter 0.2s ease-in;
   transition: filter 0.2s ease-in;
   transition: filter 0.2s ease-in, -webkit-filter 0.2s ease-in;
+}
+
+.footer-socials-item-link:active {
+  -webkit-transform: scale(0.9);
+          transform: scale(0.9);
+  -webkit-transition: -webkit-transform 0.1s ease-in;
+  transition: -webkit-transform 0.1s ease-in;
+  transition: transform 0.1s ease-in;
+  transition: transform 0.1s ease-in, -webkit-transform 0.1s ease-in;
 }
 
 #social-yt {

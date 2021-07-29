@@ -32,6 +32,9 @@ a{
     text-decoration: none;
     color: inherit;
 }
+a:active, button:active{
+    font-style: italic;
+}
 figure{
     margin: 0;
 }
@@ -368,7 +371,9 @@ header, .section{
             top:11px;
             left:5px;
         }
-
+        .tickets-types-radio:hover + .tickets-types-radio-custom {
+            background-color: var(--golden-text);
+        }
         &-radio-custom:before{
             content: '';
             display: block;
@@ -510,6 +515,10 @@ header, .section{
     &-item-link:hover{
         filter: invert(54%) sepia(40%) saturate(280%) hue-rotate(356deg) brightness(94%) contrast(94%);
         transition:filter 0.2s ease-in;
+    }
+    &-item-link:active{
+        transform: scale(0.9);
+        transition:transform 0.1s ease-in;
     }
 }
 #social-yt{
