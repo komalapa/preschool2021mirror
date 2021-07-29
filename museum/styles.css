@@ -35,6 +35,10 @@ a {
   color: inherit;
 }
 
+figure {
+  margin: 0;
+}
+
 .section-container {
   margin: 0 auto;
   max-width: 1920px;
@@ -209,6 +213,10 @@ header, .section {
   font-weight: 200;
 }
 
+.visiting {
+  padding-bottom: 0;
+}
+
 .visiting-cards-wrp {
   margin-top: 75px;
 }
@@ -255,5 +263,24 @@ header, .section {
   margin-top: 10px;
   font-size: 18px;
   line-height: 21px;
+}
+
+.explore-text {
+  font-family: var(--font-roboto);
+  font-style: normal;
+  font-weight: 300;
+  font-size: 22px;
+  line-height: 38px;
+  margin-top: 25px;
+}
+
+.explore-text:first-of-type {
+  margin-top: 75px;
+}
+
+.explore-img {
+  width: 720px;
+  height: 700px;
+  margin: 10px 0 0 61px;
 }
 /*# sourceMappingURL=styles.css.map */
