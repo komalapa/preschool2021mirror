@@ -2,6 +2,7 @@
   --padding-horizontal: 240px;
   --max-container-width:1920px;
   --dark-background: #030303;
+  --red-background:#710707;
   --white-text:#ffffff;
   --golden-text:#9d8665;
   --font-roboto: 'Roboto', sans-serif;
@@ -9,6 +10,17 @@
 }
 
 body {
+  margin: 0;
+}
+
+h2 {
+  text-transform: uppercase;
+  font-family: var(--font-forum);
+  font-style: normal;
+  font-weight: normal;
+  font-size: 80px;
+  line-height: 90px;
+  letter-spacing: 5px;
   margin: 0;
 }
 
@@ -50,11 +62,30 @@ body {
           justify-content: space-between;
 }
 
+.red-button {
+  background-color: var(--red-background);
+  color: var(--white-text);
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 24px;
+  line-height: 28px;
+  letter-spacing: 0.05em;
+  padding: 24px 66px 23px;
+  border-radius: 10px;
+  border: none;
+}
+
+.red-button:hover {
+  background-color: var(--golden-text);
+}
+
 header {
-  padding: 74px var(--padding-horizontal) 76px;
+  padding: 74px var(--padding-horizontal) 76px var(--padding-horizontal);
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
   margin: 0;
+  border: none;
 }
 
 .logo {
@@ -113,5 +144,34 @@ header {
 
 .menu-item:last-child {
   margin-left: 0;
+}
+
+.welcome {
+  padding: 114px 0 246px 240px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  background-image: url(/museum/assets/img/night-louvre.jpg);
+  background-size: 1215px 750px;
+  background-position: right bottom;
+  background-repeat: no-repeat;
+}
+
+.welcome-content-wrp {
+  width: 598px;
+  min-height: 390px;
+}
+
+.welcome-text {
+  font-family: var(--font-roboto);
+  font-style: normal;
+  font-weight: 300;
+  font-size: 28px;
+  line-height: 33px;
+  letter-spacing: 2px;
+  margin: 26px 0 76px;
+}
+
+.welcome-button {
+  font-weight: 200;
 }
 /*# sourceMappingURL=styles.css.map */
