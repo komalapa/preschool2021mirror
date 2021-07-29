@@ -10,6 +10,10 @@
   --font-forum: 'Forum', cursive;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   margin: 0;
 }
@@ -225,7 +229,7 @@ header, .section {
   padding: 114px 0 246px 240px;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
-  background-image: url(/museum/assets/img/night-louvre.jpg);
+  background-image: url(assets/img/night-louvre.jpg);
   background-size: 1215px 750px;
   background-position: right bottom;
   background-repeat: no-repeat;
@@ -352,7 +356,7 @@ header, .section {
   height: 85px;
   position: absolute;
   bottom: -84px;
-  background: url("/museum/assets/img/video-controls.png") no-repeat;
+  background: url("assets/img/video-controls.png") no-repeat;
   -webkit-transition: -webkit-filter 0.1s ease-in;
   transition: -webkit-filter 0.1s ease-in;
   transition: filter 0.1s ease-in;
@@ -390,7 +394,7 @@ header, .section {
 .tickets-picture {
   width: 720px;
   height: 550px;
-  background: url(/museum/assets/img/eneas.jpg) no-repeat;
+  background: url(assets/img/eneas.jpg) no-repeat;
 }
 
 .tickets-strong-text {
@@ -466,6 +470,15 @@ header, .section {
   margin-left: 240px;
 }
 
+.tickets-amount-label {
+  font-family: var(--font-roboto);
+  font-style: normal;
+  font-weight: 300;
+  font-size: 22px;
+  line-height: 15px;
+  margin-top: 19px;
+}
+
 .tickets-amount-header {
   text-align: right;
   margin-bottom: 15px;
@@ -506,7 +519,7 @@ header, .section {
   width: 100%;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
-  margin: 15px 0 40px;
+  margin: 19px 0 40px;
 }
 
 .tickets-amount-input::-webkit-outer-spin-button, .tickets-amount-input::-webkit-inner-spin-button {
@@ -569,7 +582,7 @@ header, .section {
   margin-top: 75px;
   width: 960px;
   height: 620px;
-  background: url(/museum/assets/img/map.png) no-repeat;
+  background: url(assets/img/map.png) no-repeat;
 }
 
 .footer-menu {
@@ -610,7 +623,7 @@ header, .section {
   display: block;
   width: 48px;
   height: 48px;
-  background: url(/museum/assets/svg/Social.svg);
+  background: url(assets/svg/Social.svg);
 }
 
 .footer-socials-item-link:hover {
