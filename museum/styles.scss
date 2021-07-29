@@ -9,6 +9,9 @@
     --font-roboto: 'Roboto', sans-serif;
     --font-forum: 'Forum', cursive;
 }
+html{
+    scroll-behavior: smooth;
+}
 
 body{
     margin: 0;
@@ -38,6 +41,7 @@ a:active, button:active{
 figure{
     margin: 0;
 }
+
 .section-container{
     margin: 0 auto  ;
     max-width: 1920px;
@@ -179,7 +183,7 @@ header, .section{
 .welcome{
     padding: 114px 0 246px 240px;
     box-sizing: border-box;
-    background-image: url(/museum/assets/img/night-louvre.jpg);
+    background-image: url(assets/img/night-louvre.jpg);
     background-size: 1215px 750px;
     background-position: right bottom;
     background-repeat: no-repeat;
@@ -290,7 +294,6 @@ header, .section{
         left: 611px;
         fill: var(--white-text);
         transition: fill 0.1s ease-in;
-        //background-image: url(/museum/assets/svg/video-start.svg);
     }
     &-player-controls{
         display: block;
@@ -298,7 +301,7 @@ header, .section{
         height: 85px;
         position: absolute;
         bottom: -84px;
-        background: url("/museum/assets/img/video-controls.png") no-repeat;
+        background: url("assets/img/video-controls.png") no-repeat;
         transition: filter 0.1s ease-in;
     }
     &-player-wrp:hover &-player-start{
@@ -330,7 +333,7 @@ header, .section{
     &-picture{
         width: 720px;
         height: 550px;
-        background: url(/museum/assets/img/eneas.jpg) no-repeat;
+        background: url(assets/img/eneas.jpg) no-repeat;
     }
     &-strong-text{
         font-family: var(--font-roboto);
@@ -394,6 +397,14 @@ header, .section{
     &-amount{
         width: 150px;
         margin-left: 240px;
+        &-label{
+            font-family: var(--font-roboto);
+            font-style: normal;
+            font-weight: 300;
+            font-size: 22px;
+            line-height: 15px;
+            margin-top: 19px;
+        }
         &-header{
             text-align: right;
             margin-bottom: 15px;
@@ -428,7 +439,7 @@ header, .section{
                 height: 50px;
                 width: 100%;
                 box-sizing: border-box;
-                margin: 15px 0 40px;
+                margin: 19px 0 40px;
             }
         }
         &-input::-webkit-outer-spin-button, &-input::-webkit-inner-spin-button {
@@ -479,7 +490,7 @@ header, .section{
         margin-top: 75px;
         width: 960px;
         height: 620px;
-        background: url(/museum/assets/img/map.png) no-repeat;
+        background: url(assets/img/map.png) no-repeat;
     }
 }
 
@@ -509,7 +520,7 @@ header, .section{
         display: block;
         width: 48px;
         height: 48px;
-        background: url(/museum/assets/svg/Social.svg);
+        background: url(assets/svg/Social.svg);
     }
     
     &-item-link:hover{
