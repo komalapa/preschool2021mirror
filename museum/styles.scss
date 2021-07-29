@@ -243,3 +243,53 @@ header, .section{
         margin: 10px 0 0 61px;
     }
 }
+
+.video{
+    padding-top: 90px;
+    &-player-wrp{
+        width: 1440px;
+        height: 629px;
+        margin: 0 0 125px;
+        position: relative;
+    }
+    &-player-start{
+        content: '';
+        display: block;
+        width: 220px;
+        height: 220px;
+        position: absolute;
+        top: 206px;
+        left: 611px;
+        fill: var(--white-text);
+        transition: fill 0.1s ease-in;
+        //background-image: url(/museum/assets/svg/video-start.svg);
+    }
+    &-player-controls{
+        display: block;
+        width: 1440px;
+        height: 85px;
+        position: absolute;
+        bottom: -84px;
+        background: url("/museum/assets/img/video-controls.png") no-repeat;
+        transition: filter 0.1s ease-in;
+    }
+    &-player-wrp:hover &-player-start{
+        fill:var(--golden-text)
+    }
+    &-player-wrp:hover &-player-controls{
+        filter: grayscale(50);
+    }
+    &-header{
+        border: none;
+        display: block;
+    }
+    &-text{
+        display: block;
+        margin: 10px 0 0;
+        width: 720px;
+        font-family: var(--font-roboto);
+        font-weight: 300;
+        font-size: 22px;
+        line-height: 38px;
+    }
+}
