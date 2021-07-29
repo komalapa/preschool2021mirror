@@ -128,8 +128,45 @@
                 
             </section>
 
-            <section class="section tickets">
-                <h2 class="section-header"></h2>
+            <section class="section tickets dark">
+                <h2 class="section-header">Buy tickets</h2>
+                
+                <form class="tickets-form flex-row" action="#">
+                    <div class="tickets-picture"></div>
+                    <div class="flex-row flex-space-between">
+                        
+                    </div>
+                    <div class="tickets-types">
+                        <h4 class="tickets-types-header tickets-strong-text">Ticket Type</h4>
+                        <label class="tickets-types-radio-label"> <input class="tickets-types-radio" type="radio" name="tickets-type" id="tickets-type-permanent" checked><span class="tickets-types-radio-custom"></span>Permanent exhibition</label>
+                        <label class="tickets-types-radio-label"> <input class="tickets-types-radio" type="radio" name="tickets-type" id="tickets-type-temporary"><span class="tickets-types-radio-custom"></span>Temporary exhibition</label>
+                        <label class="tickets-types-radio-label"> <input class="tickets-types-radio" type="radio" name="tickets-type" id="tickets-type-combined"><span class="tickets-types-radio-custom"></span>Combined Admission</label>
+                    </div>
+                    <div class="tickets-right-column">
+                        <div class="tickets-amount">
+                            <h4 class="tickets-amount-header tickets-strong-text">Amount</h4>
+                            <label class="tickets-types-radio-label">
+                                Basic 18+
+                                <div class="tickets-amount-input-wrp flex-row flex-space-between">
+                                    <button class="tickets-amount-btn">–</button> 
+                                    <input class="tickets-amount-input" type="number" name="tickets-18-amount" id="tickets-18-amount" value="1">
+                                    <button class="tickets-amount-btn">+</button>    
+                                </div>
+                            </label>
+                            <label class="tickets-types-radio-label">
+                                Senior 65+
+                                <div class="tickets-amount-input-wrp flex-row flex-space-between">
+                                    <button class="tickets-amount-btn">–</button> 
+                                    <input class="tickets-amount-input" type="number" name="tickets-65-amount" id="tickets-18-amount" value="1">
+                                    <button class="tickets-amount-btn">+</button>    
+                                </div>
+                            </label>
+                            <span class="tickets-strong-text tickets-cost">Total &euro;<span>220</span></span>
+                        </div>
+                        <button type="submit" class="tickets-submit white-button golden-hover">Buy Now</button>
+                    </div>
+                    
+                </form>
             </section>
 
             <section class="section contacts">

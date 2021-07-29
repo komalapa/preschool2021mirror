@@ -87,6 +87,16 @@ figure{
     border-radius: 10px;
     border: none;
 }
+.white-button{
+    font-family: var(--font-roboto);
+    font-style: normal;
+    font-weight: normal;
+    font-size: 28px;
+    line-height: 20px;
+    padding: 15px 30px 15px 35px;
+    background-color: var(--white-text);
+    border: none;
+}
 .golden-hover:hover{
     background-color: var(--golden-text);
 }
@@ -246,6 +256,7 @@ header, .section{
 
 .video{
     padding-top: 90px;
+    padding-bottom: 50px;
     &-player-wrp{
         width: 1440px;
         height: 629px;
@@ -291,5 +302,132 @@ header, .section{
         font-weight: 300;
         font-size: 22px;
         line-height: 38px;
+    }
+}
+
+.tickets{
+    &-form{
+        margin-top: 75px;
+        
+    }
+    &-picture{
+        width: 720px;
+        height: 550px;
+        background: url(/museum/assets/img/eneas.jpg) no-repeat;
+    }
+    &-strong-text{
+        font-family: var(--font-roboto);
+        font-style: normal;
+        font-weight: bold;
+        font-size: 28px;
+        line-height: 33px;
+        margin: 0;
+    }
+    &-types{
+        display: flex;
+        flex-direction: column;
+        margin-left: 60px;
+        width:270px;
+        &-radio-label{
+            font-family: var(--font-roboto);
+            font-style: normal;
+            font-weight: 300;
+            font-size: 22px;
+            line-height: 15px;
+            margin: 48px 0 0;
+            //padding-left: 40px;
+            position: relative;
+        }
+        &-radio{
+            width: 40px;
+            height: 26px;
+            margin: 0;
+            visibility: hidden;
+            position: relative;
+        }
+        
+        &-radio-custom{
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            position: absolute;
+            top:11px;
+            left:5px;
+        }
+
+        &-radio-custom:before{
+            content: '';
+            display: block;
+            width: 15px;
+            height: 15px;
+            border: 2px solid var(--white-text);
+            border-radius: 50%;
+            position: absolute;
+            top:-6px;
+            left:-6px;
+        }
+
+        &-radio:checked + &-radio-custom{
+            background-color:  var(--white-text);
+            
+        }
+    }
+    &-amount{
+        width: 150px;
+        margin-left: 240px;
+        &-header{
+            text-align: right;
+            margin-bottom: 15px;
+        }
+        &-btn{
+            font-family: var(--font-roboto);
+            font-weight: normal;
+            font-size: 32px;
+            line-height: 37px;
+            text-align: center;
+            color: var(--white-text);
+            background-color: transparent;
+            border: none;
+            padding: 0 10px 0 6px;
+        }
+        &-btn:hover{
+            color: var(--golden-text);
+        }
+        &-input{
+            font-family: var(--font-roboto);
+            font-style: normal;
+            font-weight: 300;
+            font-size: 22px;
+            line-height: 26px;
+            text-align: center;
+            color: var(--white-text);
+            background-color: transparent;
+            border: none;
+            width: 30px;
+            &-wrp{
+                border: 3px solid var(--white-text);
+                height: 50px;
+                width: 100%;
+                box-sizing: border-box;
+                margin: 15px 0 40px;
+            }
+        }
+        &-input::-webkit-outer-spin-button, &-input::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0; 
+        }
+    }
+    &-cost{
+        letter-spacing: 1.65px;
+        display: block;
+        margin-top: 52px;
+    }
+    &-right-column{
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+    }
+    &-submit{
+        margin-top: 50px;
     }
 }
