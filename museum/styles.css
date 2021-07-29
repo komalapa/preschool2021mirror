@@ -49,8 +49,7 @@ figure {
 
 .section-container {
   margin: 0 auto;
-  max-width: 1920px;
-  width: 100%;
+  width: 1440px;
 }
 
 .section-header {
@@ -226,6 +225,12 @@ header, .section {
 }
 
 .welcome {
+  padding: 0;
+  overflow: hidden;
+}
+
+.welcome-container {
+  width: 1920px;
   padding: 114px 0 246px 240px;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
