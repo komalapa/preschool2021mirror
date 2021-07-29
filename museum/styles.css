@@ -142,7 +142,7 @@ figure {
 }
 
 header, .section {
-  padding: 74px var(--padding-horizontal) 76px var(--padding-horizontal);
+  padding: 74px var(--padding-horizontal) 75px var(--padding-horizontal);
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
   margin: 0;
@@ -327,7 +327,7 @@ header, .section {
 .explore-img {
   width: 720px;
   height: 700px;
-  margin: 10px 0 0 61px;
+  margin: 10px 0 3px 61px;
 }
 
 .video {
@@ -499,7 +499,7 @@ header, .section {
   font-weight: 300;
   font-size: 22px;
   line-height: 15px;
-  margin: 48px 0 0;
+  margin: 46px 0 2px;
   position: relative;
 }
 
@@ -516,7 +516,7 @@ header, .section {
   height: 7px;
   border-radius: 50%;
   position: absolute;
-  top: 11px;
+  top: 13px;
   left: 5px;
 }
 
@@ -605,7 +605,7 @@ header, .section {
 .tickets-cost {
   letter-spacing: 1.65px;
   display: block;
-  margin-top: 52px;
+  margin-top: 51px;
 }
 
 .tickets-right-column {
@@ -658,6 +658,10 @@ header, .section {
   width: 960px;
   height: 620px;
   background: url(assets/img/map.png) no-repeat;
+}
+
+.footer-container {
+  margin-top: 1px;
 }
 
 .footer-menu {

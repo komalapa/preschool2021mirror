@@ -113,7 +113,7 @@ figure{
     transition:color 0.2s ease-in;
 }
 header, .section{
-    padding: 74px var(--padding-horizontal) 76px var(--padding-horizontal) ;
+    padding: 74px var(--padding-horizontal) 75px var(--padding-horizontal) ;
     box-sizing: border-box;
     margin: 0;
     border: none;
@@ -276,7 +276,7 @@ header, .section{
     &-img{
         width: 720px;
         height: 700px;
-        margin: 10px 0 0 61px;
+        margin: 10px 0 3px 61px;
     }
 }
 
@@ -421,7 +421,7 @@ header, .section{
             font-weight: 300;
             font-size: 22px;
             line-height: 15px;
-            margin: 48px 0 0;
+            margin: 46px 0 2px;
             //padding-left: 40px;
             position: relative;
         }
@@ -438,7 +438,7 @@ header, .section{
             height: 7px;
             border-radius: 50%;
             position: absolute;
-            top:11px;
+            top:13px;
             left:5px;
         }
         .tickets-types-radio:hover + .tickets-types-radio-custom {
@@ -517,7 +517,7 @@ header, .section{
     &-cost{
         letter-spacing: 1.65px;
         display: block;
-        margin-top: 52px;
+        margin-top: 51px;
     }
     &-right-column{
         display: flex;
@@ -561,6 +561,9 @@ header, .section{
     }
 }
 
+.footer-container{
+    margin-top: 1px;
+}
 .footer-menu{
     display: flex;
     flex-direction: column;
