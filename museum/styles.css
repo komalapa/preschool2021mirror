@@ -1,0 +1,653 @@
+:root {
+  --padding-horizontal: 240px;
+  --max-container-width:1920px;
+  --dark-background: #030303;
+  --red-background:#710707;
+  --white-text:#ffffff;
+  --black-text:#000000;
+  --golden-text:#9d8665;
+  --font-roboto: 'Roboto', sans-serif;
+  --font-forum: 'Forum', cursive;
+}
+
+body {
+  margin: 0;
+}
+
+h2, h3 {
+  text-transform: uppercase;
+  font-family: var(--font-forum);
+  font-style: normal;
+  font-weight: normal;
+  font-size: 80px;
+  line-height: 90px;
+  letter-spacing: 5px;
+  margin: 0;
+}
+
+h3 {
+  font-size: 32px;
+  line-height: 30px;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+a:active, button:active {
+  font-style: italic;
+}
+
+figure {
+  margin: 0;
+}
+
+.section-container {
+  margin: 0 auto;
+  max-width: 1920px;
+  width: 100%;
+}
+
+.section-header {
+  padding-bottom: 26px;
+  border-bottom: 3px solid var(--red-background);
+}
+
+.golden-font {
+  color: var(--golden-text);
+}
+
+.full-width {
+  width: 100%;
+  min-width: 1920px;
+  margin: 0;
+}
+
+.dark {
+  background-color: var(--dark-background);
+  color: var(--white-text);
+}
+
+.white {
+  background-color: var(--white-text);
+  color: var(--black-text);
+}
+
+.flex-row {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+}
+
+.flex-wrap {
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+.flex-space-between {
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.flex-center {
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.red-button {
+  background-color: var(--red-background);
+  color: var(--white-text);
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 24px;
+  line-height: 28px;
+  letter-spacing: 0.05em;
+  padding: 24px 66px 23px;
+  border-radius: 10px;
+  border: none;
+}
+
+.white-button {
+  font-family: var(--font-roboto);
+  font-style: normal;
+  font-weight: normal;
+  font-size: 28px;
+  line-height: 20px;
+  padding: 15px 30px 15px 35px;
+  background-color: var(--white-text);
+  border: none;
+}
+
+.golden-hover:hover {
+  background-color: var(--golden-text);
+  -webkit-transition: background-color 0.2s ease-in;
+  transition: background-color 0.2s ease-in;
+}
+
+.golden-font-hover:hover {
+  color: var(--golden-text);
+  -webkit-transition: color 0.2s ease-in;
+  transition: color 0.2s ease-in;
+}
+
+header, .section {
+  padding: 74px var(--padding-horizontal) 76px var(--padding-horizontal);
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  margin: 0;
+  border: none;
+}
+
+.logo {
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  height: 50px;
+  cursor: pointer;
+}
+
+.logo-img {
+  background: url("assets/svg/logo.svg") no-repeat;
+  width: 50px;
+  height: 34px;
+  margin-right: 20px;
+}
+
+.logo-text {
+  display: block;
+  margin: 0;
+  text-transform: uppercase;
+  font-family: var(--font-forum);
+  font-weight: 400;
+  line-height: 50px;
+  letter-spacing: 5px;
+  font-size: 28px;
+}
+
+.logo:hover .logo-img {
+  -webkit-filter: invert(54%) sepia(40%) saturate(280%) hue-rotate(356deg) brightness(94%) contrast(94%);
+          filter: invert(54%) sepia(40%) saturate(280%) hue-rotate(356deg) brightness(94%) contrast(94%);
+  -webkit-transition: -webkit-filter 0.2s ease-in;
+  transition: -webkit-filter 0.2s ease-in;
+  transition: filter 0.2s ease-in;
+  transition: filter 0.2s ease-in, -webkit-filter 0.2s ease-in;
+}
+
+.logo:hover .logo-text {
+  color: var(--golden-text);
+  -webkit-transition: color 0.2s ease-in;
+  transition: color 0.2s ease-in;
+}
+
+.main-menu {
+  margin-left: 525px;
+}
+
+.menu {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.menu-item {
+  margin-right: 76px;
+}
+
+.menu-item-link {
+  color: var(--white-text);
+  font-family: var(--font-roboto);
+  font-style: normal;
+  font-weight: 200;
+  font-size: 22px;
+  line-height: 50px;
+  letter-spacing: 2px;
+}
+
+.menu-item-link:hover, .menu-item-link:active {
+  color: var(--golden-text);
+  -webkit-transition: color 0.2s ease-in;
+  transition: color 0.2s ease-in;
+}
+
+.menu-item:last-child {
+  margin-left: 0;
+}
+
+.welcome {
+  padding: 114px 0 246px 240px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  background-image: url(/museum/assets/img/night-louvre.jpg);
+  background-size: 1215px 750px;
+  background-position: right bottom;
+  background-repeat: no-repeat;
+}
+
+.welcome-content-wrp {
+  width: 598px;
+  min-height: 390px;
+}
+
+.welcome-text {
+  font-family: var(--font-roboto);
+  font-style: normal;
+  font-weight: 300;
+  font-size: 28px;
+  line-height: 33px;
+  letter-spacing: 2px;
+  margin: 26px 0 76px;
+}
+
+.welcome-button {
+  font-weight: 200;
+}
+
+.visiting {
+  padding-bottom: 0;
+}
+
+.visiting-cards-wrp {
+  margin-top: 75px;
+}
+
+.card {
+  width: 440px;
+  height: 422px;
+  margin: 0;
+  color: var(--black-text);
+  font-family: var(--font-roboto);
+  font-weight: 200;
+  margin-bottom: 78px;
+}
+
+.card-img {
+  width: 100%;
+  height: 285px;
+  margin-bottom: 25px;
+}
+
+.card-header:after {
+  content: '';
+  margin-top: 10px;
+  display: block;
+  width: 300px;
+  border-bottom: 2px solid var(--red-background);
+  -webkit-transition: width 1s;
+  transition: width 1s;
+}
+
+.card:hover .card-header:after {
+  width: 100%;
+}
+
+.card-tour {
+  display: block;
+  font-size: 22px;
+  line-height: 26px;
+  margin-top: 10px;
+}
+
+.card-googlestreet {
+  display: block;
+  margin-top: 10px;
+  font-size: 18px;
+  line-height: 21px;
+}
+
+.explore-text {
+  font-family: var(--font-roboto);
+  font-style: normal;
+  font-weight: 300;
+  font-size: 22px;
+  line-height: 38px;
+  margin-top: 25px;
+}
+
+.explore-text:first-of-type {
+  margin-top: 75px;
+}
+
+.explore-img {
+  width: 720px;
+  height: 700px;
+  margin: 10px 0 0 61px;
+}
+
+.video {
+  padding-top: 90px;
+  padding-bottom: 50px;
+}
+
+.video-player-wrp {
+  width: 1440px;
+  height: 629px;
+  margin: 0 0 125px;
+  position: relative;
+}
+
+.video-player-start {
+  content: '';
+  display: block;
+  width: 220px;
+  height: 220px;
+  position: absolute;
+  top: 206px;
+  left: 611px;
+  fill: var(--white-text);
+  -webkit-transition: fill 0.1s ease-in;
+  transition: fill 0.1s ease-in;
+}
+
+.video-player-controls {
+  display: block;
+  width: 1440px;
+  height: 85px;
+  position: absolute;
+  bottom: -84px;
+  background: url("/museum/assets/img/video-controls.png") no-repeat;
+  -webkit-transition: -webkit-filter 0.1s ease-in;
+  transition: -webkit-filter 0.1s ease-in;
+  transition: filter 0.1s ease-in;
+  transition: filter 0.1s ease-in, -webkit-filter 0.1s ease-in;
+}
+
+.video-player-wrp:hover .video-player-start {
+  fill: var(--golden-text);
+}
+
+.video-player-wrp:hover .video-player-controls {
+  -webkit-filter: grayscale(50);
+          filter: grayscale(50);
+}
+
+.video-header {
+  border: none;
+  display: block;
+}
+
+.video-text {
+  display: block;
+  margin: 10px 0 0;
+  width: 720px;
+  font-family: var(--font-roboto);
+  font-weight: 300;
+  font-size: 22px;
+  line-height: 38px;
+}
+
+.tickets-form {
+  margin-top: 75px;
+}
+
+.tickets-picture {
+  width: 720px;
+  height: 550px;
+  background: url(/museum/assets/img/eneas.jpg) no-repeat;
+}
+
+.tickets-strong-text {
+  font-family: var(--font-roboto);
+  font-style: normal;
+  font-weight: bold;
+  font-size: 28px;
+  line-height: 33px;
+  margin: 0;
+}
+
+.tickets-types {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  margin-left: 60px;
+  width: 270px;
+}
+
+.tickets-types-radio-label {
+  font-family: var(--font-roboto);
+  font-style: normal;
+  font-weight: 300;
+  font-size: 22px;
+  line-height: 15px;
+  margin: 48px 0 0;
+  position: relative;
+}
+
+.tickets-types-radio {
+  width: 40px;
+  height: 26px;
+  margin: 0;
+  visibility: hidden;
+  position: relative;
+}
+
+.tickets-types-radio-custom {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  position: absolute;
+  top: 11px;
+  left: 5px;
+}
+
+.tickets-types .tickets-types-radio:hover + .tickets-types-radio-custom {
+  background-color: var(--golden-text);
+}
+
+.tickets-types-radio-custom:before {
+  content: '';
+  display: block;
+  width: 15px;
+  height: 15px;
+  border: 2px solid var(--white-text);
+  border-radius: 50%;
+  position: absolute;
+  top: -6px;
+  left: -6px;
+}
+
+.tickets-types-radio:checked + .tickets-types-radio-custom {
+  background-color: var(--white-text);
+}
+
+.tickets-amount {
+  width: 150px;
+  margin-left: 240px;
+}
+
+.tickets-amount-header {
+  text-align: right;
+  margin-bottom: 15px;
+}
+
+.tickets-amount-btn {
+  font-family: var(--font-roboto);
+  font-weight: normal;
+  font-size: 32px;
+  line-height: 37px;
+  text-align: center;
+  color: var(--white-text);
+  background-color: transparent;
+  border: none;
+  padding: 0 10px 0 6px;
+}
+
+.tickets-amount-btn:hover {
+  color: var(--golden-text);
+}
+
+.tickets-amount-input {
+  font-family: var(--font-roboto);
+  font-style: normal;
+  font-weight: 300;
+  font-size: 22px;
+  line-height: 26px;
+  text-align: center;
+  color: var(--white-text);
+  background-color: transparent;
+  border: none;
+  width: 30px;
+}
+
+.tickets-amount-input-wrp {
+  border: 3px solid var(--white-text);
+  height: 50px;
+  width: 100%;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  margin: 15px 0 40px;
+}
+
+.tickets-amount-input::-webkit-outer-spin-button, .tickets-amount-input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.tickets-cost {
+  letter-spacing: 1.65px;
+  display: block;
+  margin-top: 52px;
+}
+
+.tickets-right-column {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: flex-end;
+}
+
+.tickets-submit {
+  margin-top: 50px;
+}
+
+.contacts-wrp {
+  width: 282px;
+}
+
+.contacts-name {
+  font-family: var(--font-roboto);
+  font-style: normal;
+  font-weight: 500;
+  font-size: 28px;
+  line-height: 33px;
+  margin: 85px 0 37px;
+}
+
+.contacts-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.contacts-list-item {
+  font-family: var(--font-roboto);
+  font-style: normal;
+  font-weight: 300;
+  font-size: 22px;
+  line-height: 26px;
+  margin-top: 20px;
+}
+
+.contacts-map {
+  margin-top: 75px;
+  width: 960px;
+  height: 620px;
+  background: url(/museum/assets/img/map.png) no-repeat;
+}
+
+.footer-menu {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  height: 150px;
+  margin-left: 145px;
+}
+
+.footer-menu-item {
+  margin-right: 155px;
+}
+
+.footer-socials {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 13px 505px;
+  -ms-flex-item-align: end;
+      align-self: flex-end;
+}
+
+.footer-socials-item {
+  margin-right: 24px;
+}
+
+.footer-socials-item:last-child {
+  margin-right: 0;
+}
+
+.footer-socials-item-link {
+  display: block;
+  width: 48px;
+  height: 48px;
+  background: url(/museum/assets/svg/Social.svg);
+}
+
+.footer-socials-item-link:hover {
+  -webkit-filter: invert(54%) sepia(40%) saturate(280%) hue-rotate(356deg) brightness(94%) contrast(94%);
+          filter: invert(54%) sepia(40%) saturate(280%) hue-rotate(356deg) brightness(94%) contrast(94%);
+  -webkit-transition: -webkit-filter 0.2s ease-in;
+  transition: -webkit-filter 0.2s ease-in;
+  transition: filter 0.2s ease-in;
+  transition: filter 0.2s ease-in, -webkit-filter 0.2s ease-in;
+}
+
+.footer-socials-item-link:active {
+  -webkit-transform: scale(0.9);
+          transform: scale(0.9);
+  -webkit-transition: -webkit-transform 0.1s ease-in;
+  transition: -webkit-transform 0.1s ease-in;
+  transition: transform 0.1s ease-in;
+  transition: transform 0.1s ease-in, -webkit-transform 0.1s ease-in;
+}
+
+#social-yt {
+  background-position: 0;
+}
+
+#social-pin {
+  background-position: 48px;
+}
+
+#social-inst {
+  background-position: 264px;
+}
+
+#social-tw {
+  background-position: 120px;
+}
+
+#social-fb {
+  background-position: 192px;
+}
+/*# sourceMappingURL=styles.css.map */
