@@ -124,10 +124,14 @@ figure {
 
 .golden-hover:hover {
   background-color: var(--golden-text);
+  -webkit-transition: background-color 0.2s ease-in;
+  transition: background-color 0.2s ease-in;
 }
 
 .golden-font-hover:hover {
   color: var(--golden-text);
+  -webkit-transition: color 0.2s ease-in;
+  transition: color 0.2s ease-in;
 }
 
 header, .section {
@@ -143,6 +147,7 @@ header, .section {
       -ms-flex-align: center;
           align-items: center;
   height: 50px;
+  cursor: pointer;
 }
 
 .logo-img {
@@ -161,6 +166,21 @@ header, .section {
   line-height: 50px;
   letter-spacing: 5px;
   font-size: 28px;
+}
+
+.logo:hover .logo-img {
+  -webkit-filter: invert(54%) sepia(40%) saturate(280%) hue-rotate(356deg) brightness(94%) contrast(94%);
+          filter: invert(54%) sepia(40%) saturate(280%) hue-rotate(356deg) brightness(94%) contrast(94%);
+  -webkit-transition: -webkit-filter 0.2s ease-in;
+  transition: -webkit-filter 0.2s ease-in;
+  transition: filter 0.2s ease-in;
+  transition: filter 0.2s ease-in, -webkit-filter 0.2s ease-in;
+}
+
+.logo:hover .logo-text {
+  color: var(--golden-text);
+  -webkit-transition: color 0.2s ease-in;
+  transition: color 0.2s ease-in;
 }
 
 .main-menu {
@@ -189,6 +209,8 @@ header, .section {
 
 .menu-item-link:hover, .menu-item-link:active {
   color: var(--golden-text);
+  -webkit-transition: color 0.2s ease-in;
+  transition: color 0.2s ease-in;
 }
 
 .menu-item:last-child {
@@ -540,5 +562,75 @@ header, .section {
   width: 960px;
   height: 620px;
   background: url(/museum/assets/img/map.png) no-repeat;
+}
+
+.footer-menu {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  height: 150px;
+  margin-left: 145px;
+}
+
+.footer-menu-item {
+  margin-right: 155px;
+}
+
+.footer-socials {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 13px 505px;
+  -ms-flex-item-align: end;
+      align-self: flex-end;
+}
+
+.footer-socials-item {
+  margin-right: 24px;
+}
+
+.footer-socials-item:last-child {
+  margin-right: 0;
+}
+
+.footer-socials-item-link {
+  display: block;
+  width: 48px;
+  height: 48px;
+  background: url(/museum/assets/svg/Social.svg);
+}
+
+.footer-socials-item-link:hover {
+  -webkit-filter: invert(54%) sepia(40%) saturate(280%) hue-rotate(356deg) brightness(94%) contrast(94%);
+          filter: invert(54%) sepia(40%) saturate(280%) hue-rotate(356deg) brightness(94%) contrast(94%);
+  -webkit-transition: -webkit-filter 0.2s ease-in;
+  transition: -webkit-filter 0.2s ease-in;
+  transition: filter 0.2s ease-in;
+  transition: filter 0.2s ease-in, -webkit-filter 0.2s ease-in;
+}
+
+#social-yt {
+  background-position: 0;
+}
+
+#social-pin {
+  background-position: 48px;
+}
+
+#social-inst {
+  background-position: 264px;
+}
+
+#social-tw {
+  background-position: 120px;
+}
+
+#social-fb {
+  background-position: 192px;
 }
 /*# sourceMappingURL=styles.css.map */

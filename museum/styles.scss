@@ -99,9 +99,11 @@ figure{
 }
 .golden-hover:hover{
     background-color: var(--golden-text);
+    transition:background-color 0.2s ease-in;
 }
 .golden-font-hover:hover{
     color: var(--golden-text);
+    transition:color 0.2s ease-in;
 }
 header, .section{
     padding: 74px var(--padding-horizontal) 76px var(--padding-horizontal) ;
@@ -112,6 +114,7 @@ header, .section{
 .logo{
     align-items: center;
     height: 50px;
+    cursor: pointer;
     &-img{
         background: url("assets/svg/logo.svg") no-repeat;
         
@@ -129,7 +132,17 @@ header, .section{
         letter-spacing: 5px;
         font-size: 28px;
     }
+    .logo:hover &-img{
+        filter: invert(54%) sepia(40%) saturate(280%) hue-rotate(356deg) brightness(94%) contrast(94%);
+        transition:filter 0.2s ease-in;
+    }
+    .logo:hover &-text{
+        color: var(--golden-text);
+        transition:color 0.2s ease-in;
+    }
 }
+
+
 .main-menu{
     margin-left: 525px;
 }
@@ -152,6 +165,7 @@ header, .section{
         }
         &-link:hover,&-link:active{
             color: var(--golden-text);
+            transition:color 0.2s ease-in;
         }
     }
     &-item:last-child{
@@ -462,4 +476,54 @@ header, .section{
         height: 620px;
         background: url(/museum/assets/img/map.png) no-repeat;
     }
+}
+
+.footer-menu{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    height: 150px;
+    margin-left: 145px;
+    &-item{
+        margin-right: 155px;
+    }
+}
+
+.footer-socials{
+    list-style: none;
+    padding: 0;
+    margin: 0 0 13px 505px;
+    align-self: flex-end;
+    &-item{
+        margin-right: 24px;
+    }
+    &-item:last-child{
+        margin-right: 0;
+    }
+    &-item-link{
+        display: block;
+        width: 48px;
+        height: 48px;
+        background: url(/museum/assets/svg/Social.svg);
+    }
+    
+    &-item-link:hover{
+        filter: invert(54%) sepia(40%) saturate(280%) hue-rotate(356deg) brightness(94%) contrast(94%);
+        transition:filter 0.2s ease-in;
+    }
+}
+#social-yt{
+    background-position: 0;
+}
+#social-pin{
+    background-position: 48px;
+}
+#social-inst{
+    background-position: 264px;
+}
+#social-tw{
+    background-position: 120px;
+}
+#social-fb{
+    background-position: 192px;
 }
