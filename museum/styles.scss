@@ -15,9 +15,12 @@ html{
 
 body{
     margin: 0;
+    font-family: var(--font-roboto);
+    font-style: normal;
 }
 
 h2, h3{
+    margin: 0;
     text-transform: uppercase;
     font-family: var(--font-forum);
     font-style: normal;
@@ -25,7 +28,6 @@ h2, h3{
     font-size: 80px;
     line-height: 90px;
     letter-spacing: 5px;
-    margin: 0;
 }
 h3{
     font-size: 32px;
@@ -44,8 +46,7 @@ figure{
 
 .section-container{
     margin: 0 auto  ;
-    max-width: 1920px;
-    width: 100%;;
+    max-width: 1440px;
 }
 .section-header{
     padding-bottom: 26px;
@@ -78,29 +79,27 @@ figure{
     justify-content: space-between;
 }
 .flex-center{
-    justify-content: space-between;
+    justify-content: center;
 }
 
 .red-button{
-    background-color:var(--red-background);
-    color:var(--white-text);
-    font-family: Roboto;
+    padding:24px 66px 23px;
+    font-family: inherit;
     font-style: normal;
     font-weight: normal;
     font-size: 24px;
     line-height: 28px;
     letter-spacing: 0.05em;
-    padding:24px 66px 23px;
+    background-color:var(--red-background);
+    color:var(--white-text);
     border-radius: 10px;
     border: none;
 }
 .white-button{
-    font-family: var(--font-roboto);
-    font-style: normal;
+    padding: 15px 30px 15px 35px;
     font-weight: normal;
     font-size: 28px;
     line-height: 20px;
-    padding: 15px 30px 15px 35px;
     background-color: var(--white-text);
     border: none;
 }
@@ -113,7 +112,7 @@ figure{
     transition:color 0.2s ease-in;
 }
 header, .section{
-    padding: 74px var(--padding-horizontal) 76px var(--padding-horizontal) ;
+    padding: 74px var(--padding-horizontal) 75px var(--padding-horizontal) ;
     box-sizing: border-box;
     margin: 0;
     border: none;
@@ -123,11 +122,10 @@ header, .section{
     height: 50px;
     cursor: pointer;
     &-img{
-        background: url("assets/svg/logo.svg") no-repeat;
-        
         width: 50px;
         height: 34px;
         margin-right: 20px;
+        background: url("assets/svg/logo.svg") no-repeat;
     }
     &-text{
         display: block;
@@ -154,21 +152,17 @@ header, .section{
     margin-left: 525px;
 }
 .menu{
-    list-style: none;
     margin: 0;
     padding: 0;
+    list-style: none;
     &-item{
-        
         margin-right: 76px;
         &-link{
-            color: var(--white-text);
-            font-family: var(--font-roboto);
-            font-style: normal;
             font-weight: 200;
             font-size: 22px;
             line-height: 50px;
             letter-spacing: 2px;
-
+            color: var(--white-text);
         }
         &-link:hover,&-link:active{
             color: var(--golden-text);
@@ -181,25 +175,30 @@ header, .section{
 }
 
 .welcome{
-    padding: 114px 0 246px 240px;
-    box-sizing: border-box;
-    background-image: url(assets/img/night-louvre.jpg);
-    background-size: 1215px 750px;
-    background-position: right bottom;
-    background-repeat: no-repeat;
+    padding: 0;
+    overflow: hidden;
+    &-container{
+        max-width: 1920px;
+        //width: 1920px;
+        padding: 116px 0 246px 240px;
+        box-sizing: border-box;
+        background-image: url("assets/img/night-louvre.jpg");
+        background-size: 1215px 750px;
+        background-position: calc(50% + 352px) bottom;
+        //background-position: right bottom;
+        background-repeat: no-repeat;
+    }
     &-content-wrp{
         width: 598px;
         min-height: 390px;
         
     }
     &-text{
-        font-family: var(--font-roboto);
-        font-style: normal;
+        margin: 26px 0 76px;
         font-weight: 300;
         font-size: 28px;
         line-height: 33px;
         letter-spacing: 2px;
-        margin: 26px 0 76px
     }
     &-button{
         font-weight: 200;
@@ -210,17 +209,16 @@ header, .section{
     padding-bottom: 0;
     &-cards-wrp{
         margin-top: 75px;
+        column-gap: 60px;
     }
 }
 .card{
     width:440px;
     height: 422px;
     margin: 0;
-    color:var(--black-text);
-    font-family: var(--font-roboto);
-    font-weight: 200;
-
     margin-bottom: 78px;
+    font-weight: 200;
+    color:var(--black-text);
     &-img{
         width: 100%;
         height: 285px;
@@ -229,8 +227,8 @@ header, .section{
 
     &-header:after{
         content: '';
-        margin-top: 10px;
         display: block;
+        margin-top: 10px;
         width: 300px;
         border-bottom: 2px solid var(--red-background);
         transition: width 1s;
@@ -242,9 +240,9 @@ header, .section{
 
     &-tour{
         display: block;
+        margin-top: 10px;
         font-size: 22px;
         line-height: 26px;
-        margin-top: 10px;
     }
 
     &-googlestreet{
@@ -258,20 +256,18 @@ header, .section{
 
 .explore{
     &-text{
-        font-family: var(--font-roboto);
-        font-style: normal;
+        margin-top: 27px;
         font-weight: 300;
         font-size: 22px;
         line-height: 38px;
-        margin-top: 25px;
     }
     &-text:first-of-type{
         margin-top: 75px;
     }
     &-img{
+        margin: 10px 0 3px 61px;
         width: 720px;
         height: 700px;
-        margin: 10px 0 0 61px;
     }
 }
 
@@ -279,46 +275,106 @@ header, .section{
     padding-top: 90px;
     padding-bottom: 50px;
     &-player-wrp{
+        position: relative;
         width: 1440px;
         height: 629px;
         margin: 0 0 125px;
-        position: relative;
     }
     &-player-start{
+        position: absolute;
+        top: 206px;
+        left: 611px;
         content: '';
         display: block;
         width: 220px;
         height: 220px;
-        position: absolute;
-        top: 206px;
-        left: 611px;
         fill: var(--white-text);
         transition: fill 0.1s ease-in;
     }
     &-player-controls{
-        display: block;
-        width: 1440px;
-        height: 85px;
         position: absolute;
-        bottom: -84px;
-        background: url("assets/img/video-controls.png") no-repeat;
-        transition: filter 0.1s ease-in;
+        bottom: -87px;
+        align-items: center;
+        padding: 2px 40px 0 41px;
+        box-sizing: border-box;
+        width: 1440px;
+        height: 87px;
+        background-color: var(--black-text);
+        &-btn{
+            height: 30px;
+            margin-right: 41px;
+            background-color: transparent;
+            border: none;
+        }
+        &-btn:hover{
+            filter: invert(72%) sepia(0%) saturate(650%) hue-rotate(156deg) brightness(85%) contrast(88%);
+            transition:filter 0.2s ease-in;
+        }
+        &-back{
+            width: 27px;
+            background: url("assets/svg/back.svg") no-repeat;
+        }
+        &-play{
+            width: 23px;
+            background: url("assets/svg/play.svg") no-repeat;
+        }
+        &-forward{
+            width: 27px;
+            background: url("assets/svg/forvard.svg") no-repeat;
+        }
+        &-mute{
+            margin-right: 20px;
+            width: 38px;
+            background: url("assets/svg/volume.svg") no-repeat;
+        }
+        &-full{
+            margin-right: 0;
+            width: 38px;
+            height: 38px;
+            background: url("assets/svg/full-screen.svg") no-repeat;
+        }
+
+        &-bar{
+            height: 8px;
+            background: linear-gradient(to right, #24809E 0%, #24809E 40%, #c4c4c4 40%, #c4c4c4 100%);
+            border: none;
+            outline: none;
+            transition: background 450ms ease-in;
+            -webkit-appearance: none;
+        }
+        &-bar::-webkit-slider-thumb {
+            width: 15px;
+            height: 15px;
+            border-radius: 50%;
+            -webkit-appearance: none;
+            cursor: ew-resize;
+            background: #ffffff;
+        }
+        &-progress{
+            width: 820px;
+            margin-right: 41px;
+        }
+        &-volume{
+            width: 155px;
+            margin-right: 48px;
+        }
+        //background: url("assets/img/video-controls.png") no-repeat;
+        // transition: filter 0.1s ease-in;
     }
     &-player-wrp:hover &-player-start{
         fill:var(--golden-text)
     }
-    &-player-wrp:hover &-player-controls{
-        filter: grayscale(50);
-    }
+    // &-player-wrp:hover &-player-controls{
+    //     filter: grayscale(50);
+    // }
     &-header{
-        border: none;
         display: block;
+        border: none;
     }
     &-text{
         display: block;
         margin: 10px 0 0;
         width: 720px;
-        font-family: var(--font-roboto);
         font-weight: 300;
         font-size: 22px;
         line-height: 38px;
@@ -333,15 +389,13 @@ header, .section{
     &-picture{
         width: 720px;
         height: 550px;
-        background: url(assets/img/eneas.jpg) no-repeat;
+        background: url("assets/img/eneas.jpg") no-repeat;
     }
     &-strong-text{
-        font-family: var(--font-roboto);
-        font-style: normal;
+        margin: 0;
         font-weight: bold;
         font-size: 28px;
         line-height: 33px;
-        margin: 0;
     }
     &-types{
         display: flex;
@@ -349,44 +403,41 @@ header, .section{
         margin-left: 60px;
         width:270px;
         &-radio-label{
-            font-family: var(--font-roboto);
-            font-style: normal;
+            position: relative;
+            margin: 46px 0 2px;
             font-weight: 300;
             font-size: 22px;
             line-height: 15px;
-            margin: 48px 0 0;
-            //padding-left: 40px;
-            position: relative;
         }
         &-radio{
+            position: relative;
             width: 40px;
             height: 26px;
             margin: 0;
             visibility: hidden;
-            position: relative;
         }
         
         &-radio-custom{
+            position: absolute;
+            top:13px;
+            left:5px;
             width: 7px;
             height: 7px;
             border-radius: 50%;
-            position: absolute;
-            top:11px;
-            left:5px;
         }
         .tickets-types-radio:hover + .tickets-types-radio-custom {
             background-color: var(--golden-text);
         }
         &-radio-custom:before{
+            position: absolute;
+            top:-6px;
+            left:-6px;
             content: '';
             display: block;
             width: 15px;
             height: 15px;
             border: 2px solid var(--white-text);
             border-radius: 50%;
-            position: absolute;
-            top:-6px;
-            left:-6px;
         }
 
         &-radio:checked + &-radio-custom{
@@ -398,34 +449,30 @@ header, .section{
         width: 150px;
         margin-left: 240px;
         &-label{
-            font-family: var(--font-roboto);
-            font-style: normal;
+            margin-top: 19px;
             font-weight: 300;
             font-size: 22px;
             line-height: 15px;
-            margin-top: 19px;
         }
         &-header{
-            text-align: right;
             margin-bottom: 15px;
+            text-align: right; 
         }
         &-btn{
-            font-family: var(--font-roboto);
-            font-weight: normal;
+            padding: 0 10px 0 6px;
+            font-family: inherit;
             font-size: 32px;
             line-height: 37px;
             text-align: center;
             color: var(--white-text);
             background-color: transparent;
             border: none;
-            padding: 0 10px 0 6px;
         }
         &-btn:hover{
             color: var(--golden-text);
         }
         &-input{
-            font-family: var(--font-roboto);
-            font-style: normal;
+            width: 30px;
             font-weight: 300;
             font-size: 22px;
             line-height: 26px;
@@ -433,13 +480,12 @@ header, .section{
             color: var(--white-text);
             background-color: transparent;
             border: none;
-            width: 30px;
             &-wrp{
-                border: 3px solid var(--white-text);
                 height: 50px;
                 width: 100%;
                 box-sizing: border-box;
                 margin: 19px 0 40px;
+                border: 3px solid var(--white-text);
             }
         }
         &-input::-webkit-outer-spin-button, &-input::-webkit-inner-spin-button {
@@ -448,9 +494,9 @@ header, .section{
         }
     }
     &-cost{
-        letter-spacing: 1.65px;
         display: block;
-        margin-top: 52px;
+        margin-top: 51px;
+        letter-spacing: 1.65px;
     }
     &-right-column{
         display: flex;
@@ -466,34 +512,33 @@ header, .section{
         width:282px
     }
     &-name{
-        font-family: var(--font-roboto);
-        font-style: normal;
+        margin: 85px 0 37px;
         font-weight: 500;
         font-size: 28px;
-        line-height: 33px;
-        margin: 85px 0 37px;
+        line-height: 34px;
     }
     &-list{
-        list-style: none;
         margin: 0;
         padding: 0;
+        list-style: none;
         &-item{
-            font-family: var(--font-roboto);
-            font-style: normal;
+            margin-top: 20px;
             font-weight: 300;
             font-size: 22px;
             line-height: 26px;
-            margin-top: 20px;
         }
     }
     &-map{
         margin-top: 75px;
         width: 960px;
         height: 620px;
-        background: url(assets/img/map.png) no-repeat;
+        background: url("assets/img/map.png") no-repeat;
     }
 }
 
+.footer-container{
+    margin-top: 1px;
+}
 .footer-menu{
     display: flex;
     flex-direction: column;
@@ -520,7 +565,7 @@ header, .section{
         display: block;
         width: 48px;
         height: 48px;
-        background: url(assets/svg/Social.svg);
+        background: url("assets/svg/Social.svg");
     }
     
     &-item-link:hover{
