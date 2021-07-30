@@ -234,7 +234,7 @@ header, .section {
           box-sizing: border-box;
   background-image: url("assets/img/night-louvre.jpg");
   background-size: 1215px 750px;
-  background-position: right bottom;
+  background-position: calc(50% + 352px) bottom;
   background-repeat: no-repeat;
 }
 

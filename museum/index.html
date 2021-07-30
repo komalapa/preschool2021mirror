@@ -164,17 +164,17 @@
                                 <div class="tickets-amount-label">
                                     Basic 18+
                                     <div class="tickets-amount-input-wrp flex-row flex-space-between">
-                                        <button class="tickets-amount-btn">–</button> 
+                                        <button class="tickets-amount-btn" type="button" onclick="this.nextElementSibling.stepDown()">–</button> 
                                         <input class="tickets-amount-input" type="number" name="tickets-18-amount" id="tickets-18-amount" value="1">
-                                        <button class="tickets-amount-btn">+</button>    
+                                        <button class="tickets-amount-btn" type="button" onclick="this.previousElementSibling.stepUp()">+</button>    
                                     </div>
                                 </div>
                                 <div class="tickets-amount-label">
                                     Senior 65+
                                     <div class="tickets-amount-input-wrp flex-row flex-space-between">
-                                        <button class="tickets-amount-btn">–</button> 
+                                        <button class="tickets-amount-btn" type="button" onclick="this.nextElementSibling.stepDown()">–</button> 
                                         <input class="tickets-amount-input" type="number" name="tickets-65-amount" id="tickets-65-amount" value="1">
-                                        <button class="tickets-amount-btn">+</button>    
+                                        <button class="tickets-amount-btn" type="button" onclick="this.previousElementSibling.stepUp()">+</button>    
                                     </div>
                                 </div>
                                 <span class="tickets-strong-text tickets-cost">Total &euro;<span>220</span></span>
