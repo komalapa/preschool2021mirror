@@ -15,6 +15,8 @@ html{
 
 body{
     margin: 0;
+    font-family: var(--font-roboto);
+    font-style: normal;
 }
 
 h2, h3{
@@ -95,8 +97,6 @@ figure{
     border: none;
 }
 .white-button{
-    font-family: var(--font-roboto);
-    font-style: normal;
     font-weight: normal;
     font-size: 28px;
     line-height: 20px;
@@ -162,8 +162,6 @@ header, .section{
         margin-right: 76px;
         &-link{
             color: var(--white-text);
-            font-family: var(--font-roboto);
-            font-style: normal;
             font-weight: 200;
             font-size: 22px;
             line-height: 50px;
@@ -198,8 +196,6 @@ header, .section{
         
     }
     &-text{
-        font-family: var(--font-roboto);
-        font-style: normal;
         font-weight: 300;
         font-size: 28px;
         line-height: 33px;
@@ -222,7 +218,6 @@ header, .section{
     height: 422px;
     margin: 0;
     color:var(--black-text);
-    font-family: var(--font-roboto);
     font-weight: 200;
 
     margin-bottom: 78px;
@@ -263,8 +258,6 @@ header, .section{
 
 .explore{
     &-text{
-        font-family: var(--font-roboto);
-        font-style: normal;
         font-weight: 300;
         font-size: 22px;
         line-height: 38px;
@@ -385,7 +378,6 @@ header, .section{
         display: block;
         margin: 10px 0 0;
         width: 720px;
-        font-family: var(--font-roboto);
         font-weight: 300;
         font-size: 22px;
         line-height: 38px;
@@ -403,8 +395,6 @@ header, .section{
         background: url(assets/img/eneas.jpg) no-repeat;
     }
     &-strong-text{
-        font-family: var(--font-roboto);
-        font-style: normal;
         font-weight: bold;
         font-size: 28px;
         line-height: 33px;
@@ -416,8 +406,6 @@ header, .section{
         margin-left: 60px;
         width:270px;
         &-radio-label{
-            font-family: var(--font-roboto);
-            font-style: normal;
             font-weight: 300;
             font-size: 22px;
             line-height: 15px;
@@ -465,8 +453,6 @@ header, .section{
         width: 150px;
         margin-left: 240px;
         &-label{
-            font-family: var(--font-roboto);
-            font-style: normal;
             font-weight: 300;
             font-size: 22px;
             line-height: 15px;
@@ -477,8 +463,6 @@ header, .section{
             margin-bottom: 15px;
         }
         &-btn{
-            font-family: var(--font-roboto);
-            font-weight: normal;
             font-size: 32px;
             line-height: 37px;
             text-align: center;
@@ -491,8 +475,6 @@ header, .section{
             color: var(--golden-text);
         }
         &-input{
-            font-family: var(--font-roboto);
-            font-style: normal;
             font-weight: 300;
             font-size: 22px;
             line-height: 26px;
@@ -533,8 +515,6 @@ header, .section{
         width:282px
     }
     &-name{
-        font-family: var(--font-roboto);
-        font-style: normal;
         font-weight: 500;
         font-size: 28px;
         line-height: 33px;
@@ -545,8 +525,6 @@ header, .section{
         margin: 0;
         padding: 0;
         &-item{
-            font-family: var(--font-roboto);
-            font-style: normal;
             font-weight: 300;
             font-size: 22px;
             line-height: 26px;
