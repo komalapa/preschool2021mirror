@@ -261,6 +261,8 @@ header, .section {
 
 .visiting-cards-wrp {
   margin-top: 75px;
+  -webkit-column-gap: 60px;
+          column-gap: 60px;
 }
 
 .card {
