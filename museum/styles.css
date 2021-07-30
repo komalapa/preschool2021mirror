@@ -108,7 +108,7 @@ figure {
 
 .red-button {
   padding: 24px 66px 23px;
-  font-family: var(--font-roboto);
+  font-family: inherit;
   font-style: normal;
   font-weight: normal;
   font-size: 24px;
@@ -229,7 +229,7 @@ header, .section {
 
 .welcome-container {
   width: 1920px;
-  padding: 114px 0 246px 240px;
+  padding: 116px 0 246px 240px;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
   background-image: url("assets/img/night-louvre.jpg");
@@ -307,7 +307,7 @@ header, .section {
 }
 
 .explore-text {
-  margin-top: 25px;
+  margin-top: 27px;
   font-weight: 300;
   font-size: 22px;
   line-height: 38px;
@@ -547,6 +547,7 @@ header, .section {
 
 .tickets-amount-btn {
   padding: 0 10px 0 6px;
+  font-family: inherit;
   font-size: 32px;
   line-height: 37px;
   text-align: center;
@@ -615,7 +616,7 @@ header, .section {
   margin: 85px 0 37px;
   font-weight: 500;
   font-size: 28px;
-  line-height: 33px;
+  line-height: 34px;
 }
 
 .contacts-list {
