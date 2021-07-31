@@ -1,0 +1,146 @@
+:root {
+  --font-family: Roboto, sans-serif;
+  --day-color:darkslategrey;
+  --night-color:lightgray;
+}
+
+@-webkit-keyframes rotate {
+  100% {
+    -webkit-transform: rotateZ(360deg);
+            transform: rotateZ(360deg);
+  }
+}
+
+@keyframes rotate {
+  100% {
+    -webkit-transform: rotateZ(360deg);
+            transform: rotateZ(360deg);
+  }
+}
+
+body, html {
+  margin: 0;
+  padding: 0;
+}
+
+.main-wrp {
+  width: 100vw;
+  height: 100vh;
+  padding: 5vh;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+.day {
+  background: url("assets/img/hot-air-balloon-5390487_1920.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  color: var(--day-color);
+}
+
+.night {
+  background: url("assets/img/hot-air-balloon-736879.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  color: var(--night-color);
+}
+
+.analog-clock {
+  width: 28vh;
+  height: 28vh;
+  padding: 1vh;
+  margin: 0 0 0 auto;
+  background-color: var(--day-color);
+  border-radius: 50%;
+}
+
+.clock-face {
+  position: relative;
+  height: 28vh;
+  width: 28vh;
+  border-radius: 50%;
+  background: url("assets/svg/clocks.svg");
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-color: var(--night-color);
+}
+
+.clock-face:after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 1vh;
+  height: 1vh;
+  background: #000;
+  border-radius: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  z-index: 10;
+}
+
+.minutes-container,
+.hours-container,
+.seconds-container {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
+.hours {
+  position: absolute;
+  top: 28%;
+  left: 48.5%;
+  height: 6vh;
+  width: 1vh;
+  background: url("assets/svg/hours0.svg") no-repeat;
+  background-size: cover;
+  -webkit-transform-origin: 50% 100%;
+          transform-origin: 50% 100%;
+}
+
+.minutes {
+  position: absolute;
+  top: 13.5%;
+  left: 43%;
+  height: 11vh;
+  width: 1vh;
+  background: url("assets/svg/minutes0.svg") no-repeat;
+  background-size: cover;
+  -webkit-transform-origin: 50% 100%;
+          transform-origin: 50% 100%;
+}
+
+.seconds {
+  position: absolute;
+  top: 33%;
+  left: 48.5%;
+  height: 6vh;
+  width: 1vh;
+  background: url("assets/svg/seconds0.svg") no-repeat;
+  background-size: cover;
+  -webkit-transform-origin: 50% 80%;
+          transform-origin: 50% 80%;
+}
+
+.hours-container {
+  -webkit-animation: rotate 43200s infinite linear;
+          animation: rotate 43200s infinite linear;
+}
+
+.minutes-container {
+  -webkit-transition: -webkit-transform 0.3s cubic-bezier(0.4, 2.08, 0.55, 0.44);
+  transition: -webkit-transform 0.3s cubic-bezier(0.4, 2.08, 0.55, 0.44);
+  transition: transform 0.3s cubic-bezier(0.4, 2.08, 0.55, 0.44);
+  transition: transform 0.3s cubic-bezier(0.4, 2.08, 0.55, 0.44), -webkit-transform 0.3s cubic-bezier(0.4, 2.08, 0.55, 0.44);
+}
+
+.seconds-container {
+  -webkit-transition: -webkit-transform 0.2s cubic-bezier(0.4, 2.08, 0.55, 0.44);
+  transition: -webkit-transform 0.2s cubic-bezier(0.4, 2.08, 0.55, 0.44);
+  transition: transform 0.2s cubic-bezier(0.4, 2.08, 0.55, 0.44);
+  transition: transform 0.2s cubic-bezier(0.4, 2.08, 0.55, 0.44), -webkit-transform 0.2s cubic-bezier(0.4, 2.08, 0.55, 0.44);
+}
+/*# sourceMappingURL=style.css.map */
