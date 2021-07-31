@@ -6,14 +6,16 @@ function validateHands(){
     if (hands.length!=3) return false;
     if (hands[2].count>59){
         hands[1].count++;
-        hands[2].count = 0
+        hands[2].count = 0;
     }
     if (hands[1].count>59){
         hands[0].count++;
-        hands[1].count = 0
+        setGreeting();
+        hands[1].count = 0;
     }
     if (hands[0].count>23){
-        hands[0].count = 0
+        hands[0].count = 0;
+        setGreeting();
     }
 }
 
@@ -39,7 +41,7 @@ function initLocalClocks(date = new Date) {
         count: seconds,
       }
     ];
-    
+    setGreeting();
     for (let i = 0; i < hands.length; i++) {
       let selector='.' + hands[i].hand;
       let elements = document.querySelectorAll(selector);
@@ -77,7 +79,7 @@ function initLocalClocks(date = new Date) {
         containers[i].style.webkitTransform = 'rotateZ('+ containers[i].angle +'deg)';
         containers[i].style.transform = 'rotateZ('+ containers[i].angle +'deg)';
       }
-    }, 60000);
+    }, 60000);///5000);
   }
 
   function moveSecondHands() {
@@ -95,7 +97,7 @@ function initLocalClocks(date = new Date) {
         containers[i].style.transform = 'rotateZ('+ containers[i].angle +'deg)';
         validateHands();
       }
-    }, 1000);
+    }, 1000);///5000);
   }
 
   function setUpMinuteHands() { //sync minute hand with seconds hand
@@ -114,3 +116,29 @@ initLocalClocks(new Date);
 //hour hand moves by css animation, because it is 
 setUpMinuteHands();
 moveSecondHands();
+
+function setGreeting(){
+//с 6:00 до 11:59 - Good morning / Доброе утро / Добрай раніцы
+// с 12:00 до 17:59 - Good day / Добрый день / Добры дзень
+// с 18:00 до 23:59 - Good evening / Добрый вечер / Добры вечар
+// с 00:00 до 5:59 - Good night / Доброй/Спокойной ночи / Дабранач
+    const greetingsRU = ['Доброй ночи', 'Доброе утро', 'Добрый день', 'Добрый вечер']
+    console.log(greetingsRU)
+    const greeting = document.querySelector("#greeting");
+    if (hands[0].count<6) {
+        greeting.innerHTML= greetingsRU[0];    
+        return greetingsRU[0];
+    }
+    if (hands[0].count<12) {
+        greeting.innerHTML= greetingsRU[1];    
+        return greetingsRU[1];
+    }
+    if (hands[0].count<18) {
+        greeting.innerHTML= greetingsRU[2];    
+        return greetingsRU[2];
+    }
+    
+        greeting.innerHTML= greetingsRU[3];    
+        return greetingsRU[3];
+
+}

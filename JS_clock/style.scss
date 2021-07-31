@@ -9,7 +9,20 @@
         transform: rotateZ(360deg);
     }
 }
-
+@keyframes flickering {
+    0% {
+        opacity: 0.8;
+    }
+    50% {
+        opacity: 0.5;
+    }
+    80% {
+        opacity: 0.5;
+    }
+    100% {
+        opacity: 0.8;
+    }
+}
 body, html{
     margin:0;
     padding: 0;
@@ -127,3 +140,19 @@ body, html{
 .seconds-container {
     transition: transform 0.2s cubic-bezier(.4, 2.08, .55, .44);
 }
+
+.greeting{
+    display: block;
+    width: fit-content;
+    padding: 1vh;
+    margin: 5vh 0 5vh auto;
+    font-family: var(--font-family);
+    font-size: 3em;
+    text-align: center;
+    border-radius: 2vh;
+    //animation: flickering 5s infinite linear;
+}
+// .day .greeting {
+//     background-color: var(--night-color);
+//     box-shadow: var(--night-color) 1px 0 10px;
+// }
