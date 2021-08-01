@@ -1,4 +1,11 @@
 //this script will get date every second.  
+console.log(`
+1 аналоговые часы работают по принципу из видео: постоянно запрашивая текущее время (index_2.js) 
+2 Другой вариант счета времени без запроса даты. (index.js). Для поддержания точности раз в час дату обновляет. Удобен для проверки верстки т.к. если отключить корректировку, то можно "ускорить время"
+переключение скрипта только в коде html
+3 Из обячательного: цифровое точное время, день недели, дата
+4 Дополнительно: смена фона день/ночь, приветствие`)
+
 
 let hands =[];
 
@@ -38,10 +45,20 @@ function initLocalClocks(date = new Date) {
     setInterval(function() {
       initLocalClocks();  
       hourHands.forEach(hand => {
+        if (hands[0].angle===0){ //prevent back animation on zero angle
+          hand.classList.add("notransition")
+        } else {
+          hand.classList.remove("notransition")
+        }
         hand.style.webkitTransform = `rotateZ(${hands[0].angle}deg)`;
         hand.style.transform = `rotateZ(${hands[0].angle}deg)`;
       })
       minuteHands.forEach(hand => {
+        if (hands[1].angle===0){ //prevent back animation on zero angle
+          hand.classList.add("notransition")
+        } else {
+          hand.classList.remove("notransition")
+        }
         hand.style.webkitTransform = `rotateZ(${hands[1].angle}deg)`;
         hand.style.transform = `rotateZ(${hands[1].angle}deg)`;
       })
@@ -112,7 +129,7 @@ function start(){
     moveHands();
 
     const hourHands = document.querySelectorAll(".hours-container")
-    hourHands.forEach(hand => {
+    hourHands.forEach(hand => {//another animation for this variant
       hand.style.animation = `none`;
       hand.style.transition = `transform 0.3s cubic-bezier(.4, 2.08, .55, .44);`;
     })

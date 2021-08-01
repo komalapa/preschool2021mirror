@@ -1,6 +1,13 @@
 //this way do not need to get date every second, but only once. I will sync time every hour.
 //we will rotate containers for animation, and hands angle in containers to define start time 
 
+console.log(`
+1 аналоговые часы работают по принципу из видео: постоянно запрашивая текущее время (index_2.js) 
+2 Другой вариант счета времени без запроса даты. (index.js). Для поддержания точности раз в час дату обновляет. Удобен для проверки верстки т.к. если отключить корректировку, то можно "ускорить время"
+переключение скрипта только в коде html
+3 Из обячательного: цифровое точное время, день недели, дата
+4 Дополнительно: смена фона день/ночь, приветствие`)
+
 let     hands =[];
 function validateHands(){
     if (hands.length!=3) return false;
