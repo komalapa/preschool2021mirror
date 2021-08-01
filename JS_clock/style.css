@@ -214,4 +214,9 @@ body, html {
           justify-content: space-between;
   margin: 0 0 0 auto;
 }
+
+.notransition {
+  -webkit-transition: none !important;
+  transition: none !important;
+}
 /*# sourceMappingURL=style.css.map */

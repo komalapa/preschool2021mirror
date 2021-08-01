@@ -175,3 +175,7 @@ body, html{
 //     background-color: var(--night-color);
 //     box-shadow: var(--night-color) 1px 0 10px;
 // }
+
+.notransition { 
+    transition: none !important; 
+  } 
