@@ -54,7 +54,7 @@ body, html{
     width: 28vh;
     height: 28vh;
     padding: 1vh;
-    margin: 0 0 0 auto;
+    //margin: 0 0 0 auto;
     background-color: var(--day-color);
     //background-image: radial-gradient(var(--day-color), var(--night-color));
     border-radius: 50%;
@@ -77,8 +77,8 @@ body, html{
     position: absolute;
     left: 50%;
     top: 50%;
-    width: 1vh;
-    height: 1vh;
+    width: 2vh;
+    height: 2vh;
     background: #000;
     border-radius: 50%;
     transform: translate(-50%, -50%);
@@ -98,7 +98,7 @@ body, html{
 .hours {
     position: absolute;
     top: 28%;
-    left: 48.5%;
+    left: 47.5%;
     height: 6vh;
     width: 1vh;
     background:url("assets/svg/hours0.svg") no-repeat;
@@ -109,8 +109,8 @@ body, html{
 .minutes {
     position: absolute;
     top: 13.5%;
-    left: 43%;
-    height: 11vh;
+    left: 48%;
+    height: 10vh;
     width: 1vh;
     background: url("assets/svg/minutes0.svg") no-repeat;
     background-size: cover;
@@ -131,6 +131,7 @@ body, html{
 
 .hours-container {
     animation: rotate 43200s infinite linear;
+    //animation: rotate 60s infinite linear;
 }
 
 .minutes-container {
@@ -145,13 +146,31 @@ body, html{
     display: block;
     width: fit-content;
     padding: 1vh;
-    margin: 5vh 0 5vh auto;
+    margin: 5vh 0;
     font-family: var(--font-family);
     font-size: 3em;
     text-align: center;
     border-radius: 2vh;
     //animation: flickering 5s infinite linear;
 }
+.date{
+    display: block;
+    margin: 1vh 0;
+    text-align: center;
+    font-family: var(--font-family);
+    font-size: 1.5em;
+    
+}
+.side-bar{
+    height: 100%;
+    width: fit-content;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    margin: 0 0 0 auto;
+}
+
 // .day .greeting {
 //     background-color: var(--night-color);
 //     box-shadow: var(--night-color) 1px 0 10px;

@@ -11,7 +11,8 @@
     <title>JS-Clock</title>
 </head>
 <body>
-    <div class="main-wrp day">
+    <div class="main-wrp day" id="main-screen">
+      <div class="side-bar">
         <span class="greeting" id="greeting"></span>
         <div class="analog-clock">
             <div class="clock-face">
@@ -27,7 +28,11 @@
             </div>
         </div>
         <span class="digital-clock"></span>
-        <span class="date"></span>
+        <div class="date-wrp">
+          <time class="date" id="time"> </time>
+          <time class="date" id="date"> </time>
+        </div>
+      </div>  
     </div>
     <script src="index.js"></script>
 </body>

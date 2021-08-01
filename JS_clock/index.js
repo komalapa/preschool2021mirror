@@ -1,4 +1,4 @@
-//this way do not need to get date every second, but only once.
+//this way do not need to get date every second, but only once. I will sync time every hour.
 //we will rotate containers for animation, and hands angle in containers to define start time 
 
 let     hands =[];
@@ -10,12 +10,15 @@ function validateHands(){
     }
     if (hands[1].count>59){
         hands[0].count++;
+        start();//refresh time DISABLE FOR DEBUG
         setGreeting();
+        setBackground();
         hands[1].count = 0;
     }
     if (hands[0].count>23){
         hands[0].count = 0;
         setGreeting();
+        setBackground();
     }
 }
 
@@ -42,6 +45,7 @@ function initLocalClocks(date = new Date) {
       }
     ];
     setGreeting();
+    setBackground();
     for (let i = 0; i < hands.length; i++) {
       let selector='.' + hands[i].hand;
       let elements = document.querySelectorAll(selector);
@@ -50,17 +54,19 @@ function initLocalClocks(date = new Date) {
           elements[j].style.webkitTransform = 'rotateZ('+ hands[i].angle +'deg)';
           elements[j].style.transform = 'rotateZ('+ hands[i].angle +'deg)';
           if (hands[i].hand === 'minutes') {//to move minutes only than seconds hand on 12 we need this "error" number
-            elements[j].parentNode.setAttribute('data-second-angle', hands[i + 1].angle);
+            elements[j].parentNode.setAttribute('data-second-angle', hands[i + 1].angle-6);//secs 0-59 instead 1-60 so we need to increase angle
           }
       }
     }
   }
-
+  function setDigitalClock(){
+    const timeEl = document.querySelector("#time");
+    timeEl.innerHTML = `${('0'+hands[0].count).slice(-2)}:${('0'+hands[1].count).slice(-2)}:${('0'+hands[2].count).slice(-2)}`
+  }
   function moveMinuteHands(containers) {
     if (!containers) containers = document.querySelectorAll('.minutes-container');
     for (let i = 0; i < containers.length; i++) {//first step after delay
-        console.log(hands)
-        hands[1].count++;
+         hands[1].count++;
         validateHands();
         containers[i].style.webkitTransform = 'rotateZ(6deg)';
         containers[i].style.transform = 'rotateZ(6deg)';
@@ -69,8 +75,8 @@ function initLocalClocks(date = new Date) {
     setInterval(function() {
       for (let i = 0; i < containers.length; i++) {
         if (containers[i].angle === undefined) {
-            hands[1].count+=2;
-            containers[i].angle = 12;
+            hands[1].count+=1;
+            containers[i].angle = 6;
         } else {
             hands[1].count++;
             containers[i].angle += 6;
@@ -79,7 +85,7 @@ function initLocalClocks(date = new Date) {
         containers[i].style.webkitTransform = 'rotateZ('+ containers[i].angle +'deg)';
         containers[i].style.transform = 'rotateZ('+ containers[i].angle +'deg)';
       }
-    }, 60000);///5000);
+    }, 60000);///5000);//DEBUG
   }
 
   function moveSecondHands() {
@@ -87,8 +93,7 @@ function initLocalClocks(date = new Date) {
     setInterval(function() {
       for (let i = 0; i < containers.length; i++) {
         if (containers[i].angle === undefined) {
-          containers[i].angle = 6;
-          hands[2].count=1;
+          containers[i].angle = 0;
         } else {
             hands[2].count++;
             containers[i].angle += 6;
@@ -96,8 +101,9 @@ function initLocalClocks(date = new Date) {
         containers[i].style.webkitTransform = 'rotateZ('+ containers[i].angle +'deg)';
         containers[i].style.transform = 'rotateZ('+ containers[i].angle +'deg)';
         validateHands();
+        setDigitalClock();
       }
-    }, 1000);///5000);
+    }, 1000);///5000);//DEBUG
   }
 
   function setUpMinuteHands() { //sync minute hand with seconds hand
@@ -111,19 +117,12 @@ function initLocalClocks(date = new Date) {
     }
   }
 
-let currentDate = new Date;
-initLocalClocks(new Date);
-//hour hand moves by css animation, because it is 
-setUpMinuteHands();
-moveSecondHands();
-
 function setGreeting(){
 //с 6:00 до 11:59 - Good morning / Доброе утро / Добрай раніцы
 // с 12:00 до 17:59 - Good day / Добрый день / Добры дзень
 // с 18:00 до 23:59 - Good evening / Добрый вечер / Добры вечар
 // с 00:00 до 5:59 - Good night / Доброй/Спокойной ночи / Дабранач
     const greetingsRU = ['Доброй ночи', 'Доброе утро', 'Добрый день', 'Добрый вечер']
-    console.log(greetingsRU)
     const greeting = document.querySelector("#greeting");
     if (hands[0].count<6) {
         greeting.innerHTML= greetingsRU[0];    
@@ -140,5 +139,31 @@ function setGreeting(){
     
         greeting.innerHTML= greetingsRU[3];    
         return greetingsRU[3];
-
 }
+
+function setBackground(){
+    const mainWrp = document.querySelector("#main-screen");
+    if (hands[0].count>19 || hands[0].count<7){
+        mainWrp.classList.add("night");
+        mainWrp.classList.remove("day");
+    } else {
+        mainWrp.classList.add("day");
+        mainWrp.classList.remove("night");
+    }
+}
+function humanReadDate(date = new Date){
+  const months = ['января','февраля','марта','апреля','мая','июня','июля','августа','сентября','октября','ноября','декабря'];
+  const days = ['Воскресенье','Понедельник','Вторник','Среда','Четверг','Пятница','Суббота']
+  return `${days[date.getDay()]}, ${date.getDay()+1} ${months[date.getMonth()]} ${date.getUTCFullYear()}` 
+}
+function start(){
+    const dateEl = document.querySelector("#date")
+    let currentDate = new Date;
+    dateEl.time = currentDate;
+    dateEl.innerHTML = humanReadDate(currentDate)
+    initLocalClocks(new Date);
+//hour hand moves by css animation, because it is 
+    setUpMinuteHands();
+    moveSecondHands();
+}
+start()
