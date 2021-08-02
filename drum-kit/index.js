@@ -1,21 +1,20 @@
 console.log(`
-1 Обязательноет задание: клавиши работают и с клавиатуры и по клику мыши
-2 Дополнительно: можно "играть" водя зажатой мышью
+1 Обязательное задание: клавиши работают и с клавиатуры и по клику мыши
+2 Дополнительно: можно "играть" водя зажатой мышью. (Старт только на клавишах)
 3 При движении мыши текст не выделяется
 4 Переход в полноэкранный режим по клику на иконку
 `)
 function playSound(event){
-    //console.log(event)
     const audioEl = document.querySelector(`audio[data-key="${event.keyCode}"]`)||document.querySelector(`audio[data-key="${event.target.getAttribute("data-key")}"]`);
     if (!audioEl) return;
     const keyEl = document.querySelector(`div[data-key="${event.keyCode}"]`)|| document.querySelector(`[data-key="${event.target.getAttribute("data-key")}"]`);
     if (!keyEl) return;
     keyEl.classList.add('playing');
-    //console.log(keyEl)
     audioEl.currentTime = 0;
     audioEl.play();
 }
 function stopSound(event){
+    //uncomment to stop sound on "UP" events. It's not good for this sounds 
     //const audioEl = document.querySelector(`audio[data-key="${event.keyCode}"]`)||document.querySelector(`audio[data-key="${event.target.getAttribute("data-key")}"]`);
     //if (!audioEl) return;
     const keyEl = document.querySelector(`div[data-key="${event.keyCode}"]`)|| document.querySelector(`div[data-key="${event.target.getAttribute("data-key")}"]`);
@@ -26,6 +25,7 @@ function stopSound(event){
 }
 window.addEventListener('keydown', playSound);
 window.addEventListener('mousedown', (evt) =>{
+    if (!evt.target.getAttribute("data-key")) return;
     window.addEventListener('mouseover', playSound);
     window.addEventListener('mouseout', stopSound);
     playSound(evt);
@@ -33,6 +33,7 @@ window.addEventListener('mousedown', (evt) =>{
 
 window.addEventListener('keyup', stopSound);
 window.addEventListener('mouseup', (evt) => {
+    if (!evt.target.getAttribute("data-key")) return;
     window.removeEventListener('mouseover', playSound);
     window.removeEventListener('mouseout', stopSound);
     stopSound(evt);
