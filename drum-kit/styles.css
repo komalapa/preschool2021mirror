@@ -55,6 +55,14 @@ kbd {
   pointer-events: none;
   user-select: none;
 }
+
+.key:hover kbd{
+  color: #ffc600;
+}
+
+.key:hover .sound{
+  color:#ffffff;
+}
 .full-screen{
   position: fixed;
   bottom: 1vh;
