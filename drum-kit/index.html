@@ -8,7 +8,7 @@
     <title>DrumKit</title>
 </head>
 <body>
-    <div class="keys-wrp">
+    <div class="keys-wrp" id="key-wrp">
         <div class="key" data-key="65">
             <kbd>a</kbd>
             <span class="sound">clap</span>
@@ -45,6 +45,7 @@
             <kbd data-key="76">l</kbd>
             <span class="sound" data-key="76">tink</span>
         </div>
+        <button class="full-screen full-screen-off" id="full-screen-btn"></button>
     </div>
     <audio data-key="65" src="assets/sounds/clap.wav"></audio>
     <audio data-key="83" src="assets/sounds/hihat.wav"></audio>

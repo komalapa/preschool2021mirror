@@ -1,6 +1,8 @@
 console.log(`
 1 Обязательноет задание: клавиши работают и с клавиатуры и по клику мыши
 2 Дополнительно: можно "играть" водя зажатой мышью
+3 При движении мыши текст не выделяется
+4 Переход в полноэкранный режим по клику на иконку
 `)
 function playSound(event){
     //console.log(event)
@@ -14,7 +16,6 @@ function playSound(event){
     audioEl.play();
 }
 function stopSound(event){
-    //console.log("out")
     //const audioEl = document.querySelector(`audio[data-key="${event.keyCode}"]`)||document.querySelector(`audio[data-key="${event.target.getAttribute("data-key")}"]`);
     //if (!audioEl) return;
     const keyEl = document.querySelector(`div[data-key="${event.keyCode}"]`)|| document.querySelector(`div[data-key="${event.target.getAttribute("data-key")}"]`);
@@ -37,3 +38,25 @@ window.addEventListener('mouseup', (evt) => {
     stopSound(evt);
 });
 
+
+//full screen
+const wrp = document.querySelector("#key-wrp");
+const fullScreenBtn = document.querySelector("#full-screen-btn");
+
+function toggleFullScreen() {
+    console.log(document.fullscreenElement)
+    if (!document.fullscreenElement) {
+        document.documentElement.requestFullscreen();
+        fullScreenBtn.classList.remove('full-screen-off');
+        fullScreenBtn.classList.add('full-screen-on')
+    } else {
+      if (document.exitFullscreen) {
+        document.exitFullscreen();
+        fullScreenBtn.classList.remove('full-screen-on');
+        fullScreenBtn.classList.add('full-screen-off')
+      }
+    }
+  }
+  fullScreenBtn.onclick = function(){
+      toggleFullScreen()
+  }

@@ -16,6 +16,7 @@ body,html {
   min-height: 100vh;
   align-items: center;
   justify-content: center;
+  position: relative;
 }
 
 .key {
@@ -53,4 +54,23 @@ kbd {
   color: #ffc600;
   pointer-events: none;
   user-select: none;
+}
+.full-screen{
+  position: fixed;
+  bottom: 1vh;
+  right:1vw;
+  width: 10vh;
+  height: 10vh;
+  background: none;
+  border:none;
+  background-size: cover;
+}
+.full-screen:hover{
+  filter:  invert(88%) sepia(31%) saturate(4960%) hue-rotate(358deg) brightness(101%) contrast(102%);
+}
+.full-screen-off{
+  background-image: url("assets/svg/full-screen-svgrepo-com.svg");
+}
+.full-screen-on{
+  background-image: url("assets/svg/exit-full-screen-svgrepo-com.svg");
 }
