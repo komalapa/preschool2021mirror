@@ -3,6 +3,7 @@ console.log(`
 2 Дополнительно: можно "играть" водя зажатой мышью
 `)
 function playSound(event){
+    //console.log(event)
     const audioEl = document.querySelector(`audio[data-key="${event.keyCode}"]`)||document.querySelector(`audio[data-key="${event.target.getAttribute("data-key")}"]`);
     if (!audioEl) return;
     const keyEl = document.querySelector(`div[data-key="${event.keyCode}"]`)|| document.querySelector(`[data-key="${event.target.getAttribute("data-key")}"]`);
@@ -13,6 +14,7 @@ function playSound(event){
     audioEl.play();
 }
 function stopSound(event){
+    //console.log("out")
     //const audioEl = document.querySelector(`audio[data-key="${event.keyCode}"]`)||document.querySelector(`audio[data-key="${event.target.getAttribute("data-key")}"]`);
     //if (!audioEl) return;
     const keyEl = document.querySelector(`div[data-key="${event.keyCode}"]`)|| document.querySelector(`div[data-key="${event.target.getAttribute("data-key")}"]`);
