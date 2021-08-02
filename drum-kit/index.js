@@ -1,3 +1,7 @@
+console.log(`
+1 Обязательноет задание: клавиши работают и с клавиатуры и по клику мыши
+2 Дополнительно: можно "играть" водя зажатой мышью
+`)
 function playSound(event){
     const audioEl = document.querySelector(`audio[data-key="${event.keyCode}"]`)||document.querySelector(`audio[data-key="${event.target.getAttribute("data-key")}"]`);
     if (!audioEl) return;
@@ -18,6 +22,16 @@ function stopSound(event){
 
 }
 window.addEventListener('keydown', playSound);
-window.addEventListener('mousedown', playSound);
+window.addEventListener('mousedown', (evt) =>{
+    window.addEventListener('mouseover', playSound);
+    window.addEventListener('mouseout', stopSound);
+    playSound(evt);
+});
+
 window.addEventListener('keyup', stopSound);
-window.addEventListener('mouseup', stopSound);
+window.addEventListener('mouseup', (evt) => {
+    window.removeEventListener('mouseover', playSound);
+    window.removeEventListener('mouseout', stopSound);
+    stopSound(evt);
+});
+
