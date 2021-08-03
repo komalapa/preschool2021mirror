@@ -1,3 +1,6 @@
+console.log(`
+Дополнительно добавила свайп мышью.
+`)
 const sliderContainer = document.querySelector('.slider-container');
 const slideRight = document.querySelector('.right-slide');
 const slideLeft = document.querySelector('.left-slide');
@@ -19,7 +22,6 @@ function changeSlide(direction){
         activeSlide--;
         if (activeSlide < 0) activeSlide = slidesLength-1;
     }
-    console.log(activeSlide*sliderHeight)
     slideRight.style.transform = `translateY(-${activeSlide*sliderHeight}px)`;
     slideLeft.style.transform = `translateY(${activeSlide*sliderHeight}px)`;
 }
@@ -31,3 +33,20 @@ upBtn.addEventListener('click', ()=>{
 downBtn.addEventListener('click', ()=>{
     changeSlide('down')
 })
+
+function detectSwipe(evt){
+    const startY = evt.clientY;
+    const moveSlide = (e) =>{
+        if (e.clientY>startY){
+            if (slideRight.contains(e.target)) changeSlide('down')  
+            if (slideLeft.contains(e.target)) changeSlide('up')  
+        } else if (e.clientY<startY){
+            if (slideRight.contains(e.target)) changeSlide('up')  
+            if (slideLeft.contains(e.target)) changeSlide('down')  
+        }
+        document.removeEventListener('mousemove', moveSlide)
+    }
+    document.addEventListener('mousemove', moveSlide)
+}
+
+document.addEventListener('mousedown', detectSwipe)
