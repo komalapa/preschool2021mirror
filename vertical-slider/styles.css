@@ -82,13 +82,12 @@ body {
   cursor: pointer;
 }
 
-.slider-container .action-buttons button:hover {
+.slider-container .action-buttons button:hover, .slider-container .action-buttons .active-btn {
   color: #222222;
 }
 
 .slider-container .action-buttons button:focus {
   outline: transparent;
-  color: #222222;
 }
 
 .slider-container .action-buttons .down-button {

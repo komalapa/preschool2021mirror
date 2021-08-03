@@ -1,5 +1,6 @@
 console.log(`
 Дополнительно добавила свайп мышью.
+Управление стрелками на клавиатуре с подсветкой кнопки
 `)
 const sliderContainer = document.querySelector('.slider-container');
 const slideRight = document.querySelector('.right-slide');
@@ -50,3 +51,17 @@ function detectSwipe(evt){
 }
 
 document.addEventListener('mousedown', detectSwipe)
+
+document.addEventListener('keydown',(e) =>{
+    if (e.key === "ArrowUp"){
+        upBtn.classList.add('active-btn');
+        changeSlide('up');
+    } else if (e.key === "ArrowDown"){
+        downBtn.classList.add('active-btn');
+        changeSlide('down');
+    }  
+    setTimeout(()=>{
+        upBtn.classList.remove('active-btn');
+        downBtn.classList.remove('active-btn')
+    }, 300)
+})
