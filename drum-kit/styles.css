@@ -1,0 +1,84 @@
+html {
+  font-size: 10px;
+  background: url('./assets/background.jpg') bottom center;
+  background-size: cover;
+}
+
+body,html {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+}
+
+.keys-wrp {
+  display: flex;
+  flex: 1;
+  min-height: 100vh;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.key {
+  border: .4rem solid black;
+  border-radius: .5rem;
+  margin: 1rem;
+  font-size: 1.5rem;
+  padding: 1rem .5rem;
+  transition: all .07s ease;
+  width: 10rem;
+  text-align: center;
+  color: white;
+  background: rgba(0,0,0,0.4);
+  text-shadow: 0 0 .5rem black;
+}
+
+.playing {
+  transform: scale(1.1);
+  border-color: #ffc600;
+  box-shadow: 0 0 1rem #ffc600;
+}
+
+kbd {
+  display: block;
+  font-size: 4rem;
+  text-transform: uppercase;
+  pointer-events: none;
+  user-select: none;
+}
+
+.sound {
+  font-size: 1.2rem;
+  text-transform: uppercase;
+  letter-spacing: .1rem;
+  color: #ffc600;
+  pointer-events: none;
+  user-select: none;
+}
+
+.key:hover kbd{
+  color: #ffc600;
+}
+
+.key:hover .sound{
+  color:#ffffff;
+}
+.full-screen{
+  position: fixed;
+  bottom: 1vh;
+  right:1vw;
+  width: 10vh;
+  height: 10vh;
+  background: none;
+  border:none;
+  background-size: cover;
+}
+.full-screen:hover{
+  filter:  invert(88%) sepia(31%) saturate(4960%) hue-rotate(358deg) brightness(101%) contrast(102%);
+}
+.full-screen-off{
+  background-image: url("assets/svg/full-screen-svgrepo-com.svg");
+}
+.full-screen-on{
+  background-image: url("assets/svg/exit-full-screen-svgrepo-com.svg");
+}
