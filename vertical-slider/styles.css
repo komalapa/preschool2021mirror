@@ -102,7 +102,7 @@ body {
   border-radius: 0 5px 5px 0;
 }
 
-.right-slide, .left-slide {
+.transition {
   -webkit-transition: -webkit-transform .5s ease-in-out;
   transition: -webkit-transform .5s ease-in-out;
   transition: transform .5s ease-in-out;
