@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>PhotoFilter</title>
+</head>
+<body>
+    <div id="app">
+        <canvas id="canvas" class="main-canvas"></canvas>
+        <div class="controls-wrp">
+            <input type="file" name="newfile" id="new-file">
+            <ul class="filters">
+                <li class="filters-item">
+                    <h3>Blur</h3>
+                    <input type="range" name="blur" id="filter-blur">
+                    <input type="number" name="blurNumber" id="filter-blur-number">
+                </li>
+                <li class="filters-item">
+                    <h3>Invert</h3>
+                    <input type="range" name="invert" id="filter-invert">
+                    <input type="number" name="invertNumber" id="filter-invert-number">
+                </li>
+                <li class="filters-item">
+                    <h3>Sepia</h3>
+                    <input type="range" name="sepia" id="filter-sepia">
+                    <input type="number" name="sepiaNumber" id="filter-sepia-number">
+                </li>
+                <li class="filters-item">
+                    <h3>Saturate</h3>
+                    <input type="range" name="saturate" id="filter-saturate">
+                    <input type="number" name="saturateNumber" id="filter-saturate-number">
+                </li>
+                <li class="filters-item">
+                    <h3>Hue rotate</h3>
+                    <input type="range" name="hue" id="hue-sepia">
+                    <input type="number" name="hueNumber" id="filter-hue-number">
+                </li>
+                <li class="filters-item">
+                    <h3>Contrast</h3>
+                    <input type="range" name="contrast" id="filter-contrast">
+                    <input type="number" name="contrastNumber" id="filter-contrast-number">
+                </li>
+                <li class="filters-item">
+                    <h3>Brightness</h3>
+                    <input type="range" name="brightness" id="filter-brightness">
+                    <input type="number" name="brightnessNumber" id="filter-brightness-number">
+                </li>
+                <li class="filters-item">
+                    <h3>Grayscale</h3>
+                    <input type="range" name="grayscale" id="filter-grayscale">
+                    <input type="number" name="grayscaleNumber" id="filter-grayscale-number">
+                </li>
+            </ul>
+        </div>
+    
+    </div>
+    
+    <script src="index.js"></script>
+</body>
+</html>
