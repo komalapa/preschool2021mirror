@@ -25,12 +25,28 @@ const saturateCss = document.querySelector('#saturate-css');
 const hueRange = document.querySelector('#filter-hue');
 const hueNumber = document.querySelector('#filter-hue-number');
 const hueCss = document.querySelector('#hue-css');
+
+const contrastRange = document.querySelector('#filter-contrast');
+const contrastNumber = document.querySelector('#filter-contrast-number');
+const contrastCss = document.querySelector('#contrast-css');
+
+const brightnessRange = document.querySelector('#filter-brightness');
+const brightnessNumber = document.querySelector('#filter-brightness-number');
+const brightnessCss = document.querySelector('#brightness-css');
+
+const grayscaleRange = document.querySelector('#filter-grayscale');
+const grayscaleNumber = document.querySelector('#filter-grayscale-number');
+const grayscaleCss = document.querySelector('#grayscale-css');
+
 //consts
 const BLUR_MAX = 20;
 const INVERT_MAX = 100;
 const SEPIA_MAX = 100;
 const SATURATE_MAX = 600;
 const HUE_MAX = 360;
+const CONTRAST_MAX = 300;
+const BRIGHTNESS_MAX = 300;
+const GRAYSCALE_MAX = 100;
 
 function loadCanvasWithInputFile(){
 	
@@ -86,8 +102,8 @@ const filtersSets = {
 		sepia: 0,
 		saturate: 100,
 		hue: 0,
-		contrast: 0,
-		brightness:0,
+		contrast: 100,
+		brightness:100,
 		grayscale:0
 	},
 	current:{
@@ -96,8 +112,8 @@ const filtersSets = {
 		sepia: 0,
 		saturate: 100,
 		hue: 0,
-		contrast: 0,
-		brightness:0,
+		contrast: 100,
+		brightness:100,
 		grayscale:0
 	}
 }
@@ -126,8 +142,28 @@ function applyFilters(set = "default"){
 	hueNumber.value = filtersSets[set].hue;
 	hueCss.innerText = filtersSets[set].hue;
 	
+	contrastRange.value = filtersSets[set].contrast;
+	contrastNumber.value = filtersSets[set].contrast;
+	contrastCss.innerText = filtersSets[set].contrast;
+
+	brightnessRange.value = filtersSets[set].brightness;
+	brightnessNumber.value = filtersSets[set].brightness;
+	brightnessCss.innerText = filtersSets[set].brightness;
+
+	grayscaleRange.value = filtersSets[set].grayscale;
+	grayscaleNumber.value = filtersSets[set].grayscale;
+	grayscaleCss.innerText = filtersSets[set].grayscale;
 	
-	context.filter = `blur(${filtersSets[set].blur}px) invert(${filtersSets[set].invert}%) sepia(${filtersSets[set].sepia}%) saturate(${filtersSets[set].saturate}%) hue-rotate(${filtersSets[set].hue}deg)`// contrast(${filtersSets[set].contrast}) brightness(${filtersSets[set].brightness}) grayscale(${filtersSets[set].grayscale}) `
+	const filterStr = `
+		blur(${filtersSets[set].blur}px) 
+		invert(${filtersSets[set].invert}%) 
+		sepia(${filtersSets[set].sepia}%) 
+		saturate(${filtersSets[set].saturate}%) 
+		hue-rotate(${filtersSets[set].hue}deg) 
+		contrast(${filtersSets[set].contrast}%) 
+		brightness(${filtersSets[set].brightness}%) 
+		grayscale(${filtersSets[set].grayscale}%) `
+	context.filter = filterStr;
 	//console.log(context.filter)
 	context.drawImage(img, 0, 0, width, height);
 }
@@ -155,6 +191,18 @@ function changeFilter(name, value){
 		}
 		case 'hue':{
 			filtersSets.current.hue = value;
+			break;
+		}
+		case 'contrast':{
+			filtersSets.current.contrast = value;
+			break;
+		}
+		case 'brightness':{
+			filtersSets.current.brightness = value;
+			break;
+		}
+		case 'grayscale':{
+			filtersSets.current.grayscale = value;
 			break;
 		}
 	}
@@ -201,6 +249,27 @@ function setFilters(){
 	hueNumber.addEventListener('input', ()=>changeFilter('hue', hueNumber.value));
 	hueRange.addEventListener('input',()=> changeFilter('hue', hueRange.value));
 
+	contrastNumber.min = 0;
+	contrastRange.min = 0;
+	contrastNumber.max = CONTRAST_MAX;
+	contrastRange.max = CONTRAST_MAX;
+	contrastNumber.addEventListener('input', ()=>changeFilter('contrast', contrastNumber.value));
+	contrastRange.addEventListener('input',()=> changeFilter('contrast', contrastRange.value));
+
+	brightnessNumber.min = 0;
+	brightnessRange.min = 0;
+	brightnessNumber.max = BRIGHTNESS_MAX;
+	brightnessRange.max = BRIGHTNESS_MAX;
+	brightnessNumber.addEventListener('input', ()=>changeFilter('brightness', brightnessNumber.value));
+	brightnessRange.addEventListener('input',()=> changeFilter('brightness', brightnessRange.value));
+
+
+	grayscaleNumber.min = 0;
+	grayscaleRange.min = 0;
+	grayscaleNumber.max = GRAYSCALE_MAX;
+	grayscaleRange.max = GRAYSCALE_MAX;
+	grayscaleNumber.addEventListener('input', ()=>changeFilter('grayscale', grayscaleNumber.value));
+	grayscaleRange.addEventListener('input',()=> changeFilter('grayscale', grayscaleRange.value));
 	applyFilters()
 }
 
