@@ -8,6 +8,7 @@
     <title>PhotoFilter</title>
 </head>
 <body>
+    <h1>PhotoFilter</h1>
     <div id="app">
         <canvas id="canvas" class="main-canvas"></canvas>
         <div class="controls-wrp">
@@ -35,7 +36,7 @@
                 </li>
                 <li class="filters-item">
                     <h3>Hue rotate</h3>
-                    <input type="range" name="hue" id="hue-sepia">
+                    <input type="range" name="hue" id="filter-hue">
                     <input type="number" name="hueNumber" id="filter-hue-number">
                 </li>
                 <li class="filters-item">
@@ -55,7 +56,13 @@
                 </li>
             </ul>
         </div>
-    
+        <div class="css-value">
+            <span id="blur-css"></span>
+            <span id="invert-css"></span>
+            <span id="sepia-css"></span>
+            <span id="saturate-css"></span>
+            <span id="hue-css"></span>
+        </div>
     </div>
     
     <script src="index.js"></script>
