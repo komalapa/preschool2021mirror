@@ -5,38 +5,39 @@ const img = new Image();
 let width, height
 
 //controls
+const cssText = document.querySelector('.css-value');
+
 const blurRange = document.querySelector('#filter-blur');
 const blurNumber = document.querySelector('#filter-blur-number');
-const blurCss = document.querySelector('#blur-css');
+// const blurCss = document.querySelector('#blur-css');
 
 const invertRange = document.querySelector('#filter-invert');
 const invertNumber = document.querySelector('#filter-invert-number');
-const invertCss = document.querySelector('#invert-css');
-
+// const invertCss = document.querySelector('#invert-css');
 
 const sepiaRange = document.querySelector('#filter-sepia');
 const sepiaNumber = document.querySelector('#filter-sepia-number');
-const sepiaCss = document.querySelector('#sepia-css');
+// const sepiaCss = document.querySelector('#sepia-css');
 
 const saturateRange = document.querySelector('#filter-saturate');
 const saturateNumber = document.querySelector('#filter-saturate-number');
-const saturateCss = document.querySelector('#saturate-css');
+// const saturateCss = document.querySelector('#saturate-css');
 
 const hueRange = document.querySelector('#filter-hue');
 const hueNumber = document.querySelector('#filter-hue-number');
-const hueCss = document.querySelector('#hue-css');
+//const hueCss = document.querySelector('#hue-css');
 
 const contrastRange = document.querySelector('#filter-contrast');
 const contrastNumber = document.querySelector('#filter-contrast-number');
-const contrastCss = document.querySelector('#contrast-css');
+//const contrastCss = document.querySelector('#contrast-css');
 
 const brightnessRange = document.querySelector('#filter-brightness');
 const brightnessNumber = document.querySelector('#filter-brightness-number');
-const brightnessCss = document.querySelector('#brightness-css');
+//const brightnessCss = document.querySelector('#brightness-css');
 
 const grayscaleRange = document.querySelector('#filter-grayscale');
 const grayscaleNumber = document.querySelector('#filter-grayscale-number');
-const grayscaleCss = document.querySelector('#grayscale-css');
+//const grayscaleCss = document.querySelector('#grayscale-css');
 
 //consts
 const BLUR_MAX = 20;
@@ -115,6 +116,26 @@ const filtersSets = {
 		contrast: 100,
 		brightness:100,
 		grayscale:0
+	},
+	xRays:{
+		blur: 0,
+		invert: 100,
+		sepia: 100,
+		saturate: 100,
+		hue: 160,
+		contrast: 120,
+		brightness:105,
+		grayscale:0
+	},
+	toxicSky:{
+		blur: 0,
+		invert: 100,
+		sepia: 0,
+		saturate: 100,
+		hue: 90,
+		contrast: 100,
+		brightness:100,
+		grayscale:0
 	}
 }
 
@@ -124,35 +145,35 @@ function applyFilters(set = "default"){
 	//console.log(filtersSets[set])
 	blurRange.value = filtersSets[set].blur;
 	blurNumber.value = filtersSets[set].blur;
-	blurCss.innerText = filtersSets[set].blur;
+	// blurCss.innerText = filtersSets[set].blur;
 
 	invertRange.value = filtersSets[set].invert;
 	invertNumber.value = filtersSets[set].invert;
-	invertCss.innerText = filtersSets[set].invert;
+	// invertCss.innerText = filtersSets[set].invert;
 
 	sepiaRange.value = filtersSets[set].sepia;
 	sepiaNumber.value = filtersSets[set].sepia;
-	sepiaCss.innerText = filtersSets[set].sepia;
+	// sepiaCss.innerText = filtersSets[set].sepia;
 
 	saturateRange.value = filtersSets[set].saturate;
 	saturateNumber.value = filtersSets[set].saturate;
-	saturateCss.innerText = filtersSets[set].saturate;
+	// saturateCss.innerText = filtersSets[set].saturate;
 
 	hueRange.value = filtersSets[set].hue;
 	hueNumber.value = filtersSets[set].hue;
-	hueCss.innerText = filtersSets[set].hue;
+	// hueCss.innerText = filtersSets[set].hue;
 	
 	contrastRange.value = filtersSets[set].contrast;
 	contrastNumber.value = filtersSets[set].contrast;
-	contrastCss.innerText = filtersSets[set].contrast;
+	// contrastCss.innerText = filtersSets[set].contrast;
 
 	brightnessRange.value = filtersSets[set].brightness;
 	brightnessNumber.value = filtersSets[set].brightness;
-	brightnessCss.innerText = filtersSets[set].brightness;
+	// brightnessCss.innerText = filtersSets[set].brightness;
 
 	grayscaleRange.value = filtersSets[set].grayscale;
 	grayscaleNumber.value = filtersSets[set].grayscale;
-	grayscaleCss.innerText = filtersSets[set].grayscale;
+	// grayscaleCss.innerText = filtersSets[set].grayscale;
 	
 	const filterStr = `
 		blur(${filtersSets[set].blur}px) 
@@ -164,6 +185,7 @@ function applyFilters(set = "default"){
 		brightness(${filtersSets[set].brightness}%) 
 		grayscale(${filtersSets[set].grayscale}%) `
 	context.filter = filterStr;
+	cssText.innerText = 'filter: '+ filterStr;
 	//console.log(context.filter)
 	context.drawImage(img, 0, 0, width, height);
 }
