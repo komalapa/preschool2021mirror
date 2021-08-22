@@ -97,3 +97,12 @@ document.addEventListener('keydown',(e) =>{
         downBtn.classList.remove('active-btn')
     }, 300)
 })
+
+document.addEventListener('wheel', function(e) {
+    //console.log(e.deltaY)
+    if (e.deltaY>0){
+        changeSlide('up')
+    } else {
+        changeSlide('down')
+    }
+  });
