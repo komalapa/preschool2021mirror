@@ -2,6 +2,7 @@ console.log(`
 Бесконечная прокрутка без смены направления
 Дополнительно добавила свайп мышью.
 Управление стрелками на клавиатуре с подсветкой кнопки
+Управление колесом мыши
 `)
 const sliderContainer = document.querySelector('.slider-container');
 const slideRight = document.querySelector('.right-slide');
@@ -25,7 +26,6 @@ slideLeft.addEventListener('transitionend', () => {
 })
 
 function changeSlide(direction){
-    console.log(direction)
     if (inTransition) return;
     const sliderHeight = sliderContainer.clientHeight;
     if (direction === 'up'){
