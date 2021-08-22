@@ -16,7 +16,17 @@ const slidesLength = slideLeft.querySelectorAll('div').length;
 let activeSlide = 0;
 slideLeft.style.top = `-${(slidesLength -1) * 100}vh`
 
+let inTransition = false;
+slideLeft.addEventListener('transitionstart', () => {
+    inTransition = true
+})
+slideLeft.addEventListener('transitionend', () => {
+    inTransition = false
+})
+
 function changeSlide(direction){
+    
+    if (inTransition) return;
     const sliderHeight = sliderContainer.clientHeight;
     if (direction === 'up'){
         if (activeSlide > slidesLength-2) {//double first/last 
