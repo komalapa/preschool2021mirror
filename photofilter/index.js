@@ -2,6 +2,9 @@
 const canvas = document.getElementById('canvas');
 const context = canvas.getContext("2d"); 
 const img = new Image();
+
+const defaultImg = new Image();
+defaultImg.src = "img/kitty.png";
 let width, height;
 
 const defaultPreset = document.createElement('canvas');
@@ -367,4 +370,5 @@ downloader.addEventListener('click', function (e) {
     link.delete;
 });
 setFilters()
+
 //downloadCanvasAsImage()
