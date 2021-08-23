@@ -10,7 +10,13 @@
 <body>
     <h1>PhotoFilter</h1>
     <div id="app">
-        <canvas id="canvas" class="main-canvas"></canvas>
+        <div class="canvases">
+            <canvas id="canvas" class="main-canvas"></canvas>
+            <div id="presets" class="presets">
+        </div>
+        
+
+        </div>
         <div class="controls-wrp">
             <input type="file" name="newfile" id="new-file">
             <ul class="filters">
@@ -55,6 +61,8 @@
                     <input type="number" name="grayscaleNumber" id="filter-grayscale-number">
                 </li>
             </ul>
+
+            <a href="#" id="download">DWNLD</a>
         </div>
         <div class="css-value">
             <span id="blur-css"></span>

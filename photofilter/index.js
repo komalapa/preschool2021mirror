@@ -2,8 +2,36 @@
 const canvas = document.getElementById('canvas');
 const context = canvas.getContext("2d"); 
 const img = new Image();
-let width, height
+let width, height;
 
+const defaultPreset = document.createElement('canvas');
+defaultPreset.id = "canvas-default";
+defaultPreset.classList = "presets-item";
+const defaultPresetContext = defaultPreset.getContext('2d');
+defaultPreset.onclick = () => {
+	copyPresetToCurrent('default')
+	applyFilters('default');
+}
+const xrayPreset = document.createElement('canvas');
+xrayPreset.id = "canvas-xray";
+xrayPreset.classList = "presets-item";
+const xrayPresetContext = xrayPreset.getContext('2d');
+xrayPreset.onclick = () => {
+	copyPresetToCurrent('xRays')
+	applyFilters('xRays');
+}
+
+const toxicPreset = document.createElement('canvas');
+toxicPreset.id = "canvas-xray";
+toxicPreset.classList = "presets-item";
+const toxicPresetContext = toxicPreset.getContext('2d');
+toxicPreset.onclick = () => {
+	copyPresetToCurrent('toxicSky')
+	applyFilters('toxicSky');
+}
+
+const presetsWrp = document.querySelector('#presets');
+presetsWrp.append(defaultPreset,xrayPreset,toxicPreset)
 //controls
 const cssText = document.querySelector('.css-value');
 
@@ -70,23 +98,54 @@ function loadCanvasWithInputFile(){
 						context.drawImage(img, 0, 0);
 						const MAX_WIDTH = 800;//canvas.clientWidth;
             			const MAX_HEIGHT = 600;//canvas.clientHeight;
+						const MAX_WIDTH_PRESET = 100;//canvas.clientWidth;
+            			const MAX_HEIGHT_PRESET = 100;//canvas.clientHeight;
             			width = img.width;
             			height = img.height;
+						widthPreset = img.width;
+            			heightPreset = img.height;
+						
 						if (width > height) {
 							if (width > MAX_WIDTH) {
 								height *= MAX_WIDTH / width;
 								width = MAX_WIDTH;
+							}
+							if (widthPreset > MAX_WIDTH_PRESET) {
+								heightPreset *= MAX_WIDTH_PRESET / widthPreset;
+								widthPreset = MAX_WIDTH_PRESET;
 							}
 						} else {
 							if (height > MAX_HEIGHT) {
 								width *= MAX_HEIGHT / height;
 								height = MAX_HEIGHT;
 							}
+							if (heightPreset > MAX_HEIGHT_PRESET) {
+								widthPreset *= MAX_HEIGHT_PRESET / heightPreset;
+								heightPreset = MAX_HEIGHT_PRESET;
+							}
 						}
 						canvas.width = width;
 						canvas.height = height;
                         context.drawImage(img, 0, 0, width, height);
-                    }
+
+						defaultPreset.width = widthPreset;
+						defaultPreset.height = heightPreset;
+						applyFilters('default', defaultPresetContext);
+						defaultPresetContext.drawImage(img, 0, 0, widthPreset, heightPreset);
+						
+
+						xrayPreset.width = widthPreset;
+						xrayPreset.height = heightPreset;
+						applyFilters('xRays', xrayPresetContext);
+						xrayPresetContext.drawImage(img, 0, 0, widthPreset, heightPreset);
+						
+
+						toxicPreset.width = widthPreset;
+						toxicPreset.height = heightPreset;
+						applyFilters('toxicSky', toxicPresetContext);
+						toxicPresetContext.drawImage(img, 0, 0, widthPreset, heightPreset);
+						
+					}
 			    }
 	    	}    
 	    } else {
@@ -139,9 +198,13 @@ const filtersSets = {
 	}
 }
 
+function copyPresetToCurrent (preset="default"){
+	for (let key in filtersSets.current){
+		filtersSets.current[key] =filtersSets[preset][key]
+	}
+}
 
-
-function applyFilters(set = "default"){
+function applyFilters(set = "default", curContext = context){
 	//console.log(filtersSets[set])
 	blurRange.value = filtersSets[set].blur;
 	blurNumber.value = filtersSets[set].blur;
@@ -184,15 +247,14 @@ function applyFilters(set = "default"){
 		contrast(${filtersSets[set].contrast}%) 
 		brightness(${filtersSets[set].brightness}%) 
 		grayscale(${filtersSets[set].grayscale}%) `
-	context.filter = filterStr;
+	curContext.filter = filterStr;
 	cssText.innerText = 'filter: '+ filterStr;
 	//console.log(context.filter)
-	context.drawImage(img, 0, 0, width, height);
+	curContext.drawImage(img, 0, 0, width, height);
 }
 
 function changeFilter(name, value){
-	// console.log(name, value)
-				
+	
 	switch (name){
 		case 'blur':{
 			// console.log(name, value)
@@ -229,12 +291,13 @@ function changeFilter(name, value){
 		}
 	}
 	
-	applyFilters('current')
+	applyFilters('current', context)
 }
 
 
 
 function setFilters(){
+
 	blurNumber.min = 0;
 	blurRange.min = 0;
 	blurNumber.max = BLUR_MAX;
@@ -295,4 +358,13 @@ function setFilters(){
 	applyFilters()
 }
 
+const downloader = document.querySelector('#download')
+downloader.addEventListener('click', function (e) {
+    const link = document.createElement("a");
+    link.download = "image.png";
+    link.href = canvas.toDataURL();
+    link.click();
+    link.delete;
+});
 setFilters()
+//downloadCanvasAsImage()
