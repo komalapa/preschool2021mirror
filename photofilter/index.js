@@ -3,8 +3,11 @@ const canvas = document.getElementById('canvas');
 const context = canvas.getContext("2d"); 
 const img = new Image();
 
-const defaultImg = new Image();
-defaultImg.src = "img/kitty.png";
+//const defaultImg = new Image();
+//defaultImg.src = "img/kitty.jpeg";
+//img = defaultImg
+img.src = "img/kitty.jpeg";
+drawImgInCanvases(img);
 let width, height;
 
 const defaultPreset = document.createElement('canvas');
@@ -40,37 +43,29 @@ const cssText = document.querySelector('.css-value');
 
 const blurRange = document.querySelector('#filter-blur');
 const blurNumber = document.querySelector('#filter-blur-number');
-// const blurCss = document.querySelector('#blur-css');
 
 const invertRange = document.querySelector('#filter-invert');
 const invertNumber = document.querySelector('#filter-invert-number');
-// const invertCss = document.querySelector('#invert-css');
 
 const sepiaRange = document.querySelector('#filter-sepia');
 const sepiaNumber = document.querySelector('#filter-sepia-number');
-// const sepiaCss = document.querySelector('#sepia-css');
 
 const saturateRange = document.querySelector('#filter-saturate');
 const saturateNumber = document.querySelector('#filter-saturate-number');
-// const saturateCss = document.querySelector('#saturate-css');
 
 const hueRange = document.querySelector('#filter-hue');
 const hueNumber = document.querySelector('#filter-hue-number');
-//const hueCss = document.querySelector('#hue-css');
 
 const contrastRange = document.querySelector('#filter-contrast');
 const contrastNumber = document.querySelector('#filter-contrast-number');
-//const contrastCss = document.querySelector('#contrast-css');
 
 const brightnessRange = document.querySelector('#filter-brightness');
 const brightnessNumber = document.querySelector('#filter-brightness-number');
-//const brightnessCss = document.querySelector('#brightness-css');
 
 const grayscaleRange = document.querySelector('#filter-grayscale');
 const grayscaleNumber = document.querySelector('#filter-grayscale-number');
-//const grayscaleCss = document.querySelector('#grayscale-css');
 
-//consts
+//max consts
 const BLUR_MAX = 20;
 const INVERT_MAX = 100;
 const SEPIA_MAX = 100;
@@ -79,6 +74,61 @@ const HUE_MAX = 360;
 const CONTRAST_MAX = 300;
 const BRIGHTNESS_MAX = 300;
 const GRAYSCALE_MAX = 100;
+
+function drawImgInCanvases(img){
+	img.onload = () => {
+		context.drawImage(img, 0, 0);
+		const MAX_WIDTH = 800;//canvas.clientWidth;
+		const MAX_HEIGHT = 600;//canvas.clientHeight;
+		const MAX_WIDTH_PRESET = 100;//canvas.clientWidth;
+		const MAX_HEIGHT_PRESET = 100;//canvas.clientHeight;
+		width = img.width;
+		height = img.height;
+		widthPreset = img.width;
+		heightPreset = img.height;
+		
+		if (width > height) {
+			if (width > MAX_WIDTH) {
+				height *= MAX_WIDTH / width;
+				width = MAX_WIDTH;
+			}
+			if (widthPreset > MAX_WIDTH_PRESET) {
+				heightPreset *= MAX_WIDTH_PRESET / widthPreset;
+				widthPreset = MAX_WIDTH_PRESET;
+			}
+		} else {
+			if (height > MAX_HEIGHT) {
+				width *= MAX_HEIGHT / height;
+				height = MAX_HEIGHT;
+			}
+			if (heightPreset > MAX_HEIGHT_PRESET) {
+				widthPreset *= MAX_HEIGHT_PRESET / heightPreset;
+				heightPreset = MAX_HEIGHT_PRESET;
+			}
+		}
+		canvas.width = width;
+		canvas.height = height;
+		context.drawImage(img, 0, 0, width, height);
+
+		defaultPreset.width = widthPreset;
+		defaultPreset.height = heightPreset;
+		applyFilters('default', defaultPresetContext);
+		defaultPresetContext.drawImage(img, 0, 0, widthPreset, heightPreset);
+		
+
+		xrayPreset.width = widthPreset;
+		xrayPreset.height = heightPreset;
+		applyFilters('xRays', xrayPresetContext);
+		xrayPresetContext.drawImage(img, 0, 0, widthPreset, heightPreset);
+		
+
+		toxicPreset.width = widthPreset;
+		toxicPreset.height = heightPreset;
+		applyFilters('toxicSky', toxicPresetContext);
+		toxicPresetContext.drawImage(img, 0, 0, widthPreset, heightPreset);
+		
+	}
+}
 
 function loadCanvasWithInputFile(){
 	
@@ -97,58 +147,7 @@ function loadCanvasWithInputFile(){
                 console.log('loaded')
 	    		if( evt.target.readyState == FileReader.DONE) {
                     img.src = evt.target.result;
-                    img.onload = () => {
-						context.drawImage(img, 0, 0);
-						const MAX_WIDTH = 800;//canvas.clientWidth;
-            			const MAX_HEIGHT = 600;//canvas.clientHeight;
-						const MAX_WIDTH_PRESET = 100;//canvas.clientWidth;
-            			const MAX_HEIGHT_PRESET = 100;//canvas.clientHeight;
-            			width = img.width;
-            			height = img.height;
-						widthPreset = img.width;
-            			heightPreset = img.height;
-						
-						if (width > height) {
-							if (width > MAX_WIDTH) {
-								height *= MAX_WIDTH / width;
-								width = MAX_WIDTH;
-							}
-							if (widthPreset > MAX_WIDTH_PRESET) {
-								heightPreset *= MAX_WIDTH_PRESET / widthPreset;
-								widthPreset = MAX_WIDTH_PRESET;
-							}
-						} else {
-							if (height > MAX_HEIGHT) {
-								width *= MAX_HEIGHT / height;
-								height = MAX_HEIGHT;
-							}
-							if (heightPreset > MAX_HEIGHT_PRESET) {
-								widthPreset *= MAX_HEIGHT_PRESET / heightPreset;
-								heightPreset = MAX_HEIGHT_PRESET;
-							}
-						}
-						canvas.width = width;
-						canvas.height = height;
-                        context.drawImage(img, 0, 0, width, height);
-
-						defaultPreset.width = widthPreset;
-						defaultPreset.height = heightPreset;
-						applyFilters('default', defaultPresetContext);
-						defaultPresetContext.drawImage(img, 0, 0, widthPreset, heightPreset);
-						
-
-						xrayPreset.width = widthPreset;
-						xrayPreset.height = heightPreset;
-						applyFilters('xRays', xrayPresetContext);
-						xrayPresetContext.drawImage(img, 0, 0, widthPreset, heightPreset);
-						
-
-						toxicPreset.width = widthPreset;
-						toxicPreset.height = heightPreset;
-						applyFilters('toxicSky', toxicPresetContext);
-						toxicPresetContext.drawImage(img, 0, 0, widthPreset, heightPreset);
-						
-					}
+                    drawImgInCanvases(img)
 			    }
 	    	}    
 	    } else {
@@ -211,6 +210,7 @@ function applyFilters(set = "default", curContext = context){
 	//console.log(filtersSets[set])
 	blurRange.value = filtersSets[set].blur;
 	blurNumber.value = filtersSets[set].blur;
+	blurNumber.dataset.value = filtersSets[set].blur;
 	// blurCss.innerText = filtersSets[set].blur;
 
 	invertRange.value = filtersSets[set].invert;
@@ -241,15 +241,7 @@ function applyFilters(set = "default", curContext = context){
 	grayscaleNumber.value = filtersSets[set].grayscale;
 	// grayscaleCss.innerText = filtersSets[set].grayscale;
 	
-	const filterStr = `
-		blur(${filtersSets[set].blur}px) 
-		invert(${filtersSets[set].invert}%) 
-		sepia(${filtersSets[set].sepia}%) 
-		saturate(${filtersSets[set].saturate}%) 
-		hue-rotate(${filtersSets[set].hue}deg) 
-		contrast(${filtersSets[set].contrast}%) 
-		brightness(${filtersSets[set].brightness}%) 
-		grayscale(${filtersSets[set].grayscale}%) `
+	const filterStr = `blur(${filtersSets[set].blur}px) invert(${filtersSets[set].invert}%) sepia(${filtersSets[set].sepia}%) saturate(${filtersSets[set].saturate}%) hue-rotate(${filtersSets[set].hue}deg) contrast(${filtersSets[set].contrast}%) brightness(${filtersSets[set].brightness}%) grayscale(${filtersSets[set].grayscale}%) `
 	curContext.filter = filterStr;
 	cssText.innerText = 'filter: '+ filterStr;
 	//console.log(context.filter)
