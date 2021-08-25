@@ -1,3 +1,18 @@
+console.log(`
+ 1 По видео понятно и интересно. Частично применила. +10
+ 2 Обязательное
+	- Добавить фильтры - максимально все найденные
+	- Добавить пресеты - 4 шт (default, toxic, saturate, xrays)
++10
+3 Дополнительно:
+	- Открытие файла
+	- Сохранение изображения
+	- Сброс настроек совмещен с пресетом default
+	- копирование кода css
+	- полноэкранный режим
+	- смена цвета фона и текста в соответствие с основным цветом рисунка (Алгоритм и константы для вычисления найдены и повторены. Ссылки на основные источники в комментариях)
+`)
+
 //main canvas variables
 const canvas = document.getElementById('canvas');
 const context = canvas.getContext("2d");
@@ -109,15 +124,6 @@ function copyCSS() {
 }
 //================end controlls================
 
-//max filters consts
-// const BLUR_MAX = 20;
-// const INVERT_MAX = 100;
-// const SEPIA_MAX = 100;
-// const SATURATE_MAX = 600;
-// const HUE_MAX = 360;
-// const CONTRAST_MAX = 300;
-// const BRIGHTNESS_MAX = 300;
-// const GRAYSCALE_MAX = 100;
 const MAXS = {
 	blur: 20,
 	invert: 100,
@@ -325,7 +331,7 @@ function setFilters() {
 	blurRange.min = 0;
 	blurNumber.max = MAXS['blur']//BLUR_MAX;
 	blurRange.max = MAXS['blur'];
-	blurNumber.addEventListener('input', () => changeFilter('blur', +blurNumber.value || 0));
+	blurNumber.addEventListener('input', () => changeFilter('blur', +blurNumber.value || 0));//0 only for empty input
 	blurRange.addEventListener('input', () => changeFilter('blur', +blurRange.value || 0));
 
 	invertNumber.min = 0;
@@ -386,7 +392,7 @@ function setFilters() {
 //algorithm from http://jsfiddle.net/xLF38/818/
 function getAverageRGB() {
 
-	let blockSize = 5, // only visit every 5 pixels because every pixel is a set of items
+	let blockSize = 5, // only visit every 5 pixels because every pixel is a set of items in data.data array
 		defaultRGB = {
 			r: 19,
 			g: 19,
@@ -420,7 +426,7 @@ function getAverageRGB() {
 			rgb.b += data.data[i + 2];
 		}
 
-		// ~~ used to floor values
+		// ~~ used to floor values. It can be faster sometimes https://stackoverflow.com/questions/5971645/what-is-the-double-tilde-operator-in-javascript , but used only for experience)))
 		rgb.r = ~~(rgb.r / count);
 		rgb.g = ~~(rgb.g / count);
 		rgb.b = ~~(rgb.b / count);
@@ -436,13 +442,13 @@ function getAverageRGB() {
 		}
 
 	} catch (e) {
-		/* security error, img on diff domain */
+		/* security error, img on diff domain CORS*/
 		console.log("can't get canvas data")
 		rgb = defaultRGB;
 	}
 
 
-	//set css variables
+	//set css variables for background color and  text color
 	let root = document.documentElement;
 	root.style.setProperty('--background-color', `rgb(${rgb.r} ${rgb.g} ${rgb.b})`)
 	//values for calculating text color https://websolutionstuff.com/post/change-text-color-based-on-background-color-using-javascript
@@ -458,7 +464,6 @@ function getAverageRGB() {
 const fullScreenBtn = document.querySelector("#full-screen-btn");
 
 function toggleFullScreen() {
-	//console.log(document.fullscreenElement)
 	if (!document.fullscreenElement) {
 		document.documentElement.requestFullscreen();
 		fullScreenBtn.classList.remove('full-screen-off');
@@ -475,7 +480,7 @@ fullScreenBtn.onclick = function () {
 	toggleFullScreen()
 }
 
-
+//START
 
 loadCanvasWithInputFile()
 setFilters()
