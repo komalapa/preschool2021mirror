@@ -149,7 +149,7 @@ function drawImgInCanvases(img){
 		//!!clear filters for new image
 		copyPresetToCurrent('default')
 		applyFilters('default');
-		//console.log(getAverageRGB(img))
+		getAverageRGB(img);
 	}
 }
 
@@ -157,17 +157,17 @@ function loadCanvasWithInputFile(){
 	
 	const fileInput = document.getElementById('new-file'); 
 	
-    console.log(fileInput, canvas)
+    //console.log(fileInput, canvas)
 	fileInput.onchange = function(evt) {
         
 		const files = evt.target.files;
-        console.log(files[0].type)
+        //console.log(files[0].type)
 	    const file = files[0];
 	    if(file.type.match('image*')) {
 	        const reader = new FileReader();
 	        reader.readAsDataURL(file);
 	    	reader.onload = function(evt){
-                console.log('loaded')
+                //console.log('loaded')
 	    		if( evt.target.readyState == FileReader.DONE) {
                     img.src = evt.target.result;
                     drawImgInCanvases(img)
@@ -444,7 +444,7 @@ function getAverageRGB() {
     }
 
     length = data.data.length;
-	console.log(data.data)
+	//console.log(data.data)
     while ( (i += blockSize * 4) < length ) {
         ++count;
         rgb.r += data.data[i];
@@ -478,3 +478,24 @@ function getAverageRGB() {
 	root.style.setProperty('--hover-color', hoverColor);
 }
 
+
+//FullScreen
+const fullScreenBtn = document.querySelector("#full-screen-btn");
+
+function toggleFullScreen() {
+    //console.log(document.fullscreenElement)
+    if (!document.fullscreenElement) {
+        document.documentElement.requestFullscreen();
+        fullScreenBtn.classList.remove('full-screen-off');
+        fullScreenBtn.classList.add('full-screen-on')
+    } else {
+      if (document.exitFullscreen) {
+        document.exitFullscreen();
+        fullScreenBtn.classList.remove('full-screen-on');
+        fullScreenBtn.classList.add('full-screen-off')
+      }
+    }
+  }
+  fullScreenBtn.onclick = function(){
+      toggleFullScreen()
+  }

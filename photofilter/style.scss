@@ -199,3 +199,22 @@ h3{
 .github-link:active, .github-link:hover{
     color: var(--hover-color);
 }
+
+.full-screen{
+    width: 25px;
+    height: 25px;
+    background-color: #eee;
+    border: 5px solid #eee;
+    opacity: .5;
+    //border:none;
+    background-size:cover;
+  }
+  .full-screen:hover{
+    opacity: .8;
+  }
+  .full-screen-off{
+    background-image: url("img/full-screen-svgrepo-com.svg");
+  }
+  .full-screen-on{
+    background-image: url("img/exit-full-screen-svgrepo-com.svg");
+  }
