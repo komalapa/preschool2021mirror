@@ -127,6 +127,7 @@ function drawImgInCanvases(img){
 		applyFilters('toxicSky', toxicPresetContext);
 		toxicPresetContext.drawImage(img, 0, 0, widthPreset, heightPreset);
 		
+		console.log(getAverageRGB(img))
 	}
 }
 
@@ -364,3 +365,64 @@ downloader.addEventListener('click', function (e) {
 setFilters()
 
 //downloadCanvasAsImage()
+//algorithm from http://jsfiddle.net/xLF38/818/
+function getAverageRGB() {
+
+    let blockSize = 5, // only visit every 5 pixels
+        defaultRGB = {r:0,g:0,b:0}, // for non-supporting envs
+        data, width, height,
+        i = -4,
+        length,
+        rgb = {r:0,g:0,b:0},
+        count = 0;
+
+    if (!context) {
+		console.log('no context')
+        return defaultRGB;
+    }
+
+    height = canvas.height
+    width = canvas.width
+
+    try {
+        data = context.getImageData(0, 0, width, height);
+		//console.log(data)
+    } catch(e) {
+        /* security error, img on diff domain */
+		console.log("can't get canvas data")
+        return defaultRGB;
+    }
+
+    length = data.data.length;
+	console.log(data.data)
+    while ( (i += blockSize * 4) < length ) {
+        ++count;
+        rgb.r += data.data[i];
+        rgb.g += data.data[i+1];
+        rgb.b += data.data[i+2];
+		//console.log(rgb)
+    }
+
+    // ~~ used to floor values
+    rgb.r = ~~(rgb.r/count);
+    rgb.g = ~~(rgb.g/count);
+    rgb.b = ~~(rgb.b/count);
+	if (rgb.r > 229 && rgb.g >229 && rgb.b >229){ //white is #e5e5e5
+		rgb.r = 229;
+		rgb.g = 229;
+		rgb.b = 229;
+	}
+	if (rgb.r < 19 && rgb.g < 19 && rgb.b < 19){ //black is #d3d3d3
+		rgb.r = 19;
+		rgb.g = 19;
+		rgb.b = 19;
+	}
+    //return rgb;
+	let root = document.documentElement;
+	root.style.setProperty('--background-color', `rgb(${rgb.r} ${rgb.g} ${rgb.b})`)
+	//values for calculating text color https://websolutionstuff.com/post/change-text-color-based-on-background-color-using-javascript
+	let backgroundColor = Math.round(((rgb.r * 299) + (rgb.g * 587) + (rgb.b * 114)) / 1000); 
+	let textColor = (backgroundColor > 200) ? '#131313' : '#f3f3f3';
+	root.style.setProperty('--text-color', textColor)
+}
+
