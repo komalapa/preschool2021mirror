@@ -13,14 +13,27 @@ let width, height;
 const defaultPreset = document.createElement('canvas');
 defaultPreset.id = "canvas-default";
 defaultPreset.classList = "presets-item";
+defaultPreset.title = "default";
 const defaultPresetContext = defaultPreset.getContext('2d');
 defaultPreset.onclick = () => {
 	copyPresetToCurrent('default')
 	applyFilters('default');
 }
+
+const saturatePreset = document.createElement('canvas');
+saturatePreset.id = "canvas-saturate";
+saturatePreset.classList = "presets-item";
+saturatePreset.title = "Saturate";
+const saturatePresetContext = saturatePreset.getContext('2d');
+saturatePreset.onclick = () => {
+	copyPresetToCurrent('saturate')
+	applyFilters('saturate');
+}
+
 const xrayPreset = document.createElement('canvas');
 xrayPreset.id = "canvas-xray";
 xrayPreset.classList = "presets-item";
+xrayPreset.title = "X-Rays";
 const xrayPresetContext = xrayPreset.getContext('2d');
 xrayPreset.onclick = () => {
 	copyPresetToCurrent('xRays')
@@ -30,6 +43,7 @@ xrayPreset.onclick = () => {
 const toxicPreset = document.createElement('canvas');
 toxicPreset.id = "canvas-xray";
 toxicPreset.classList = "presets-item";
+toxicPreset.title = "Toxic Sky";
 const toxicPresetContext = toxicPreset.getContext('2d');
 toxicPreset.onclick = () => {
 	copyPresetToCurrent('toxicSky')
@@ -37,7 +51,7 @@ toxicPreset.onclick = () => {
 }
 
 const presetsWrp = document.querySelector('#presets');
-presetsWrp.append(defaultPreset,xrayPreset,toxicPreset)
+presetsWrp.append(defaultPreset, saturatePreset, xrayPreset,toxicPreset)
 //controls
 const cssText = document.querySelector('.css-value');
 
@@ -115,6 +129,11 @@ function drawImgInCanvases(img){
 		applyFilters('default', defaultPresetContext);
 		defaultPresetContext.drawImage(img, 0, 0, widthPreset, heightPreset);
 		
+		saturatePreset.width = widthPreset;
+		saturatePreset.height = heightPreset;
+		applyFilters('saturate', saturatePresetContext);
+		saturatePresetContext.drawImage(img, 0, 0, widthPreset, heightPreset);
+		
 
 		xrayPreset.width = widthPreset;
 		xrayPreset.height = heightPreset;
@@ -127,7 +146,10 @@ function drawImgInCanvases(img){
 		applyFilters('toxicSky', toxicPresetContext);
 		toxicPresetContext.drawImage(img, 0, 0, widthPreset, heightPreset);
 		
-		console.log(getAverageRGB(img))
+		//!!clear filters for new image
+		copyPresetToCurrent('default')
+		applyFilters('default');
+		//console.log(getAverageRGB(img))
 	}
 }
 
@@ -164,6 +186,16 @@ const filtersSets = {
 		invert: 0,
 		sepia: 0,
 		saturate: 100,
+		hue: 0,
+		contrast: 100,
+		brightness:100,
+		grayscale:0
+	},
+	saturate:{
+		blur: 0,
+		invert: 0,
+		sepia: 0,
+		saturate: 250,
 		hue: 0,
 		contrast: 100,
 		brightness:100,
