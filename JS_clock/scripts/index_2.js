@@ -130,7 +130,7 @@ function setBackground(){
 function humanReadDate(date = new Date){
   const months = ['января','февраля','марта','апреля','мая','июня','июля','августа','сентября','октября','ноября','декабря'];
   const days = ['Воскресенье','Понедельник','Вторник','Среда','Четверг','Пятница','Суббота'];
-  return `${days[date.getDay()]}, ${date.getDay()+1} ${months[date.getMonth()]} ${date.getUTCFullYear()}`; 
+  return `${days[date.getDay()]}, ${date.getDate()} ${months[date.getMonth()]} ${date.getUTCFullYear()}`; 
 }
 function start(){
   initLocalClocks(new Date);
