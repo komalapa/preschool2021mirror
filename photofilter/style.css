@@ -1,18 +1,35 @@
 :root {
   --background-color: #999999;
   --text-color:#fff;
+  --hover-color:#eee;
 }
 
 body {
   margin: 0;
   padding: 0;
+  background-color: var(--background-color);
+  -webkit-transition: background-color .3s;
+  transition: background-color .3s;
+  min-height: 100vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
 }
 
 h1 {
+  font-family: 'Shadows Into Light', cursive;
   text-align: center;
-  background-color: var(--background-color);
   margin: 0;
   color: var(--text-color);
+  padding: 20px 0;
+  font-size: 4em;
 }
 
 h3 {
@@ -22,8 +39,7 @@ h3 {
 
 #app {
   margin: 0 auto;
-  width: 100vw;
-  min-height: 100vh;
+  width: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -39,7 +55,6 @@ h3 {
   padding: 20px;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
-  background-color: var(--background-color);
   margin: 0;
 }
 
@@ -160,6 +175,13 @@ h3 {
   padding: 5px 10px;
   font-size: 1em;
   text-decoration: none;
+  -webkit-transition: color .2s, border-color .2s;
+  transition: color .2s, border-color .2s;
+}
+
+.action-btn:hover {
+  color: var(--hover-color);
+  border-color: var(--hover-color);
 }
 
 #new-file {
@@ -201,5 +223,43 @@ h3 {
   -ms-flex-item-align: center;
       align-self: center;
   margin-top: 40px;
+}
+
+.footer {
+  padding: 20px 50px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  border-top: 2px solid var(--text-color);
+  margin-top: 20px;
+}
+
+.github-link {
+  text-decoration: none;
+  font-size: 15px;
+  font-weight: bold;
+  color: var(--text-color);
+  -webkit-transition: color .2s;
+  transition: color .2s;
+}
+
+.course-link:hover img, .course-link:active img {
+  -webkit-transform: scale(1.2);
+          transform: scale(1.2);
+}
+
+.course-link:active {
+  -webkit-transform: translate(2px, 1px);
+          transform: translate(2px, 1px);
+}
+
+.github-link:active, .github-link:hover {
+  color: var(--hover-color);
 }
 /*# sourceMappingURL=style.css.map */

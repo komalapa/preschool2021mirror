@@ -1,16 +1,26 @@
 :root{
     --background-color: #999999; //#d3d3d3;
     --text-color:#fff;
+    --hover-color:#eee;
 }
 body{
     margin: 0;
     padding: 0;
+    background-color: var(--background-color);
+    transition: background-color .3s;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 h1{
+    font-family: 'Shadows Into Light', cursive;
     text-align: center;
-    background-color: var(--background-color);
+    //background-color: var(--background-color);
     margin: 0;
     color:var(--text-color);
+    padding: 20px 0;
+    font-size: 4em;
 }
 
 h3{
@@ -19,8 +29,8 @@ h3{
 }
 #app{
     margin: 0 auto;
-    width: 100vw;
-    min-height: 100vh;
+    width: 100%;
+    //min-height: 100vh;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
@@ -28,7 +38,6 @@ h3{
     gap: 20px;
     padding: 20px;
     box-sizing: border-box;
-    background-color: var(--background-color);
     margin: 0;
 }
 
@@ -131,6 +140,12 @@ h3{
     padding: 5px 10px;
     font-size: 1em;
     text-decoration: none;
+    transition: color .2s, border-color .2s;
+}
+
+.action-btn:hover{
+    color: var(--hover-color);
+    border-color: var(--hover-color);
 }
 
 #new-file{
@@ -157,4 +172,31 @@ h3{
     width: 400px;
     align-self: center;
     margin-top: 40px;
+}
+
+.footer{
+    padding: 20px 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 2px solid var(--text-color);
+    margin-top:20px;
+}
+
+.github-link{
+    text-decoration: none;
+    font-size: 15px;
+    font-weight: bold;
+    color: var(--text-color);
+    transition: color .2s;
+}
+
+.course-link:hover img,.course-link:active img{
+    transform: scale(1.2);
+}
+.course-link:active{
+    transform: translate(2px, 1px);
+}
+.github-link:active, .github-link:hover{
+    color: var(--hover-color);
 }

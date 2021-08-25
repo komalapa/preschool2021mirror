@@ -79,7 +79,7 @@ function drawImgInCanvases(img){
 	img.onload = () => {
 		context.drawImage(img, 0, 0);
 		const MAX_WIDTH = 800;//canvas.clientWidth;
-		const MAX_HEIGHT = 600;//canvas.clientHeight;
+		const MAX_HEIGHT = 500;//canvas.clientHeight;
 		const MAX_WIDTH_PRESET = 100;//canvas.clientWidth;
 		const MAX_HEIGHT_PRESET = 100;//canvas.clientHeight;
 		width = img.width;
@@ -423,6 +423,8 @@ function getAverageRGB() {
 	//values for calculating text color https://websolutionstuff.com/post/change-text-color-based-on-background-color-using-javascript
 	let backgroundColor = Math.round(((rgb.r * 299) + (rgb.g * 587) + (rgb.b * 114)) / 1000); 
 	let textColor = (backgroundColor > 200) ? '#131313' : '#f3f3f3';
-	root.style.setProperty('--text-color', textColor)
+	let hoverColor = (backgroundColor > 200) ? '#555555' : '#d3d3d3';
+	root.style.setProperty('--text-color', textColor);
+	root.style.setProperty('--hover-color', hoverColor);
 }
 
