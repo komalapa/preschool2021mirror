@@ -1,0 +1,228 @@
+:root{
+    --background-color: #999999; //#d3d3d3;
+    --text-color:#fff;
+    --hover-color:#eee;
+}
+body{
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: var(--background-color);
+    transition: background-color 0.3s;
+}
+h1{
+    margin: 0;
+    padding: 20px 0;
+    color:var(--text-color);
+    font-family: 'Shadows Into Light', cursive;
+    text-align: center;
+    font-size: 4em;
+}
+
+h3{
+    margin: 0;
+    color: var(--text-color);
+}
+#app{
+    margin: 0 auto;
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 20px;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.presets{
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+}
+
+.presets-item:hover{
+    transform: scale(1.01);
+}
+.presets-item:active{
+    transform: scale(1.01) translateY(3px);
+}
+
+.css-value{
+    width: fit-content;
+    color: var(--text-color);
+}
+.filters{
+    list-style: none;
+    &-item{
+        padding: 0;
+    }
+}
+
+.main-canvas{
+    border-radius: 1em;
+}
+.range-wrp{
+    position: relative;
+}
+.range-line {
+    margin: 10px 0 20px;
+    width: 400px;
+    -webkit-appearance: none;
+    &:focus {
+        outline: none;
+    }
+    &::-webkit-slider-runnable-track {
+        width: 100%;
+        height: 1px;
+        box-shadow: none;
+        background: var(--text-color);
+        border-radius: 0px;
+        border: 0px solid #010101;
+        cursor: pointer;
+    }
+    &::-moz-range-track {
+        width: 100%;
+        height: 1px;
+        box-shadow: none;
+        background: var(--text-color);
+        border-radius: 0px;
+        border: 0px solid #010101;
+        cursor: pointer;
+    }
+  
+    &::-webkit-slider-thumb {
+        border: 0px solid #ffffff;
+        margin-top: -10px;
+        height: 1.5em;
+        width: 1em;
+        border-radius: 1em;
+        background: var(--text-color);
+        box-shadow: none;
+        box-shadow: 0px 10px 10px rgba(0,0,0,0.25);
+        cursor: pointer;
+        -webkit-appearance: none;
+    }
+  &::-moz-range-thumb{
+        height: 1.5em;
+        width: 1em;
+        margin-top: -10px;
+        box-shadow: none;
+        box-shadow: 0px 10px 10px rgba(0,0,0,0.25);
+        border: 0px solid #ffffff;
+        border-radius: 2em;
+        background: var(--text-color);
+        cursor: pointer;
+        -webkit-appearance: none;
+  }
+
+  &::-moz-focus-outer {
+    border: 0;
+    }
+}
+.range-value {
+    line-height: 2em;
+    text-align: center;
+    font-weight: bold;
+    font-size: 1em;   
+    background: transparent;
+    color: var(--text-color);
+    border: none;
+    outline: var(--text-color);
+}
+
+.action-btn{
+    position: relative;
+    text-transform: uppercase;
+    padding: 5px 10px;
+    font-size: 1em;
+    text-decoration: none;
+    background: transparent;
+    border:2px solid var(--text-color);
+    border-radius: 8px;
+    color: var(--text-color);
+    outline-color: var(--text-color);
+    transition: color 0.2s, border-color 0.2s;
+}
+
+.action-btn:hover{
+    color: var(--hover-color);
+    border-color: var(--hover-color);
+}
+
+#new-file{
+    position: absolute;
+    left:0;
+    width: 100px;
+    opacity: 0;
+}
+
+.file-actions-wrp{
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+.controls-wrp{
+    max-width: 600px;
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: column;
+}
+
+.css-wrp{
+    display: flex;
+    width: 400px;
+    align-self: center;
+    margin-top: 40px;
+}
+
+.footer{
+    padding: 20px 50px;
+    margin-top:20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 2px solid var(--text-color);
+}
+
+.github-link{
+    text-decoration: none;
+    font-size: 15px;
+    font-weight: bold;
+    color: var(--text-color);
+    transition: color 0.2s;
+    outline: var(--text-color);
+}
+
+.course-link:hover img,.course-link:active img{
+    transform: scale(1.2);
+}
+.course-link:active{
+    transform: translate(2px, 1px);
+}
+.github-link:active, .github-link:hover{
+    color: var(--hover-color);
+}
+
+.full-screen{
+    width: 25px;
+    height: 25px;
+    background-color: #eee;
+    border: 5px solid #eee;
+    opacity: 0.5;
+    //border:none;
+    background-size:cover;
+    outline: var(--text-color);
+  }
+  .full-screen:hover{
+    opacity: 0.8;
+  }
+  .full-screen-off{
+    background-image: url("img/full-screen-svgrepo-com.svg");
+  }
+  .full-screen-on{
+    background-image: url("img/exit-full-screen-svgrepo-com.svg");
+  }
