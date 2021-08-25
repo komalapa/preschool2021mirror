@@ -6,31 +6,29 @@
 body{
     margin: 0;
     padding: 0;
-    background-color: var(--background-color);
-    transition: background-color .3s;
     min-height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    background-color: var(--background-color);
+    transition: background-color 0.3s;
 }
 h1{
+    margin: 0;
+    padding: 20px 0;
+    color:var(--text-color);
     font-family: 'Shadows Into Light', cursive;
     text-align: center;
-    //background-color: var(--background-color);
-    margin: 0;
-    color:var(--text-color);
-    padding: 20px 0;
     font-size: 4em;
 }
 
 h3{
-    color: var(--text-color);
     margin: 0;
+    color: var(--text-color);
 }
 #app{
     margin: 0 auto;
     width: 100%;
-    //min-height: 100vh;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
@@ -38,7 +36,6 @@ h3{
     gap: 20px;
     padding: 20px;
     box-sizing: border-box;
-    margin: 0;
 }
 
 .presets{
@@ -55,8 +52,8 @@ h3{
 }
 
 .css-value{
-    color: var(--text-color);
     width: fit-content;
+    color: var(--text-color);
 }
 .filters{
     list-style: none;
@@ -81,45 +78,45 @@ h3{
     &::-webkit-slider-runnable-track {
         width: 100%;
         height: 1px;
-        cursor: pointer;
         box-shadow: none;
         background: var(--text-color);
         border-radius: 0px;
         border: 0px solid #010101;
+        cursor: pointer;
     }
     &::-moz-range-track {
         width: 100%;
         height: 1px;
-        cursor: pointer;
         box-shadow: none;
         background: var(--text-color);
         border-radius: 0px;
         border: 0px solid #010101;
+        cursor: pointer;
     }
   
     &::-webkit-slider-thumb {
-        box-shadow: none;
         border: 0px solid #ffffff;
-        box-shadow: 0px 10px 10px rgba(0,0,0,0.25);
+        margin-top: -10px;
         height: 1.5em;
         width: 1em;
         border-radius: 1em;
         background: var(--text-color);
+        box-shadow: none;
+        box-shadow: 0px 10px 10px rgba(0,0,0,0.25);
         cursor: pointer;
         -webkit-appearance: none;
-        margin-top: -10px;
     }
   &::-moz-range-thumb{
-        box-shadow: none;
-        border: 0px solid #ffffff;
-        box-shadow: 0px 10px 10px rgba(0,0,0,0.25);
         height: 1.5em;
         width: 1em;
+        margin-top: -10px;
+        box-shadow: none;
+        box-shadow: 0px 10px 10px rgba(0,0,0,0.25);
+        border: 0px solid #ffffff;
         border-radius: 2em;
         background: var(--text-color);
         cursor: pointer;
         -webkit-appearance: none;
-        margin-top: -10px;
   }
 
   &::-moz-focus-outer {
@@ -127,28 +124,28 @@ h3{
     }
 }
 .range-value {
-    background: transparent;
     line-height: 2em;
     text-align: center;
     font-weight: bold;
-    border: none;
-    color: var(--text-color);
     font-size: 1em;   
+    background: transparent;
+    color: var(--text-color);
+    border: none;
     outline: var(--text-color);
 }
 
 .action-btn{
     position: relative;
-    background: transparent;
-    border:2px solid var(--text-color);
-    border-radius: 8px;
-    color: var(--text-color);
     text-transform: uppercase;
     padding: 5px 10px;
     font-size: 1em;
     text-decoration: none;
-    transition: color .2s, border-color .2s;
+    background: transparent;
+    border:2px solid var(--text-color);
+    border-radius: 8px;
+    color: var(--text-color);
     outline-color: var(--text-color);
+    transition: color 0.2s, border-color 0.2s;
 }
 
 .action-btn:hover{
@@ -157,10 +154,10 @@ h3{
 }
 
 #new-file{
-    opacity: 0;
     position: absolute;
-    width: 100px;
     left:0;
+    width: 100px;
+    opacity: 0;
 }
 
 .file-actions-wrp{
@@ -184,11 +181,11 @@ h3{
 
 .footer{
     padding: 20px 50px;
+    margin-top:20px;
     display: flex;
     justify-content: space-between;
     align-items: center;
     border-top: 2px solid var(--text-color);
-    margin-top:20px;
 }
 
 .github-link{
@@ -196,7 +193,7 @@ h3{
     font-size: 15px;
     font-weight: bold;
     color: var(--text-color);
-    transition: color .2s;
+    transition: color 0.2s;
     outline: var(--text-color);
 }
 
@@ -215,13 +212,13 @@ h3{
     height: 25px;
     background-color: #eee;
     border: 5px solid #eee;
-    opacity: .5;
+    opacity: 0.5;
     //border:none;
     background-size:cover;
     outline: var(--text-color);
   }
   .full-screen:hover{
-    opacity: .8;
+    opacity: 0.8;
   }
   .full-screen-off{
     background-image: url("img/full-screen-svgrepo-com.svg");
