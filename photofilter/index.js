@@ -356,15 +356,33 @@ function setFilters(){
 
 const downloader = document.querySelector('#download')
 downloader.addEventListener('click', function (e) {
-    const link = document.createElement("a");
+    const link = document.querySelector("#download");
     link.download = "image.png";
     link.href = canvas.toDataURL();
     link.click();
     link.delete;
 });
+
+const copyBtn = document.querySelector("#copy-btn");
+copyBtn.addEventListener('click', copyCSS);
+
+function copyCSS(){
+	navigator.clipboard.writeText(cssText.innerText)
+        .then(() => {
+            cssText.style.transform = "rotate(360deg) scale(0)";
+			cssText.style.transition = "transform .5s";
+			setTimeout(()=>{
+				cssText.style.transition = "initial";
+				cssText.style.transform = "initial";
+				
+			},500)
+        })
+        .catch(err => {
+            console.log('Something went wrong with clipboard', err);
+        });
+}
 setFilters()
 
-//downloadCanvasAsImage()
 //algorithm from http://jsfiddle.net/xLF38/818/
 function getAverageRGB() {
 
