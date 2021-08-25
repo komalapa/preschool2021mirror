@@ -391,7 +391,6 @@ downloader.addEventListener('click', function (e) {
     const link = document.querySelector("#download");
     link.download = "image.png";
     link.href = canvas.toDataURL();
-    link.click();
     link.delete;
 });
 
