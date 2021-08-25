@@ -110,14 +110,24 @@ function copyCSS() {
 //================end controlls================
 
 //max filters consts
-const BLUR_MAX = 20;
-const INVERT_MAX = 100;
-const SEPIA_MAX = 100;
-const SATURATE_MAX = 600;
-const HUE_MAX = 360;
-const CONTRAST_MAX = 300;
-const BRIGHTNESS_MAX = 300;
-const GRAYSCALE_MAX = 100;
+// const BLUR_MAX = 20;
+// const INVERT_MAX = 100;
+// const SEPIA_MAX = 100;
+// const SATURATE_MAX = 600;
+// const HUE_MAX = 360;
+// const CONTRAST_MAX = 300;
+// const BRIGHTNESS_MAX = 300;
+// const GRAYSCALE_MAX = 100;
+const MAXS = {
+	blur: 20,
+	invert: 100,
+	sepia: 100,
+	saturate: 100,
+	hue: 360,
+	contrast: 300,
+	brightness: 300,
+	grayscale: 100,
+}
 
 function drawImgInCanvases(img) {
 	img.onload = () => {
@@ -303,7 +313,7 @@ function applyFilters(set = "default", curContext = context) {
 }
 
 function changeFilter(name, value) {
-	filtersSets.current[name] = value;
+	filtersSets.current[name] = value < MAXS[name] ?  value : MAXS[name];
 	applyFilters('current', context)
 }
 
@@ -313,61 +323,61 @@ function setFilters() {
 
 	blurNumber.min = 0;
 	blurRange.min = 0;
-	blurNumber.max = BLUR_MAX;
-	blurRange.max = BLUR_MAX;
-	blurNumber.addEventListener('input', () => changeFilter('blur', blurNumber.value));
-	blurRange.addEventListener('input', () => changeFilter('blur', blurRange.value));
+	blurNumber.max = MAXS['blur']//BLUR_MAX;
+	blurRange.max = MAXS['blur'];
+	blurNumber.addEventListener('input', () => changeFilter('blur', +blurNumber.value || 0));
+	blurRange.addEventListener('input', () => changeFilter('blur', +blurRange.value || 0));
 
 	invertNumber.min = 0;
 	invertRange.min = 0;
-	invertNumber.max = INVERT_MAX;
-	invertRange.max = INVERT_MAX;
-	invertNumber.addEventListener('input', () => changeFilter('invert', invertNumber.value));
-	invertRange.addEventListener('input', () => changeFilter('invert', invertRange.value));
+	invertNumber.max = MAXS['invert'];
+	invertRange.max = MAXS['invert'];
+	invertNumber.addEventListener('input', () => changeFilter('invert', +invertNumber.value || 0));
+	invertRange.addEventListener('input', () => changeFilter('invert', +invertRange.value || 0));
 
 	sepiaNumber.min = 0;
 	sepiaRange.min = 0;
-	sepiaNumber.max = SEPIA_MAX;
-	sepiaRange.max = SEPIA_MAX;
-	sepiaNumber.addEventListener('input', () => changeFilter('sepia', sepiaNumber.value));
-	sepiaRange.addEventListener('input', () => changeFilter('sepia', sepiaRange.value));
+	sepiaNumber.max = MAXS['sepia'];
+	sepiaRange.max = MAXS['sepia'];
+	sepiaNumber.addEventListener('input', () => changeFilter('sepia', +sepiaNumber.value || 0));
+	sepiaRange.addEventListener('input', () => changeFilter('sepia', +sepiaRange.value || 0));
 
 
 	saturateNumber.min = 0;
 	saturateRange.min = 0;
-	saturateNumber.max = SATURATE_MAX;
-	saturateRange.max = SATURATE_MAX;
-	saturateNumber.addEventListener('input', () => changeFilter('saturate', saturateNumber.value));
-	saturateRange.addEventListener('input', () => changeFilter('saturate', saturateRange.value));
+	saturateNumber.max = MAXS['saturate'];
+	saturateRange.max = MAXS['saturate'];
+	saturateNumber.addEventListener('input', () => changeFilter('saturate', +saturateNumber.value || 0));
+	saturateRange.addEventListener('input', () => changeFilter('saturate', +saturateRange.value || 0));
 
 	hueNumber.min = 0;
 	hueRange.min = 0;
-	hueNumber.max = HUE_MAX;
-	hueRange.max = HUE_MAX;
-	hueNumber.addEventListener('input', () => changeFilter('hue', hueNumber.value));
-	hueRange.addEventListener('input', () => changeFilter('hue', hueRange.value));
+	hueNumber.max = MAXS['hue'];
+	hueRange.max = MAXS['hue'];
+	hueNumber.addEventListener('input', () => changeFilter('hue', +hueNumber.value || 0));
+	hueRange.addEventListener('input', () => changeFilter('hue', +hueRange.value || 0));
 
 	contrastNumber.min = 0;
 	contrastRange.min = 0;
-	contrastNumber.max = CONTRAST_MAX;
-	contrastRange.max = CONTRAST_MAX;
-	contrastNumber.addEventListener('input', () => changeFilter('contrast', contrastNumber.value));
-	contrastRange.addEventListener('input', () => changeFilter('contrast', contrastRange.value));
+	contrastNumber.max = MAXS['contrast'];
+	contrastRange.max = MAXS['contrast'];
+	contrastNumber.addEventListener('input', () => changeFilter('contrast', +contrastNumber.value || 0));
+	contrastRange.addEventListener('input', () => changeFilter('contrast', +contrastRange.value || 0));
 
 	brightnessNumber.min = 0;
 	brightnessRange.min = 0;
-	brightnessNumber.max = BRIGHTNESS_MAX;
-	brightnessRange.max = BRIGHTNESS_MAX;
-	brightnessNumber.addEventListener('input', () => changeFilter('brightness', brightnessNumber.value));
-	brightnessRange.addEventListener('input', () => changeFilter('brightness', brightnessRange.value));
+	brightnessNumber.max = MAXS['brightness'];
+	brightnessRange.max = MAXS['brightness'];
+	brightnessNumber.addEventListener('input', () => changeFilter('brightness', +brightnessNumber.value || 0));
+	brightnessRange.addEventListener('input', () => changeFilter('brightness', +brightnessRange.value || 0));
 
 
 	grayscaleNumber.min = 0;
 	grayscaleRange.min = 0;
-	grayscaleNumber.max = GRAYSCALE_MAX;
-	grayscaleRange.max = GRAYSCALE_MAX;
-	grayscaleNumber.addEventListener('input', () => changeFilter('grayscale', grayscaleNumber.value));
-	grayscaleRange.addEventListener('input', () => changeFilter('grayscale', grayscaleRange.value));
+	grayscaleNumber.max = MAXS['grayscale'];
+	grayscaleRange.max = MAXS['grayscale'];
+	grayscaleNumber.addEventListener('input', () => changeFilter('grayscale', +grayscaleNumber.value || 0));
+	grayscaleRange.addEventListener('input', () => changeFilter('grayscale', +grayscaleRange.value || 0));
 	applyFilters()
 }
 

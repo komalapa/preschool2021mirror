@@ -47,6 +47,13 @@ h3{
     justify-content: center;
 }
 
+.presets-item:hover{
+    transform: scale(1.01);
+}
+.presets-item:active{
+    transform: scale(1.01) translateY(3px);
+}
+
 .css-value{
     color: var(--text-color);
     width: fit-content;
@@ -65,7 +72,7 @@ h3{
     position: relative;
 }
 .range-line {
-    margin-top: 29px;
+    margin: 10px 0 20px;
     width: 400px;
     -webkit-appearance: none;
     &:focus {
@@ -127,6 +134,7 @@ h3{
     border: none;
     color: var(--text-color);
     font-size: 1em;   
+    outline: var(--text-color);
 }
 
 .action-btn{
@@ -140,6 +148,7 @@ h3{
     font-size: 1em;
     text-decoration: none;
     transition: color .2s, border-color .2s;
+    outline-color: var(--text-color);
 }
 
 .action-btn:hover{
@@ -188,6 +197,7 @@ h3{
     font-weight: bold;
     color: var(--text-color);
     transition: color .2s;
+    outline: var(--text-color);
 }
 
 .course-link:hover img,.course-link:active img{
@@ -208,6 +218,7 @@ h3{
     opacity: .5;
     //border:none;
     background-size:cover;
+    outline: var(--text-color);
   }
   .full-screen:hover{
     opacity: .8;

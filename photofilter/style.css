@@ -68,6 +68,16 @@ h3 {
           justify-content: center;
 }
 
+.presets-item:hover {
+  -webkit-transform: scale(1.01);
+          transform: scale(1.01);
+}
+
+.presets-item:active {
+  -webkit-transform: scale(1.01) translateY(3px);
+          transform: scale(1.01) translateY(3px);
+}
+
 .css-value {
   color: var(--text-color);
   width: -webkit-fit-content;
@@ -92,7 +102,7 @@ h3 {
 }
 
 .range-line {
-  margin-top: 29px;
+  margin: 10px 0 20px;
   width: 400px;
   -webkit-appearance: none;
 }
@@ -162,6 +172,7 @@ h3 {
   border: none;
   color: var(--text-color);
   font-size: 1em;
+  outline: var(--text-color);
 }
 
 .action-btn {
@@ -176,6 +187,7 @@ h3 {
   text-decoration: none;
   -webkit-transition: color .2s, border-color .2s;
   transition: color .2s, border-color .2s;
+  outline-color: var(--text-color);
 }
 
 .action-btn:hover {
@@ -246,6 +258,7 @@ h3 {
   color: var(--text-color);
   -webkit-transition: color .2s;
   transition: color .2s;
+  outline: var(--text-color);
 }
 
 .course-link:hover img, .course-link:active img {
@@ -269,6 +282,7 @@ h3 {
   border: 5px solid #eee;
   opacity: .5;
   background-size: cover;
+  outline: var(--text-color);
 }
 
 .full-screen:hover {
