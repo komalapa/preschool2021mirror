@@ -2,11 +2,20 @@ const video = document.querySelector('#video-paris');
 
 //controls
 const centralPlayBtn = document.querySelector('.video-player-start');
-const playBtn =  document.querySelector('.video-player-controls-play');
-const backBtn =  document.querySelector('.video-player-controls-back');
-const forwardBtn =  document.querySelector('.video-player-controls-forward');
-const muteBtn =  document.querySelector('.video-player-controls-mute');
-const fullscreenBtn =  document.querySelector('.video-player-controls-full');
+const playBtn = document.querySelector('.video-player-controls-play');
+const backBtn = document.querySelector('.video-player-controls-back');
+const forwardBtn = document.querySelector('.video-player-controls-forward');
+const muteBtn = document.querySelector('.video-player-controls-mute');
+const fullscreenBtn = document.querySelector('.video-player-controls-full');
+
+
+const progressBar = document.querySelector('.video-player-controls-progress');
+const volumeBar = document.querySelector('.video-player-controls-volume');
+console.log(volumeBar)
+
+//range styles
+progressBar.style.background = `linear-gradient(to right, #24809E 0%, #24809E ${progressBar.value}%, #c4c4c4 ${progressBar.value}%, #c4c4c4 100%)`  
+volumeBar.style.background = `linear-gradient(to right, #24809E 0%, #24809E ${volumeBar.value}%, #c4c4c4 ${volumeBar.value}%, #c4c4c4 100%)`  
 
 //vp = videoPlayer
 const VIDEOS = ['assets/video/paris.mp4', "assets/video/TourEiffel.mp4", "assets/video/louvre.mp4"]
@@ -38,6 +47,15 @@ function vpMute(){
     }
 }
 
+function vpSetVolume(e){
+   // console.log(e.target)
+    video.volume = e.target.value/100;
+    volumeBar.style.background = `linear-gradient(to right, #24809E 0%, #24809E ${volumeBar.value}%, #c4c4c4 ${volumeBar.value}%, #c4c4c4 100%)`
+}
+function vpSetProgress(e){
+    video.currentTime = e.target.value/100 * video.duration
+    
+}
 function vpReplaceIconPlay(){
     //console.log("icon")
     if (!video.paused){
@@ -60,3 +78,11 @@ video.addEventListener('ended',  () => vpChooseVideo('forward'))
 backBtn.addEventListener('click',() => vpChooseVideo('back'));
 forwardBtn.addEventListener('click', () => vpChooseVideo('forward'));
 muteBtn.addEventListener('click', vpMute);
+
+volumeBar.addEventListener('input', vpSetVolume);
+progressBar.addEventListener('input', vpSetProgress);
+
+setInterval(() => {
+    progressBar.value = Math.floor(100*video.currentTime/video.duration)
+    progressBar.style.background = `linear-gradient(to right, #24809E 0%, #24809E ${progressBar.value}%, #c4c4c4 ${progressBar.value}%, #c4c4c4 100%)`
+}, 100);
