@@ -16,7 +16,7 @@ function vpPlay(){
 }
 
 function vpChooseVideo(direction = 'back'){
-    console.log(direction)
+    //console.log(direction)
     const length = VIDEOS.length
     if (direction === 'forward'){
         activeVideo = activeVideo < length -1 ? activeVideo + 1 : 0
@@ -26,6 +26,16 @@ function vpChooseVideo(direction = 'back'){
 
     video.src = VIDEOS[activeVideo]
     video.play();
+}
+
+function vpMute(){
+    console.log(video.muted)
+    video.muted = !video.muted;
+    if (video.muted){
+        muteBtn.classList.add("crossed")
+    } else {
+        muteBtn.classList.remove("crossed")
+    }
 }
 
 function vpReplaceIconPlay(){
@@ -42,8 +52,11 @@ function vpReplaceIconPlay(){
 
 
 playBtn.addEventListener('click', vpPlay);
+centralPlayBtn.addEventListener('click', vpPlay);
+video.addEventListener('click', vpPlay);
 video.addEventListener('play',vpReplaceIconPlay);
 video.addEventListener('pause',vpReplaceIconPlay);
 video.addEventListener('ended',  () => vpChooseVideo('forward'))
 backBtn.addEventListener('click',() => vpChooseVideo('back'));
 forwardBtn.addEventListener('click', () => vpChooseVideo('forward'));
+muteBtn.addEventListener('click', vpMute);

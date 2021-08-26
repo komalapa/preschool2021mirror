@@ -411,7 +411,7 @@ header {
 .video-player-controls-pause {
   width: 23px;
   background: url("assets/svg/pause.svg") no-repeat;
-  background-size: 100%;
+  background-size: 100% 100%;
 }
 
 .video-player-controls-forward {
@@ -420,6 +420,7 @@ header {
 }
 
 .video-player-controls-mute {
+  position: relative;
   margin-right: 20px;
   width: 38px;
   background: url("assets/svg/volume.svg") no-repeat;
@@ -478,6 +479,17 @@ header {
   font-weight: 300;
   font-size: 22px;
   line-height: 38px;
+}
+
+.crossed:before {
+  position: absolute;
+  left: -7px;
+  top: 12px;
+  content: '';
+  width: 50px;
+  border-top: 5px solid #24809E;
+  -webkit-transform: rotate(45deg);
+          transform: rotate(45deg);
 }
 
 .tickets-form {

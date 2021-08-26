@@ -338,13 +338,14 @@ header{
         &-pause{
             width: 23px;
             background: url("assets/svg/pause.svg") no-repeat;
-            background-size: 100%;
+            background-size: 100% 100%;
         }
         &-forward{
             width: 27px;
             background: url("assets/svg/forvard.svg") no-repeat;
         }
         &-mute{
+            position: relative;
             margin-right: 20px;
             width: 38px;
             background: url("assets/svg/volume.svg") no-repeat;
@@ -402,7 +403,16 @@ header{
         line-height: 38px;
     }
 }
-
+.crossed:before{
+    position: absolute;
+    left: -7px;
+    top: 12px;
+    content: '';
+    width: 50px;
+    border-top: 5px solid #24809E;
+    transform: rotate(45deg);
+    
+}
 .tickets{
     &-form{
         margin-top: 75px;
