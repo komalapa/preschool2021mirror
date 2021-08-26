@@ -48,9 +48,11 @@ function vpMute(){
 }
 
 function vpSetVolume(e){
+
    // console.log(e.target)
-    video.volume = e.target.value/100;
+    video.volume = e ? e.target.value/100 : volumeBar.value/100;
     volumeBar.style.background = `linear-gradient(to right, #24809E 0%, #24809E ${volumeBar.value}%, #c4c4c4 ${volumeBar.value}%, #c4c4c4 100%)`
+    console.log(video.volume)
 }
 function vpSetProgress(e){
     video.currentTime = e.target.value/100 * video.duration
@@ -106,5 +108,49 @@ setInterval(() => {
     progressBar.style.background = `linear-gradient(to right, #24809E 0%, #24809E ${progressBar.value}%, #c4c4c4 ${progressBar.value}%, #c4c4c4 100%)`
 }, 100);
 
+//keyboard
+function toggleKeys(e){
+    const key = e.key;
+    if (!key) return;
+    console.log(e.shiftKey,key)
+    if (key === "k" || key === "л") vpPlay();
+    if (key === "j" || key === "о" || e.key === "ArrowLeft") video.currentTime -= 10/60 //tmp not 10s (1/6 s) because videos too short
+    if (key === "l" || key === "д" || e.key === "ArrowRight") video.currentTime += 10/60
+    if (key === "P" || (e.shiftKey && key ==="p") || key === "З" || (e.shiftKey && key ==="з")) vpChooseVideo('back')
+    if (key === "N" || (e.shiftKey && key ==="n") || key === "Т" || (e.shiftKey && key ==="т")) vpChooseVideo('forward')
+    if ((key === "," || key ==="б") && video.paused) video.currentTime -= 0.04//25frames per sec
+    if ((key === "." || key ==="ю") && video.paused) video.currentTime += 0.04//25frames per sec
+    if (((e.shiftKey && key ===",") || key === "<" || key ==="Б") && video.playbackRate > 0.25 ) {
+        //video.pause()
+        video.playbackRate -= 0.25
+        //video.play();
+    }
+    if (((e.shiftKey && key ===".") ||key === ">" || key ==="Ю") && video.playbackRate < 3 ) {
+        //video.pause()
+        video.playbackRate += 0.25
+        //video.play()
+    }
+    if (key === "F" || (e.shiftKey && key ==="f") || key === "А" || (e.shiftKey && key ==="а") || key ==="а" || key ==="f") vpFullscreen()
+    if (+key >=0 || +key<=9){
+        video.currentTime = video.duration * (+key/10)
+    }
+    if (((e.shiftKey && key ==="/") || key === "?" )) {
+        console.log("print help")
+    }
+    if (e.key === "ArrowDown" && volumeBar.value >= 5) {
+        volumeBar.value = +volumeBar.value - 5
+        vpSetVolume()
+    }
+    if (e.key === "ArrowUp" && volumeBar.value <= 95) {
+        volumeBar.value = +volumeBar.value + 5
+        console.log(volumeBar.value)
+        vpSetVolume()
+    }
+    if (key === "M" || (e.shiftKey && key ==="m") || key === "Ь" || (e.shiftKey && key ==="ь") || key ==="ь" || key ==="m") vpMute()
 
+    
+}
 
+//осталось: стрелками прогресс и громкость, справна по sh/, всплывающее сообщение
+
+document.addEventListener('keyup', toggleKeys)
