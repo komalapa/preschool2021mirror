@@ -57,15 +57,22 @@ function vpSetProgress(e){
 }
 
 function vpFullscreen(){
-
+    //console.log (document.scale)
     if (!document.fullscreenElement) {
+        //console.log("FS")
         document.querySelector('.video-player-wrp').requestFullscreen();
         video.classList.add("fullscreen")
     } else if (document.exitFullscreen) {
         document.exitFullscreen();
-        video.classList.remove("fullscreen")        
+        // video.classList.remove("fullscreen")       
     } 
 }
+//fixes exit fullscreen by esc and button
+document.addEventListener('fullscreenchange', () => {
+    if (!document.webkitIsFullScreen && !document.mozFullScreen && !document.msFullscreenElement) {
+        video.classList.remove("fullscreen") 
+    }
+})
 
 function vpReplaceIconPlay(){
     //console.log("icon")
@@ -99,8 +106,5 @@ setInterval(() => {
     progressBar.style.background = `linear-gradient(to right, #24809E 0%, #24809E ${progressBar.value}%, #c4c4c4 ${progressBar.value}%, #c4c4c4 100%)`
 }, 100);
 
-document.addEventListener("fullscreenchange", function (e) {
-    if ( window.innerHeight !== screen.height) {
-        video.classList.remove("fullscreen") 
-    }
-});
+
+
