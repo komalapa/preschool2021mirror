@@ -481,6 +481,29 @@ header {
   line-height: 38px;
 }
 
+.fullscreen {
+  min-width: 100%;
+  min-height: 100%;
+}
+
+.fullscreen ~ .video-player-start {
+  display: none;
+}
+
+.fullscreen ~ .video-player-controls {
+  position: fixed;
+  bottom: -80px;
+  width: 100%;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  opacity: 0.7;
+}
+
+.fullscreen ~ .video-player-controls:hover {
+  bottom: 0;
+}
+
 .crossed:before {
   position: absolute;
   left: -7px;

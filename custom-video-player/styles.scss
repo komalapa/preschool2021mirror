@@ -403,6 +403,23 @@ header{
         line-height: 38px;
     }
 }
+.fullscreen{
+    min-width: 100%;
+    min-height: 100%;
+    & ~ .video-player-start{
+        display: none;
+    }
+    & ~ .video-player-controls{
+        position: fixed;
+        bottom: -80px;
+        width: 100%;
+        justify-content: center;
+        opacity: 0.7;
+    }
+    & ~ .video-player-controls:hover{
+        bottom: 0;
+    }
+}
 .crossed:before{
     position: absolute;
     left: -7px;

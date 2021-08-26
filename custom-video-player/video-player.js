@@ -11,7 +11,7 @@ const fullscreenBtn = document.querySelector('.video-player-controls-full');
 
 const progressBar = document.querySelector('.video-player-controls-progress');
 const volumeBar = document.querySelector('.video-player-controls-volume');
-console.log(volumeBar)
+//console.log(volumeBar)
 
 //range styles
 progressBar.style.background = `linear-gradient(to right, #24809E 0%, #24809E ${progressBar.value}%, #c4c4c4 ${progressBar.value}%, #c4c4c4 100%)`  
@@ -38,7 +38,7 @@ function vpChooseVideo(direction = 'back'){
 }
 
 function vpMute(){
-    console.log(video.muted)
+    //console.log(video.muted)
     video.muted = !video.muted;
     if (video.muted){
         muteBtn.classList.add("crossed")
@@ -54,8 +54,19 @@ function vpSetVolume(e){
 }
 function vpSetProgress(e){
     video.currentTime = e.target.value/100 * video.duration
-    
 }
+
+function vpFullscreen(){
+
+    if (!document.fullscreenElement) {
+        document.querySelector('.video-player-wrp').requestFullscreen();
+        video.classList.add("fullscreen")
+    } else if (document.exitFullscreen) {
+        document.exitFullscreen();
+        video.classList.remove("fullscreen")        
+    } 
+}
+
 function vpReplaceIconPlay(){
     //console.log("icon")
     if (!video.paused){
@@ -63,7 +74,7 @@ function vpReplaceIconPlay(){
         playBtn.classList.add('video-player-controls-pause');
     } else {
         centralPlayBtn.style.opacity = 1;
-        playBtn.classList.remove('video-player-controls-pause');
+        //playBtn.classList.remove('video-player-controls-pause');
     }
 }
 
@@ -78,6 +89,7 @@ video.addEventListener('ended',  () => vpChooseVideo('forward'))
 backBtn.addEventListener('click',() => vpChooseVideo('back'));
 forwardBtn.addEventListener('click', () => vpChooseVideo('forward'));
 muteBtn.addEventListener('click', vpMute);
+fullscreenBtn.addEventListener('click', vpFullscreen);
 
 volumeBar.addEventListener('input', vpSetVolume);
 progressBar.addEventListener('input', vpSetProgress);
@@ -86,3 +98,9 @@ setInterval(() => {
     progressBar.value = Math.floor(100*video.currentTime/video.duration)
     progressBar.style.background = `linear-gradient(to right, #24809E 0%, #24809E ${progressBar.value}%, #c4c4c4 ${progressBar.value}%, #c4c4c4 100%)`
 }, 100);
+
+document.addEventListener("fullscreenchange", function (e) {
+    if ( window.innerHeight !== screen.height) {
+        video.classList.remove("fullscreen") 
+    }
+});
