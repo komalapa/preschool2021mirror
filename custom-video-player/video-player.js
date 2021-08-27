@@ -1,5 +1,5 @@
 console.log(`
-Прошу обратить внимание, что третье видео с фонтаном без звука. На нем хорошо видна скорость воспроизведения.
+Прошу обратить внимание, что третье видео с фонтаном действительно без звука. НО на нем хорошо видна скорость воспроизведения.
 Управление:
         Shift + / / h / H - help (wait 10sec or click for exit)
         k / Space         - play/pause
@@ -43,6 +43,9 @@ N / Shift + n     - next video
 10шт +20
 
 добавить возможность перелистывания видео или слайдер видео Демо (в демо вместо картинок используйте видео)
++10
+
+Итог 50
 
 `)
 let video = document.querySelector('.video-active');
@@ -326,11 +329,13 @@ function toggleKeys(e){
         return
     }
     if (e.key === "ArrowDown" && volumeBar.value >= 5) {
+        e.preventDefault();
         volumeBar.value = +volumeBar.value - 5
         vpSetVolume()
         return
     }
     if (e.key === "ArrowUp" && volumeBar.value <= 95) {
+        e.preventDefault();
         volumeBar.value = +volumeBar.value + 5
         //console.log(volumeBar.value)
         vpSetVolume()
