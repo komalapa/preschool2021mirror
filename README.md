@@ -11,3 +11,4 @@ Private repository for @komalapa
 
 ## JS30 Part 2
 * [https://rolling-scopes-school.github.io/komalapa-JSFEPRESCHOOL/photofilter/](https://rolling-scopes-school.github.io/komalapa-JSFEPRESCHOOL/photofilter/)
+* [https://rolling-scopes-school.github.io/komalapa-JSFEPRESCHOOL/custom-video-player/](https://rolling-scopes-school.github.io/komalapa-JSFEPRESCHOOL/custom-video-player/)
