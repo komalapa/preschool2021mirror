@@ -12,69 +12,68 @@ const fullscreenBtn = document.querySelector('.video-player-controls-full');
 const progressBar = document.querySelector('.video-player-controls-progress');
 const volumeBar = document.querySelector('.video-player-controls-volume');
 
-const controlsMsg = document.querySelector('#video-message')
-//console.log(volumeBar)
+const controlsMsg = document.querySelector('#video-message');
 
 //range styles
 progressBar.style.background = `linear-gradient(to right, #24809E 0%, #24809E ${progressBar.value}%, #c4c4c4 ${progressBar.value}%, #c4c4c4 100%)`  
 volumeBar.style.background = `linear-gradient(to right, #24809E 0%, #24809E ${volumeBar.value}%, #c4c4c4 ${volumeBar.value}%, #c4c4c4 100%)`  
 
-//vp = videoPlayer
+
+const MSG_DURATION = 2000;
+
 const VIDEOS = ['assets/video/paris.mp4', "assets/video/TourEiffel.mp4", "assets/video/louvre.mp4"]
 let activeVideo = 0;
 function vpPlay(){
     video[video.paused ? 'play' : 'pause']();
+    //msg
     controlsMsg.innerText = `${video.paused ? 'pause' : 'play'}` 
     controlsMsg.style.display = 'block';
-    setInterval(() => {
+    setTimeout(() => {
         controlsMsg.style.display = 'none';
-    }, 2000);
+    }, MSG_DURATION);
 }
 
 function vpChooseVideo(direction = 'back'){
-    //console.log(direction)
     const length = VIDEOS.length
     if (direction === 'forward'){
         activeVideo = activeVideo < length -1 ? activeVideo + 1 : 0
     } else if (direction === 'back'){
         activeVideo = activeVideo > 0 ? activeVideo - 1 : length -1    
     }
-
     video.src = VIDEOS[activeVideo]
     video.play();
+    //msg
     controlsMsg.innerText = `${direction}` 
     controlsMsg.style.display = 'block';
-    setInterval(() => {
+    setTimeout(() => {
         controlsMsg.style.display = 'none';
-    }, 2000);
+    }, MSG_DURATION);
 }
 
 function vpMute(){
-    //console.log(video.muted)
     video.muted = !video.muted;
     if (video.muted){
         muteBtn.classList.add("crossed")
     } else {
         muteBtn.classList.remove("crossed")
     }
+    //msg
     controlsMsg.innerText = `${video.muted ? 'muted' : 'unmuted'}` 
     controlsMsg.style.display = 'block';
-    setInterval(() => {
+    setTimeout(() => {
         controlsMsg.style.display = 'none';
-    }, 2000);
+    }, MSG_DURATION);
 }
 
 function vpSetVolume(e){
-
-   // console.log(e.target)
     video.volume = e ? e.target.value/100 : volumeBar.value/100;
     volumeBar.style.background = `linear-gradient(to right, #24809E 0%, #24809E ${volumeBar.value}%, #c4c4c4 ${volumeBar.value}%, #c4c4c4 100%)`
-    //console.log(video.volume)
+    //msg
     controlsMsg.innerText = `Volume ${volumeBar.value}%` 
         controlsMsg.style.display = 'block';
-        setInterval(() => {
+        setTimeout(() => {
             controlsMsg.style.display = 'none';
-        }, 2000);
+        }, MSG_DURATION);
 }
 function vpSetProgress(e){
     let value
@@ -88,14 +87,11 @@ function vpSetProgress(e){
 }
 
 function vpFullscreen(){
-    //console.log (document.scale)
     if (!document.fullscreenElement) {
-        //console.log("FS")
         document.querySelector('.video-player-wrp').requestFullscreen();
         video.classList.add("fullscreen")
     } else if (document.exitFullscreen) {
-        document.exitFullscreen();
-        // video.classList.remove("fullscreen")       
+        document.exitFullscreen();      
     } 
 }
 //fixes exit fullscreen by esc and button
@@ -116,8 +112,7 @@ function vpReplaceIconPlay(){
     }
 }
 
-
-
+//Listeners
 playBtn.addEventListener('click', vpPlay);
 centralPlayBtn.addEventListener('click', vpPlay);
 video.addEventListener('click', vpPlay);
@@ -139,7 +134,6 @@ setInterval(() => {
 
 //keyboard
 function toggleKeys(e){
-    e.preventDefault()
     const hideMsg = () =>{
         controlsMsg.style.display = 'none';
         video.removeEventListener('click', hideMsg)
@@ -148,30 +142,27 @@ function toggleKeys(e){
     if (!key) return;
     console.log(e.shiftKey,key)
     if (key === "k" || key === "л" || key === " ") {
-        e.preventDefault();
         vpPlay();
-
-        //console.log('play', e)
         return
     }
     if (key === "j" || key === "о" || e.key === "ArrowLeft") {
         video.currentTime -= 10/60 //tmp not 10s (1/6 s) because videos too short
+        //msg
         controlsMsg.innerText = `${progressBar.value}%` 
         controlsMsg.style.display = 'block';
-        video.addEventListener('click', hideMsg)
-        setInterval(() => {
+        setTimeout(() => {
             controlsMsg.style.display = 'none';
-        }, 3000);
+        }, MSG_DURATION);
         return
     }
     if (key === "l" || key === "д" || e.key === "ArrowRight") {
         video.currentTime += 10/60
+        //msg
         controlsMsg.innerText = `${progressBar.value}%` 
         controlsMsg.style.display = 'block';
-        video.addEventListener('click', hideMsg)
-        setInterval(() => {
+        setTimeout(() => {
             controlsMsg.style.display = 'none';
-        }, 3000);
+        }, MSG_DURATION);
         return
     }
     if (key === "P" || (e.shiftKey && key ==="p") || key === "З" || (e.shiftKey && key ==="з")) {
@@ -192,15 +183,23 @@ function toggleKeys(e){
         return
     }
     if (((e.shiftKey && key ===",") || key === "<" || key ==="Б") && video.playbackRate > 0.25 ) {
-        //video.pause()
         video.playbackRate -= 0.25
-        //video.play();
+        //msg
+        controlsMsg.innerText = `playback rate: ${video.playbackRate}` 
+        controlsMsg.style.display = 'block';
+        setTimeout(() => {
+            controlsMsg.style.display = 'none';
+        }, MSG_DURATION);
         return
     }
     if (((e.shiftKey && key ===".") ||key === ">" || key ==="Ю") && video.playbackRate < 3 ) {
-        //video.pause()
         video.playbackRate += 0.25
-        //video.play()
+        //msg
+        controlsMsg.innerText = `playback rate: ${video.playbackRate}` 
+        controlsMsg.style.display = 'block';
+        setTimeout(() => {
+            controlsMsg.style.display = 'none';
+        }, MSG_DURATION);
         return
     }
     if (key === "F" || (e.shiftKey && key ==="f") || key === "А" || (e.shiftKey && key ==="а") || key ==="а" || key ==="f") {
@@ -208,18 +207,18 @@ function toggleKeys(e){
         return
     }
     if (+key >=0 || +key<=9){
-        //video.currentTime = video.duration * (+key/10)
-        progressBar.value = +key * 10;
+       progressBar.value = +key * 10;
         vpSetProgress();
+        //msg
         controlsMsg.innerText = `${progressBar.value}%` 
         controlsMsg.style.display = 'block';
-        video.addEventListener('click', hideMsg)
-        setInterval(() => {
+        setTimeout(() => {
             controlsMsg.style.display = 'none';
-        }, 3000);
+        }, MSG_DURATION);
         return
     }
     if (((e.shiftKey && key ==="/") || key === "?" )) {
+        //msg
         controlsMsg.innerText = `
         k               - play
         j / ←           - forward
@@ -236,33 +235,18 @@ function toggleKeys(e){
         ↓               - volume down
         ` 
         controlsMsg.style.display = 'block';
-        video.addEventListener('click', hideMsg)
-        // setInterval(() => {
-        //     controlsMsg.style.display = 'none';
-        // }, 10000);
+        video.addEventListener('click', hideMsg);
         return
     }
     if (e.key === "ArrowDown" && volumeBar.value >= 5) {
         volumeBar.value = +volumeBar.value - 5
         vpSetVolume()
-        // controlsMsg.innerText = `Volume ${volumeBar.value}%` 
-        // controlsMsg.style.display = 'block';
-        // video.addEventListener('click', hideMsg)
-        // setInterval(() => {
-        //     controlsMsg.style.display = 'none';
-        // }, 3000);
         return
     }
     if (e.key === "ArrowUp" && volumeBar.value <= 95) {
         volumeBar.value = +volumeBar.value + 5
         console.log(volumeBar.value)
         vpSetVolume()
-        // controlsMsg.innerText = `Volume ${volumeBar.value}%` 
-        // controlsMsg.style.display = 'block';
-        // video.addEventListener('click', hideMsg)
-        // setInterval(() => {
-        //     controlsMsg.style.display = 'none';
-        // }, 3000);
         return
     }
     if (key === "M" || (e.shiftKey && key ==="m") || key === "Ь" || (e.shiftKey && key ==="ь") || key ==="ь" || key ==="m") {
@@ -270,7 +254,5 @@ function toggleKeys(e){
         return
     }
 }
-
-//осталось: стрелками прогресс и громкость, справна по sh/, всплывающее сообщение
 
 document.addEventListener('keyup', toggleKeys)
