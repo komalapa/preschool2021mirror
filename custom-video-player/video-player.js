@@ -11,6 +11,8 @@ const fullscreenBtn = document.querySelector('.video-player-controls-full');
 
 const progressBar = document.querySelector('.video-player-controls-progress');
 const volumeBar = document.querySelector('.video-player-controls-volume');
+
+const controlsMsg = document.querySelector('#video-message')
 //console.log(volumeBar)
 
 //range styles
@@ -21,7 +23,12 @@ volumeBar.style.background = `linear-gradient(to right, #24809E 0%, #24809E ${vo
 const VIDEOS = ['assets/video/paris.mp4', "assets/video/TourEiffel.mp4", "assets/video/louvre.mp4"]
 let activeVideo = 0;
 function vpPlay(){
-    video[video.paused ? 'play' : 'pause']()
+    video[video.paused ? 'play' : 'pause']();
+    controlsMsg.innerText = `${video.paused ? 'pause' : 'play'}` 
+    controlsMsg.style.display = 'block';
+    setInterval(() => {
+        controlsMsg.style.display = 'none';
+    }, 2000);
 }
 
 function vpChooseVideo(direction = 'back'){
@@ -35,6 +42,11 @@ function vpChooseVideo(direction = 'back'){
 
     video.src = VIDEOS[activeVideo]
     video.play();
+    controlsMsg.innerText = `${direction}` 
+    controlsMsg.style.display = 'block';
+    setInterval(() => {
+        controlsMsg.style.display = 'none';
+    }, 2000);
 }
 
 function vpMute(){
@@ -45,6 +57,11 @@ function vpMute(){
     } else {
         muteBtn.classList.remove("crossed")
     }
+    controlsMsg.innerText = `${video.muted ? 'muted' : 'unmuted'}` 
+    controlsMsg.style.display = 'block';
+    setInterval(() => {
+        controlsMsg.style.display = 'none';
+    }, 2000);
 }
 
 function vpSetVolume(e){
@@ -52,10 +69,22 @@ function vpSetVolume(e){
    // console.log(e.target)
     video.volume = e ? e.target.value/100 : volumeBar.value/100;
     volumeBar.style.background = `linear-gradient(to right, #24809E 0%, #24809E ${volumeBar.value}%, #c4c4c4 ${volumeBar.value}%, #c4c4c4 100%)`
-    console.log(video.volume)
+    //console.log(video.volume)
+    controlsMsg.innerText = `Volume ${volumeBar.value}%` 
+        controlsMsg.style.display = 'block';
+        setInterval(() => {
+            controlsMsg.style.display = 'none';
+        }, 2000);
 }
 function vpSetProgress(e){
-    video.currentTime = e.target.value/100 * video.duration
+    let value
+    if (!e) {
+        console.log("not e")
+        value = progressBar.value;
+    } else {
+        value = e.target.value;
+    }
+    video.currentTime = value/100 * video.duration
 }
 
 function vpFullscreen(){
@@ -77,13 +106,13 @@ document.addEventListener('fullscreenchange', () => {
 })
 
 function vpReplaceIconPlay(){
-    //console.log("icon")
+    console.log("icon")
     if (!video.paused){
         centralPlayBtn.style.opacity = 0;
         playBtn.classList.add('video-player-controls-pause');
     } else {
         centralPlayBtn.style.opacity = 1;
-        //playBtn.classList.remove('video-player-controls-pause');
+        playBtn.classList.remove('video-player-controls-pause');
     }
 }
 
@@ -110,45 +139,136 @@ setInterval(() => {
 
 //keyboard
 function toggleKeys(e){
+    e.preventDefault()
+    const hideMsg = () =>{
+        controlsMsg.style.display = 'none';
+        video.removeEventListener('click', hideMsg)
+    } 
     const key = e.key;
     if (!key) return;
     console.log(e.shiftKey,key)
-    if (key === "k" || key === "л") vpPlay();
-    if (key === "j" || key === "о" || e.key === "ArrowLeft") video.currentTime -= 10/60 //tmp not 10s (1/6 s) because videos too short
-    if (key === "l" || key === "д" || e.key === "ArrowRight") video.currentTime += 10/60
-    if (key === "P" || (e.shiftKey && key ==="p") || key === "З" || (e.shiftKey && key ==="з")) vpChooseVideo('back')
-    if (key === "N" || (e.shiftKey && key ==="n") || key === "Т" || (e.shiftKey && key ==="т")) vpChooseVideo('forward')
-    if ((key === "," || key ==="б") && video.paused) video.currentTime -= 0.04//25frames per sec
-    if ((key === "." || key ==="ю") && video.paused) video.currentTime += 0.04//25frames per sec
+    if (key === "k" || key === "л" || key === " ") {
+        e.preventDefault();
+        vpPlay();
+
+        //console.log('play', e)
+        return
+    }
+    if (key === "j" || key === "о" || e.key === "ArrowLeft") {
+        video.currentTime -= 10/60 //tmp not 10s (1/6 s) because videos too short
+        controlsMsg.innerText = `${progressBar.value}%` 
+        controlsMsg.style.display = 'block';
+        video.addEventListener('click', hideMsg)
+        setInterval(() => {
+            controlsMsg.style.display = 'none';
+        }, 3000);
+        return
+    }
+    if (key === "l" || key === "д" || e.key === "ArrowRight") {
+        video.currentTime += 10/60
+        controlsMsg.innerText = `${progressBar.value}%` 
+        controlsMsg.style.display = 'block';
+        video.addEventListener('click', hideMsg)
+        setInterval(() => {
+            controlsMsg.style.display = 'none';
+        }, 3000);
+        return
+    }
+    if (key === "P" || (e.shiftKey && key ==="p") || key === "З" || (e.shiftKey && key ==="з")) {
+        vpChooseVideo('back')
+        return
+    }
+    if (key === "N" || (e.shiftKey && key ==="n") || key === "Т" || (e.shiftKey && key ==="т")) {
+        vpChooseVideo('forward')
+        return
+    }
+
+    if ((key === "," || key ==="б") && video.paused) {
+        video.currentTime -= 0.04//25frames per sec
+        return
+    }
+    if ((key === "." || key ==="ю") && video.paused) {
+        video.currentTime += 0.04//25frames per sec
+        return
+    }
     if (((e.shiftKey && key ===",") || key === "<" || key ==="Б") && video.playbackRate > 0.25 ) {
         //video.pause()
         video.playbackRate -= 0.25
         //video.play();
+        return
     }
     if (((e.shiftKey && key ===".") ||key === ">" || key ==="Ю") && video.playbackRate < 3 ) {
         //video.pause()
         video.playbackRate += 0.25
         //video.play()
+        return
     }
-    if (key === "F" || (e.shiftKey && key ==="f") || key === "А" || (e.shiftKey && key ==="а") || key ==="а" || key ==="f") vpFullscreen()
+    if (key === "F" || (e.shiftKey && key ==="f") || key === "А" || (e.shiftKey && key ==="а") || key ==="а" || key ==="f") {
+        vpFullscreen()
+        return
+    }
     if (+key >=0 || +key<=9){
-        video.currentTime = video.duration * (+key/10)
+        //video.currentTime = video.duration * (+key/10)
+        progressBar.value = +key * 10;
+        vpSetProgress();
+        controlsMsg.innerText = `${progressBar.value}%` 
+        controlsMsg.style.display = 'block';
+        video.addEventListener('click', hideMsg)
+        setInterval(() => {
+            controlsMsg.style.display = 'none';
+        }, 3000);
+        return
     }
     if (((e.shiftKey && key ==="/") || key === "?" )) {
-        console.log("print help")
+        controlsMsg.innerText = `
+        k               - play
+        j / ←           - forward
+        l / →           - back
+        P / Shift + p   - previous video
+        N / Shift + n   - next video
+        ,               - previous frame
+        .               - next frame
+        <               - slower
+        >               - faster
+        f / F / Shift+f - fullscreen
+        0..9            - navigation by tenths
+        ↑               - volume up
+        ↓               - volume down
+        ` 
+        controlsMsg.style.display = 'block';
+        video.addEventListener('click', hideMsg)
+        // setInterval(() => {
+        //     controlsMsg.style.display = 'none';
+        // }, 10000);
+        return
     }
     if (e.key === "ArrowDown" && volumeBar.value >= 5) {
         volumeBar.value = +volumeBar.value - 5
         vpSetVolume()
+        // controlsMsg.innerText = `Volume ${volumeBar.value}%` 
+        // controlsMsg.style.display = 'block';
+        // video.addEventListener('click', hideMsg)
+        // setInterval(() => {
+        //     controlsMsg.style.display = 'none';
+        // }, 3000);
+        return
     }
     if (e.key === "ArrowUp" && volumeBar.value <= 95) {
         volumeBar.value = +volumeBar.value + 5
         console.log(volumeBar.value)
         vpSetVolume()
+        // controlsMsg.innerText = `Volume ${volumeBar.value}%` 
+        // controlsMsg.style.display = 'block';
+        // video.addEventListener('click', hideMsg)
+        // setInterval(() => {
+        //     controlsMsg.style.display = 'none';
+        // }, 3000);
+        return
     }
-    if (key === "M" || (e.shiftKey && key ==="m") || key === "Ь" || (e.shiftKey && key ==="ь") || key ==="ь" || key ==="m") vpMute()
-
-    
+    if (key === "M" || (e.shiftKey && key ==="m") || key === "Ь" || (e.shiftKey && key ==="ь") || key ==="ь" || key ==="m") {
+        vpMute()
+        return
+    }
 }
 
 //осталось: стрелками прогресс и громкость, справна по sh/, всплывающее сообщение

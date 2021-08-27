@@ -363,6 +363,24 @@ header {
   transition: fill 0.1s ease-in, opacity 0.2s ease-in;
 }
 
+.video-controls-message {
+  display: none;
+  position: absolute;
+  bottom: 90px;
+  left: 10px;
+  padding: 20px;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  border-radius: 1px;
+  font-family: monospace;
+  font-size: 2em;
+  font-weight: bold;
+  color: var(--white-text);
+  background: var(--dark-background);
+  opacity: 0.5;
+}
+
 .video-player {
   -o-object-fit: cover;
      object-fit: cover;
