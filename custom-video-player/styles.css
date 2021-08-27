@@ -343,11 +343,28 @@ header {
   padding-bottom: 50px;
 }
 
+.video .video-active {
+  z-index: 10;
+  top: 0;
+  left: 0;
+}
+
 .video-player-wrp {
   position: relative;
   width: 1440px;
   height: 629px;
   margin: 0 0 125px;
+}
+
+.video-slider {
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  overflow: hidden;
+  height: 629px;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 
 .video-player-start {
@@ -367,6 +384,7 @@ header {
   display: none;
   position: absolute;
   bottom: 90px;
+  z-index: 15;
   left: 10px;
   padding: 20px;
   width: -webkit-fit-content;
@@ -382,8 +400,14 @@ header {
 }
 
 .video-player {
+  position: absolute;
   -o-object-fit: cover;
      object-fit: cover;
+  top: 0;
+  left: 1440px;
+  z-index: 1;
+  -webkit-transition: left 0.2s ease-in;
+  transition: left 0.2s ease-in;
 }
 
 .video-player-controls {
@@ -506,6 +530,11 @@ header {
   min-height: 100%;
 }
 
+.fullscreen .video-player {
+  width: 100vW;
+  height: 100%;
+}
+
 .fullscreen ~ .video-player-start {
   display: none;
 }
@@ -513,6 +542,7 @@ header {
 .fullscreen ~ .video-player-controls {
   position: fixed;
   bottom: -80px;
+  z-index: 15;
   width: 100%;
   -webkit-box-pack: center;
       -ms-flex-pack: center;

@@ -288,11 +288,25 @@ header{
 .video{
     padding-top: 90px;
     padding-bottom: 50px;
+    & &-active{
+        
+        z-index: 10;
+        top:0;
+        left:0;
+
+    }
     &-player-wrp{
         position: relative;
         width: 1440px;
         height: 629px;
         margin: 0 0 125px;
+    }
+    &-slider{
+        position: relative;
+        display: flex;
+        overflow: hidden;
+        height: 629px;
+        object-fit: cover;
     }
     &-player-start{
         position: absolute;
@@ -309,6 +323,7 @@ header{
         display: none;
         position: absolute;
         bottom: 90px;
+        z-index: 15;
         left:10px;
         padding: 20px;
         width: fit-content;
@@ -321,7 +336,12 @@ header{
         opacity: 0.5;
     }
     &-player{
+        position: absolute;
         object-fit: cover;
+        top:0;
+        left: 1440px;
+        z-index: 1;
+        transition: left 0.2s ease-in;
     }
     &-player-controls{
         position: absolute;
@@ -422,13 +442,21 @@ header{
 .fullscreen{
     min-width: 100vw;
     min-height: 100%;
-    
+    & .video-player{
+        width: 100vW;
+        height: 100%;
+    }
+    // .video-slider{
+    //     height: 100vh;
+    //     overflow: initial;
+    // }
     & ~ .video-player-start{
         display: none;
     }
-    & ~ .video-player-controls{
+    & ~  .video-player-controls{
         position: fixed;
         bottom: -80px;
+        z-index: 15;
         width: 100%;
         justify-content: center;
         opacity: 0.7;
