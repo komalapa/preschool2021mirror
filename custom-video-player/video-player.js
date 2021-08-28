@@ -235,6 +235,7 @@ function toggleKeys(e){
     }
     if (key === "j" || key === "о" || e.key === "ArrowLeft") {
         video.currentTime -= 10/60 //tmp not 10s (1/6 s) because videos too short
+        vpSetProgressBar();
         //msg
         controlsMsg.innerText = `${progressBar.value}%` 
         controlsMsg.style.display = 'block';
@@ -244,7 +245,8 @@ function toggleKeys(e){
         return
     }
     if (key === "l" || key === "д" || e.key === "ArrowRight") {
-        video.currentTime += 10/60
+        video.currentTime += 10/60;
+        vpSetProgressBar();
         //msg
         controlsMsg.innerText = `${progressBar.value}%` 
         controlsMsg.style.display = 'block';
@@ -267,6 +269,7 @@ function toggleKeys(e){
 
     if (!e.shiftKey && (key === "," || key ==="б") && video.paused) {
         video.currentTime -= 0.04//25frames per sec
+        vpSetProgressBar();
         return
     }
     if (!e.shiftKey && (key === "." || key ==="ю") && video.paused) {
@@ -274,7 +277,8 @@ function toggleKeys(e){
         return
     }
     if (((e.shiftKey && key ===",") || key === "<" || key ==="Б") && video.playbackRate > 0.25 ) {
-        video.playbackRate -= 0.25
+        video.playbackRate -= 0.25;
+        vpSetProgressBar();
         //msg
         controlsMsg.innerText = `playback rate: ${video.playbackRate}` 
         controlsMsg.style.display = 'block';
