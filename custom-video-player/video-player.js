@@ -228,13 +228,16 @@ function toggleKeys(e){
     const key = e.key;
     if (!key) return;
     //console.log(e.shiftKey,key)
+//play
     if (key === "k" || key === "л" || key === " ") {
         e.preventDefault();
         vpPlay();
         return
     }
+//>>    
     if (key === "j" || key === "о" || e.key === "ArrowLeft") {
         video.currentTime -= 10/60 //tmp not 10s (1/6 s) because videos too short
+        vpSetProgressBar();
         //msg
         controlsMsg.innerText = `${progressBar.value}%` 
         controlsMsg.style.display = 'block';
@@ -243,8 +246,10 @@ function toggleKeys(e){
         }, MSG_DURATION);
         return
     }
+//<<    
     if (key === "l" || key === "д" || e.key === "ArrowRight") {
-        video.currentTime += 10/60
+        video.currentTime += 10/60;
+        vpSetProgressBar();
         //msg
         controlsMsg.innerText = `${progressBar.value}%` 
         controlsMsg.style.display = 'block';
@@ -253,8 +258,8 @@ function toggleKeys(e){
         }, MSG_DURATION);
         return
     }
-    if (key === "P" || (e.shiftKey && key ==="p") |console.log("upd")
-    | key === "З" || (e.shiftKey && key ==="з")) {
+//slider
+    if (key === "P" || (e.shiftKey && key ==="p") || key === "З" || (e.shiftKey && key ==="з")) {
         //vpChooseVideo('back')
         slChangeSlide('back')
         return
@@ -264,17 +269,20 @@ function toggleKeys(e){
         slChangeSlide('forward')
         return
     }
-
+//frames
     if (!e.shiftKey && (key === "," || key ==="б") && video.paused) {
         video.currentTime -= 0.04//25frames per sec
+        vpSetProgressBar();
         return
     }
     if (!e.shiftKey && (key === "." || key ==="ю") && video.paused) {
         video.currentTime += 0.04//25frames per sec
+        vpSetProgressBar();
         return
     }
+//speed    
     if (((e.shiftKey && key ===",") || key === "<" || key ==="Б") && video.playbackRate > 0.25 ) {
-        video.playbackRate -= 0.25
+        video.playbackRate -= 0.25;
         //msg
         controlsMsg.innerText = `playback rate: ${video.playbackRate}` 
         controlsMsg.style.display = 'block';
@@ -293,10 +301,12 @@ function toggleKeys(e){
         }, MSG_DURATION);
         return
     }
+//fullscreen
     if (key === "F" || (e.shiftKey && key ==="f") || key === "А" || (e.shiftKey && key ==="а") || key ==="а" || key ==="f") {
         vpFullscreen()
         return
     }
+//parts
     if (+key >=0 || +key<=9){
        progressBar.value = +key * 10;
         vpSetProgress();
@@ -308,6 +318,7 @@ function toggleKeys(e){
         }, MSG_DURATION);
         return
     }
+//doc
     if (((e.shiftKey && key ==="/") || (e.shiftKey && key ===",") || key === "?" || key === "H" || (e.shiftKey && key ==="h") || key === "Р" || e.shiftKey && key ==="р" || key ==="h" || key ==="р")) {
         //msg
         controlsMsg.innerText = `
@@ -332,6 +343,7 @@ function toggleKeys(e){
         setTimeout(hideMsg, MSG_DURATION * 5);
         return
     }
+//volume    
     if (e.key === "ArrowDown" && volumeBar.value >= 5) {
         e.preventDefault();
         volumeBar.value = +volumeBar.value - 5
@@ -345,6 +357,7 @@ function toggleKeys(e){
         vpSetVolume()
         return
     }
+//mute
     if (key === "M" || (e.shiftKey && key ==="m") || key === "Ь" || (e.shiftKey && key ==="ь") || key ==="ь" || key ==="m") {
         vpMute()
         return
