@@ -92,7 +92,8 @@ function slChangeSlide(direction){
     setTimeout (() => slides[prevSlide].style.left = null, sliderDuration)
     video = slides[activeVideo];
     //console.log(video.src)
-    video.play()   
+    vpSetProgressBar();
+    video.play();   
 }
 
 
@@ -190,6 +191,10 @@ function vpReplaceIconPlay(){
     }
 }
 
+function vpSetProgressBar(){
+    progressBar.value = Math.floor(100*video.currentTime/video.duration)
+    progressBar.style.background = `linear-gradient(to right, #24809E 0%, #24809E ${progressBar.value}%, #c4c4c4 ${progressBar.value}%, #c4c4c4 100%)`
+}
 //Listeners
 playBtn.addEventListener('click', vpPlay);
 centralPlayBtn.addEventListener('click', vpPlay);
@@ -198,6 +203,8 @@ slides.forEach(video =>{
     video.addEventListener('play',vpReplaceIconPlay);
     video.addEventListener('pause',vpReplaceIconPlay);
     video.addEventListener('ended',  () => slChangeSlide('forward'))
+
+    video.addEventListener('timeupdate', vpSetProgressBar);
 })
 
 // video.addEventListener('ended',  () => vpChooseVideo('forward'))
@@ -211,10 +218,6 @@ fullscreenBtn.addEventListener('click', vpFullscreen);
 volumeBar.addEventListener('input', vpSetVolume);
 progressBar.addEventListener('input', vpSetProgress);
 
-setInterval(() => {
-    progressBar.value = Math.floor(100*video.currentTime/video.duration)
-    progressBar.style.background = `linear-gradient(to right, #24809E 0%, #24809E ${progressBar.value}%, #c4c4c4 ${progressBar.value}%, #c4c4c4 100%)`
-}, 100);
 
 //keyboard
 function toggleKeys(e){
@@ -250,7 +253,8 @@ function toggleKeys(e){
         }, MSG_DURATION);
         return
     }
-    if (key === "P" || (e.shiftKey && key ==="p") || key === "З" || (e.shiftKey && key ==="з")) {
+    if (key === "P" || (e.shiftKey && key ==="p") |console.log("upd")
+    | key === "З" || (e.shiftKey && key ==="з")) {
         //vpChooseVideo('back')
         slChangeSlide('back')
         return
