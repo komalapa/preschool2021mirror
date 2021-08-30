@@ -1,0 +1,1 @@
+let timeOfDay = 'day';//'morning' 'evening' 'night'
