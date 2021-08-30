@@ -10,9 +10,9 @@ console.log(`
 	- Сброс настроек совмещен с пресетом default
 	- копирование кода css
 	- полноэкранный режим
-	- смена цвета фона и текста в соответствие с основным цветом рисунка (Алгоритм и константы для вычисления найдены и повторены. Ссылки на основные источники в комментариях)
+	- смена цвета фона и текста в соответствие с основным цветом рисунка (Алгоритм и константы для вычисления найдены и повторены. Ссылки на основные источники в комментариях) Не учитываю в счете
 
-	ИТОГ 30
+	ИТОГ 70/30
 `)
 
 //main canvas variables
@@ -100,10 +100,8 @@ const grayscaleNumber = document.querySelector('#filter-grayscale-number');
 //save btn
 const downloader = document.querySelector('#download')
 downloader.addEventListener('click', function (e) {
-	const link = document.querySelector("#download");
-	link.download = "image.png";
-	link.href = canvas.toDataURL();
-	link.delete;
+	downloader.download = "image.png";
+	downloader.href = canvas.toDataURL();
 });
 //copy css btn
 const copyBtn = document.querySelector("#copy-btn");
@@ -124,7 +122,7 @@ function copyCSS() {
 			console.log('Something went wrong with clipboard', err);
 		});
 }
-//================end controlls================
+//================end controls================
 
 const MAXS = {
 	blur: 20,
