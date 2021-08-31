@@ -46,6 +46,7 @@ body,html{
     width: 0;
     height: 0;
     border: 5vw solid transparent;
+    pointer-events: none;
 }
 .slider-arrow-right{
     right: 0;
@@ -60,4 +61,100 @@ body,html{
 .slider-arrow-left:before{
     right:2vw;
     border-right: 2vw solid var(--main-color);
+}
+
+.weather-list, .start-form{
+    display: flex;
+    width: fit-content;
+    padding: 1vw;
+    margin: 0 auto;
+    list-style: none;
+    font-size: 2em;
+    text-transform: capitalize;
+    background-color: var(--main-background-color);
+    border-radius: 1vw;
+    opacity: 0.6;
+}
+
+.weather-list > *{
+    display: none;
+    
+}
+
+.weather-list:hover > *{
+    display: block;
+    opacity: 0.8;]
+}
+
+.weather-list-item:last-child{
+    display:inline-block;
+    border-right: none;
+}
+.weather-list-item{
+    padding: 0 1vw;
+    border-right: 1px solid var(--main-color);
+}
+
+.start-form{
+    position: absolute;
+    top:50%;
+    left:50%;
+    flex-direction: column;
+    width: 400px;
+    height: 200px;
+    margin: -100px 0 0 -200px;
+    opacity: 0.8;
+}
+.start-form-label{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 5px;
+}
+.start-form-input{
+    background-color: var(--main-color);
+    color: var(--main-background-color);
+    width: 300px;
+    font-size: 1em;
+}
+.start-form-button{
+    background-color: var(--main-background-color);
+    color: var(--main-color);
+    font-size: 1em;
+    margin-top: 5px;
+}
+
+.settings-btn {
+    position: fixed;
+    top: 5vh;
+    right: 10vw;
+    display: flex;
+    padding: 10px;
+    background-color: var(--main-background-color);
+    border-radius: 1vw;
+    opacity: 0.6;
+}
+.error-city:before{
+    position: absolute;
+    bottom: -50px;
+    left: 0;
+    content: 'город не найден';
+    display: block;
+    width: 400px;
+    padding: 5px 1vw;
+    text-transform: none;
+    text-align: center;
+    background-color: pink;
+    border:1px solid brown;
+    color: brown;
+    opacity: 0.9;
+}
+.form-none{
+    display: none;
+}
+
+.settings-btn:hover {
+    opacity: 0.8;
+}
+.settings-btn svg{
+    fill:var(--main-color);
 }

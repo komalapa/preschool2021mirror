@@ -1,7 +1,7 @@
 const BACKGROUNDS_COUNT = 20;
 const AUTO_CHANGE_INTERVAL = 10 * 60 * 1000; //10min
 
-const app = document.querySelector('#app')
+
 const sliderLeftBtn = document.querySelector('#slider-left');
 const sliderRightBtn = document.querySelector('#slider-right');
 
@@ -19,7 +19,7 @@ let backgroundNumber = Math.floor(Math.random() * BACKGROUNDS_COUNT) + 1;
 document.documentElement.style.setProperty('--background-image', ` )`)
 
 function setBackground(number = backgroundNumber){
-    console.log(backgroundNumber)
+    //console.log(backgroundNumber)
     const image = new Image();
     number = ('0' + number).slice(-2)
     image.src = `https://raw.githubusercontent.com/rolling-scopes-school/stage1-tasks/assets/images/${timeOfDay}/${number}.jpg`;
