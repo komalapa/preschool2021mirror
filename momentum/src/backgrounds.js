@@ -34,7 +34,7 @@ function setBackground(number = backgroundNumber){
 
 let slidesTimer;//for automatic change
 function changeSlide(direction = 'right'){
-    console.log('direction')
+    // console.log('direction')
     if (direction === 'right'){
         backgroundNumber = backgroundNumber < BACKGROUNDS_COUNT-1 ? ++backgroundNumber : 1;
         setBackground();
