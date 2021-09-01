@@ -135,6 +135,7 @@ function setVolume(e){
     } else {
         audioVolumeIcon.classList.remove('icon-volume-off');
         audioVolumeIcon.classList.add('icon-volume-up');
+        audioPlayer.muted = false;
     }
 }
 
