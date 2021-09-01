@@ -21,25 +21,32 @@ async function getWeather(city='Минск', lang = 'ru') {
     temp.innerHTML = data.main.temp.toFixed(0) + '&deg;C';
     temp.title = `ощущается как ${data.main.feels_like.toFixed(0)}°C`
     
-    // const tempFeels = document.createElement('span');
-    // tempFeels.classList.add('weather-list-item-temp-feels');
-    // tempFeels.innerHTML = `(${data.main.feels_like.toFixed(0)}&deg;C)`;
-    // tempFeels.title = "температура комфортности"
-
     const icon = document.createElement('span');
     icon.classList.add('weather-list-item-icon','weather-icon' , 'owf' , 'owf-'+data.weather[0].id);
     icon.title = data.weather[0].description;
-
-    // const description = document.createElement('span');
-    // description.classList.add('weather-list-item-description');
-    // description.innerText = data.weather[0].description;
 
     weatherItem.append(name, icon, temp,)
     weatherList.append(weatherItem)
 
   }
 
-
-  DEFAULT_CITIES.forEach(city => {
-      getWeather(city)
-    })
+  function weatherListGen(){
+    weatherList.innerHTML = '';
+    weatherList.innerText = '';
+    console.log('start',weatherList.querySelectorAll('*'))
+    if (lang === "ru"){
+      console.log('ru')
+        DEFAULT_CITIES_RU.forEach(city => {
+          console.log(city)
+        getWeather(city)
+      })
+    } else {
+      console.log('en')
+        DEFAULT_CITIES_EN.forEach(city => {
+          console.log(city)
+        getWeather(city, 'en')
+      })
+    }
+    console.log('end',weatherList.querySelectorAll('*'))
+  }
+  

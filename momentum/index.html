@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 
 <head>
     <meta charset="UTF-8">
@@ -35,10 +35,18 @@
             </svg>
         </span>
         <form class="start-form form-none" id="start-form">
-            <label class="start-form-label">Имя <input type="text" class="start-form-input" name="name"
-                    id="name"></label>
-            <label class="start-form-label">Город <input type="text" class="start-form-input" name="city"
-                    id="city"></label>
+            <label class="start-form-lang-switch">
+                <input type="checkbox" class="start-form-lang-switch-input" id="lang-switch">
+                <span class="start-form-lang-switch-custom"></span>
+            </label>
+            <div class="start-form-label-wrp" >
+                <label class="start-form-label" id="name-lbl" for="name">Имя </label>
+                <input type="text" class="start-form-input" name="name" id="name">
+            </div>
+            <div class="start-form-label-wrp" >
+                <label class="start-form-label" id="city-lbl" for="city">Город </label>
+                <input type="text" class="start-form-input" name="city" id="city">
+            </div>
             <button type="submit" class="start-form-button" id="start-form-submit">Ok</button>
             <button type="reset" class="start-form-button" id="start-form-reset">Отмена</button>
         </form>

@@ -2,13 +2,15 @@ const clock = document.createElement('span');
 clock.className = "clock";
 const greeting = document.createElement('span');
 greeting.className = "greeting";
+const daySpan = document.createElement("span");
+daySpan.className = 'day'
 const dateSpan = document.createElement("span");
 dateSpan.className = 'date'
 
 const clockWrp = document.createElement("div");
 clockWrp.className = 'clock-wrp';
 
-clockWrp.append(clock,dateSpan)
+clockWrp.append(clock, daySpan, dateSpan)
 app.append(greeting, clockWrp);
 
 function setGreeting(date) {
@@ -16,23 +18,28 @@ function setGreeting(date) {
     // с 12:00 до 17:59 - Good day / Добрый день / Добры дзень
     // с 18:00 до 23:59 - Good evening / Добрый вечер / Добры вечар
     // с 00:00 до 5:59 - Good night / Доброй/Спокойной ночи / Дабранач
-    const greetingsRU = ['Доброй ночи', 'Доброе утро', 'Добрый день', 'Добрый вечер']
-
+    //const greetings = ['Доброй ночи', 'Доброе утро', 'Добрый день', 'Добрый вечер']
+    if (lang === "ru") {
+      greetings = [...greetingsRu]
+    } 
+    if (lang === "en") {
+      greetings = [...greetingsEn]
+    } 
     if (date.getHours() < 6) {
       timeOfDay = 'night';
-      return greetingsRU[0] + userName + '!';
+      return greetings[0] + userName + '!';
     }
     if (date.getHours() < 12) {
       timeOfDay = 'morning';
-      return greetingsRU[1] +userName + '!';
+      return greetings[1] +userName + '!';
     }
     if (date.getHours() < 18) {
       timeOfDay = 'day';
-      return greetingsRU[2] + userName + '!';
+      return greetings[2] + userName + '!';
     }
   
     timeOfDay = 'evening';
-    return greetingsRU[3] + userName + '!';
+    return greetings[3] + userName + '!';
   }
 
   setInterval(()=>{
@@ -46,8 +53,18 @@ function setGreeting(date) {
   setTimeout(()=>greeting.style.visibility = null, 10000)
 
 function humanReadDate(date = new Date) {
-    return `${daysRu[date.getDay()]}, ${date.getDate()} ${monthsRu[date.getMonth()]} ${date.getUTCFullYear()}`;
+  if (lang === 'ru'){
+    return `${date.getDate()} ${monthsRu[date.getMonth()]} ${date.getUTCFullYear()}`;
+  } else {
+    return `${monthsEn[date.getMonth()]} ${date.getDate()}, ${date.getUTCFullYear()}`;
+  }
+    
 }
 function setDate(date){
-    dateSpan.innerHTML = humanReadDate(date)
+  if (lang === 'ru'){
+    daySpan.innerText = `${daysRu[date.getDay()]}`;
+  } else {
+    daySpan.innerText = `${daysEn[date.getDay()]}`;
+  }
+  dateSpan.innerText = humanReadDate(date)
 }

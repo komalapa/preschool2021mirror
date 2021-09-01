@@ -7,8 +7,9 @@ author.className = 'quote-author'
 
 quoteWrp.append(quote,author);
 app.append(quoteWrp)
-
-fetch('assets/quotesRU.json')
+function newQuote(){
+  const url = lang === 'ru' ? 'assets/quotesRU.json' : 'assets/quotesEN.json'
+  fetch(url)
   .then(response => response.text())
   .then(data => {
     const quotes = JSON.parse(data);
@@ -17,3 +18,6 @@ fetch('assets/quotesRU.json')
     quote.innerText = randQuote.quote;
     author.innerText = randQuote.author;
   });
+}
+
+newQuote()

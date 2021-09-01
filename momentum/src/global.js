@@ -10,12 +10,25 @@ console.log(`
 let timeOfDay = 'day';//'morning' 'evening' 'night'
 let userName = localStorage.getItem('momentName') ? `, ${localStorage.getItem('momentName')}` : ''
 
-const DEFAULT_CITIES = ['минск', 'москва','самара'];
+let lang = 'ru';//'en'
+
+const DEFAULT_CITIES_RU = ['минск', 'москва','самара'];
+const DEFAULT_CITIES_EN = ['minsk', 'moskva','samara'];
+
 
 const monthsRu = ['января', 'февраля', 'марта', 'апреля', 'мая', 'июня', 'июля', 'августа', 'сентября', 'октября', 'ноября', 'декабря'];
 const daysRu = ['Воскресенье', 'Понедельник', 'Вторник', 'Среда', 'Четверг', 'Пятница', 'Суббота']
     
+const monthsEn = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+const daysEn = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
 
+const greetingsRu = ['Доброй ночи', 'Доброе утро', 'Добрый день', 'Добрый вечер'];
+const greetingsEn = ['Good night ', 'Good morning', 'Good day', 'Good evening'];
 
 const app = document.querySelector('#app')
 
+// function removeAllChildNodes(parent) {
+//     while (parent.firstChild) {
+//         parent.removeChild(parent.firstChild);
+//     }
+// }
