@@ -16,7 +16,10 @@ if (city && typeof getWeather == 'function') {
 } //if weather module disabled city will be ignored
 function submitStartForm(e){
     e.preventDefault();
-    if (nameInput.value) localStorage.setItem('momentName', nameInput.value);
+    if (nameInput.value) {
+        localStorage.setItem('momentName', nameInput.value);
+        userName = nameInput.value;
+    }
     if (cityInput.value && cities.indexOf(cityInput.value.toLowerCase()) < 0 ) {
         if (typeof getWeather == 'function'){
             let weather = getWeather(cityInput.value)

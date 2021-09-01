@@ -15,6 +15,9 @@ body,html{
     margin: 0;
     padding: 1vh 1vw;
     box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
     background-color: var(--main-background-color);
     background-image: var(--background-image);
     background-size: cover;
@@ -63,7 +66,7 @@ body,html{
     border-right: 2vw solid var(--main-color);
 }
 
-.weather-list, .start-form{
+.weather-list, .start-form, .clock-wrp, .greeting{
     display: flex;
     width: fit-content;
     padding: 1vw;
@@ -158,3 +161,19 @@ body,html{
 .settings-btn svg{
     fill:var(--main-color);
 }
+
+.clock{
+    font-size: 3em;
+    font-weight: bold;
+    user-select: none;
+}
+.clock-wrp{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+.greeting{
+    visibility: hidden;
+}
+
