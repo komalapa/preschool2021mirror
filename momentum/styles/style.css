@@ -260,6 +260,19 @@ body,html{
     font-size: 0.5em;
     font-style: italic;
 }
+.quote-refresh-btn{
+    position: absolute;
+    top: -10px;
+    left: -10px;
+    font-size: 20px;
+    transform-origin: 10px 10px;
+    opacity: 0.3;
+}
+.quote-refresh-btn:hover{
+    transform: rotate(180deg);
+    transition: transform 1s;
+    opacity: 1;
+}
 .audio-wrp{
     position: fixed;
     left: 5vw;

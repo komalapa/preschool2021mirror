@@ -11,16 +11,16 @@ const cityLbl = document.querySelector('#city-lbl');
 
 if (localStorage.getItem('momentLang')) lang = localStorage.getItem('momentLang');
 langSwitch.checked = (lang === 'en')
-if (typeof weatherListGen == 'function') weatherListGen();
+// if (typeof weatherListGen == 'function') weatherListGen();
 
 const cities = (lang == 'ru') ? [...DEFAULT_CITIES_RU] : [...DEFAULT_CITIES_EN]
 let name, city;
 resetStartForm();
 changeLang();
-if (city && typeof getWeather == 'function') {
-    cities.push(city.toLowerCase());
-    getWeather(city)
-} //if weather module disabled city will be ignored
+// if (city && typeof getWeather == 'function') {
+//     cities.push(city.toLowerCase());
+//     getWeather(city)
+// } //if weather module disabled city will be ignored
 function submitStartForm(e){
     e.preventDefault();
     if (nameInput.value) {
@@ -61,6 +61,7 @@ function resetStartForm(e){
     if (e) e.preventDefault();
     name = localStorage.getItem('momentName');
     city = localStorage.getItem('momentCity');
+    cities.push(city.toLowerCase());
     nameInput.value = name || '';
     cityInput.value = city || '';
     form.classList.add("form-none")//module not found. exit

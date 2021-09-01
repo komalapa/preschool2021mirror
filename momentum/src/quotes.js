@@ -5,7 +5,10 @@ quote.className = 'quote-text'
 const author = document.createElement('span');
 author.className = 'quote-author'
 
-quoteWrp.append(quote,author);
+const getQuoteBtn = document.createElement('span');
+getQuoteBtn.classList.add('quote-refresh-btn', 'icon-refresh');
+
+quoteWrp.append(quote, author, getQuoteBtn);
 app.append(quoteWrp)
 function newQuote(){
   const url = lang === 'ru' ? 'assets/quotesRU.json' : 'assets/quotesEN.json'
@@ -20,4 +23,8 @@ function newQuote(){
   });
 }
 
+getQuoteBtn.addEventListener('click', newQuote)
+
 newQuote()
+
+

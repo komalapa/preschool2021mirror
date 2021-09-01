@@ -33,7 +33,6 @@ async function getWeather(city='Минск', lang = 'ru') {
   function weatherListGen(){
     weatherList.innerHTML = '';
     weatherList.innerText = '';
-    console.log('start',weatherList.querySelectorAll('*'))
     if (lang === "ru"){
       console.log('ru')
         DEFAULT_CITIES_RU.forEach(city => {
@@ -47,6 +46,5 @@ async function getWeather(city='Минск', lang = 'ru') {
         getWeather(city, 'en')
       })
     }
-    console.log('end',weatherList.querySelectorAll('*'))
   }
   

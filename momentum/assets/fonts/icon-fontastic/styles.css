@@ -56,3 +56,6 @@
 .icon-volume-up:before {
   content: "\69";
 }
+.icon-refresh:before {
+  content: "\61";
+}
