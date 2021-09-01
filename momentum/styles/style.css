@@ -33,7 +33,8 @@ body,html{
     z-index: 10;
     width: 5vw;
     height: 100vh;
-    opacity: 0.1;
+    /* opacity: 0.1; */
+    opacity: 0;
     background-color: var(--main-background-color);
     overflow: hidden;
     transition: opacity 0.2s ease-in;
@@ -66,7 +67,7 @@ body,html{
     border-right: 2vw solid var(--main-color);
 }
 
-.weather-list, .start-form, .clock-wrp, .greeting{
+.weather-list, .start-form, .clock-wrp, .greeting, .quote-wrp{
     display: flex;
     width: fit-content;
     padding: 1vw;
@@ -86,7 +87,7 @@ body,html{
 
 .weather-list:hover > *{
     display: block;
-    opacity: 0.8;]
+    opacity: 0.8;
 }
 
 .weather-list-item:last-child{
@@ -129,7 +130,7 @@ body,html{
 .settings-btn {
     position: fixed;
     top: 5vh;
-    right: 10vw;
+    right: 5vw;
     display: flex;
     padding: 10px;
     background-color: var(--main-background-color);
@@ -167,6 +168,9 @@ body,html{
     font-weight: bold;
     user-select: none;
 }
+.date{
+    text-align: center;
+}
 .clock-wrp{
     display: flex;
     flex-direction: column;
@@ -177,3 +181,24 @@ body,html{
     visibility: hidden;
 }
 
+.quote-wrp{
+    position: fixed;
+    bottom: 1vh;
+    right: 1vw;
+    width: 400px;
+    display:flex;
+    align-items: flex-end;
+    flex-direction: column;
+    text-transform: none; 
+    /* text-shadow: var(--main-background-color) 0 0 20px;; */
+}
+.quote-wrp:hover{
+    opacity: 1;
+}
+.quote-text{
+    font-size: 0.8em;
+}
+.quote-author{
+    font-size: 0.5em;
+    font-style: italic;
+}
