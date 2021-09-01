@@ -41,8 +41,9 @@ function submitStartForm(e){
                             form.classList.remove('error-city');
                         }, 5000)
                     } else {
+                        console.log('add city')
                         localStorage.setItem('momentCity', cityInput.value);
-                        cities.push(city.toLowerCase());
+                        cities.push(cityInput.value.toLowerCase());
                         form.classList.add("form-none")
                     }
                 })
