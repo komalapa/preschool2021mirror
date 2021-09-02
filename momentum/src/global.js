@@ -8,7 +8,7 @@ console.log(`
 
 
 let timeOfDay = 'day';//'morning' 'evening' 'night'
-let userName = localStorage.getItem('momentName') ? `, ${localStorage.getItem('momentName')}` : ''
+let userName = localStorage.getItem('momentName') ? localStorage.getItem('momentName') : ''
 
 let lang = 'ru';//'en'
 

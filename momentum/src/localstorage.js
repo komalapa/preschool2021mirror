@@ -26,6 +26,9 @@ function submitStartForm(e){
     if (nameInput.value) {
         localStorage.setItem('momentName', nameInput.value);
         userName = nameInput.value;
+    } else {
+        localStorage.setItem('momentName', '');
+        userName = '';
     }
 
     

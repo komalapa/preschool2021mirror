@@ -34,15 +34,15 @@ async function getWeather(city='Минск', lang = 'ru') {
     weatherList.innerHTML = '';
     weatherList.innerText = '';
     if (lang === "ru"){
-      console.log('ru')
+      //console.log('ru')
         DEFAULT_CITIES_RU.forEach(city => {
-          console.log(city)
+        //  console.log(city)
         getWeather(city)
       })
     } else {
-      console.log('en')
+      //console.log('en')
         DEFAULT_CITIES_EN.forEach(city => {
-          console.log(city)
+      //    console.log(city)
         getWeather(city, 'en')
       })
     }

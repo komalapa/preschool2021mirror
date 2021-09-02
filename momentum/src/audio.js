@@ -153,7 +153,7 @@ function mute(){
 }
 
 function musicToggleKey(e){
-    
+    if (e.code && !e.repeat ) playAudio();    
 }
 
 //events
@@ -174,4 +174,4 @@ audioVolumeIcon.addEventListener('click', mute)
 
 audioName.addEventListener('click',playAudio)
 
-document.addEventListener('keypree', musicToggleKey);
+//document.addEventListener('keypress', musicToggleKey);

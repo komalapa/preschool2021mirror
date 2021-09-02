@@ -19,6 +19,8 @@ function setGreeting(date) {
     // с 18:00 до 23:59 - Good evening / Добрый вечер / Добры вечар
     // с 00:00 до 5:59 - Good night / Доброй/Спокойной ночи / Дабранач
     //const greetings = ['Доброй ночи', 'Доброе утро', 'Добрый день', 'Добрый вечер']
+    const userNameStr = userName.length > 0 ? `, ${userName}!` : '!'  
+    //console.log(userName, userNameStr);
     if (lang === "ru") {
       greetings = [...greetingsRu]
     } 
@@ -27,19 +29,19 @@ function setGreeting(date) {
     } 
     if (date.getHours() < 6) {
       timeOfDay = 'night';
-      return greetings[0] + userName + '!';
+      return greetings[0] + userNameStr;
     }
     if (date.getHours() < 12) {
       timeOfDay = 'morning';
-      return greetings[1] +userName + '!';
+      return greetings[1] +userNameStr;
     }
     if (date.getHours() < 18) {
       timeOfDay = 'day';
-      return greetings[2] + userName + '!';
+      return greetings[2] + userNameStr;
     }
   
     timeOfDay = 'evening';
-    return greetings[3] + userName + '!';
+    return greetings[3] + userNameStr;
   }
 
   setInterval(()=>{
