@@ -1,0 +1,19 @@
+{
+    "manifest_version": 2,
+    "name": "komalapa momentum",
+    "version": "1.0",
+    "description": "task momentum for rs school",
+    "icons": {
+        "64": "assets/img/64.png"
+    },
+    "browser_action": {
+        "default_title": "momentum-komalapa", 
+        "default_icon": "assets/img/64.png" 
+    },
+    "background": {
+        "scripts": ["background.js"]
+    },
+    "permissions": [
+        "storage"
+    ]
+ }
