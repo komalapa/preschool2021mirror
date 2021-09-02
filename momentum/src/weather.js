@@ -2,7 +2,7 @@ const weatherList = document.createElement('ul');
 weatherList.classList.add('weather-list');
 app.append(weatherList)
 
-async function getWeather(city='Минск', lang = 'ru') {  
+async function getWeather(city='Минск', lang = 'ru', isDefault = false) {  
     const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&lang=${lang}&appid=ad379d091ac804c128d00dc78bd9de17&units=metric`;
     const res = await fetch(url);
     // console.log(res.status)
@@ -11,7 +11,6 @@ async function getWeather(city='Минск', lang = 'ru') {
     //console.log(data, data.weather[0].id, data.weather[0].description, data.main.temp);
     const weatherItem = document.createElement('li');
     weatherItem.classList.add('weather-list-item');
-    
     const name = document.createElement('h3');
     name.classList.add('weather-list-item-header');
     name.innerText = city;
@@ -26,7 +25,13 @@ async function getWeather(city='Минск', lang = 'ru') {
     icon.title = data.weather[0].description;
 
     weatherItem.append(name, icon, temp,)
-    weatherList.append(weatherItem)
+    if (isDefault) {
+      weatherItem.classList.add('weather-default-city');
+      weatherList.prepend(weatherItem)
+    } else {
+      weatherList.append(weatherItem)
+    }
+   
 
   }
 
@@ -37,13 +42,13 @@ async function getWeather(city='Минск', lang = 'ru') {
       //console.log('ru')
         DEFAULT_CITIES_RU.forEach(city => {
         //  console.log(city)
-        getWeather(city)
+        getWeather(city, lang, true)
       })
     } else {
       //console.log('en')
         DEFAULT_CITIES_EN.forEach(city => {
       //    console.log(city)
-        getWeather(city, 'en')
+        getWeather(city, 'en', true)
       })
     }
   }

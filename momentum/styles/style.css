@@ -99,6 +99,10 @@ body,html{
     border-right: 1px solid var(--main-color);
 }
 
+.weather-list-item:not(.weather-default-city){
+    display: inline-block;
+}
+
 .start-form{
     position: absolute;
     top:50%;

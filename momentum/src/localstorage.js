@@ -44,7 +44,7 @@ function submitStartForm(e){
                             form.classList.remove('error-city');
                         }, 5000)
                     } else {
-                        console.log('add city')
+                        // console.log('add city')
                         localStorage.setItem('momentCity', cityInput.value);
                         cities.push(cityInput.value.toLowerCase());
                         form.classList.add("form-none")
@@ -65,7 +65,7 @@ function resetStartForm(e){
     if (e) e.preventDefault();
     name = localStorage.getItem('momentName');
     city = localStorage.getItem('momentCity');
-    cities.push(city.toLowerCase());
+    if (city) cities.push(city.toLowerCase());
     nameInput.value = name || '';
     cityInput.value = city || '';
     form.classList.add("form-none")//module not found. exit
